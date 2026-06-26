@@ -1,4 +1,4 @@
-import json, os, asyncio, logging, shutil, glob
+import json, os, asyncio, logging, shutil, glob, re
 from pathlib import Path
 from playwright.async_api import async_playwright
 
@@ -8,6 +8,9 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 log = logging.getLogger(__name__)
 
 def md_to_html(text):
+    # まずURLをリンクに変換する（→ https://... の形、および単独URL）
+    url_pattern = re.compile(r'(https?://[^\s]+)')
+
     lines = text.split('\n')
     html_lines = []
     for line in lines:
@@ -19,12 +22,15 @@ def md_to_html(text):
         elif line.strip() == '':
             html_lines.append('<p><br></p>')
         else:
-            html_lines.append(f'<p>{line}</p>')
+            # 行内のURLを<a>タグに変換してからpタグで包む
+            linked = url_pattern.sub(r'<a href="\1">\1</a>', line)
+            html_lines.append(f'<p>{linked}</p>')
     return '\n'.join(html_lines)
 
 async def post_note(article):
     title = article.get("title", "無題")
     body = article.get("body", "")
+    image_path = article.get("image_path", "")
     cookies_json = os.environ.get("NOTE_COOKIES", "")
     if not cookies_json:
         log.error("NOTE_COOKIES が設定されていません")
@@ -77,6 +83,26 @@ async def post_note(article):
         title_area = page.locator('textarea[placeholder*="タイトル"]').first
         await title_area.fill(title)
         log.info("タイトル入力OK")
+
+        # 画像アップロード（見出し画像）
+        if image_path and os.path.exists(image_path):
+            try:
+                # noteの「画像を追加」ボタン（タイトル上のアイコン）を探してクリック
+                upload_btn_found = await page.evaluate("""() => {
+                    const btns = Array.from(document.querySelectorAll('button, [role="button"]'));
+                    const btn = btns.find(b => (b.getAttribute('aria-label') || '').includes('画像') ||
+                                                 (b.title || '').includes('画像'));
+                    return !!btn;
+                }""")
+                file_input = page.locator('input[type="file"]').first
+                if await file_input.count() > 0:
+                    await file_input.set_input_files(image_path)
+                    log.info(f"画像アップロードOK: {image_path}")
+                    await asyncio.sleep(4)
+                else:
+                    log.warning("画像アップロード用のinput要素が見つかりませんでした")
+            except Exception as e:
+                log.warning(f"画像アップロード失敗（本文入力は続行）: {e}")
 
         body_html = md_to_html(body)
         await page.evaluate("""(html) => {
