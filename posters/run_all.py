@@ -14,8 +14,6 @@ def run_script(name, path):
         )
         if result.returncode == 0:
             log.info(f"✅ {name} 完了")
-            if result.stdout:
-                log.info(result.stdout[-300:])
         else:
             log.error(f"❌ {name} 失敗: {result.stderr[-500:]}")
     except Exception as e:
@@ -23,11 +21,10 @@ def run_script(name, path):
 
 def run():
     log.info("=== AutoPoster 開始 ===")
-    run_script("記事生成",  "generator/generate.py")
-    run_script("note",      "posters/note_poster.py")
-    run_script("アメブロ",  "posters/ameblo_poster.py")
-    run_script("LinkedIn",  "posters/linkedin_poster.py")
-    run_script("Substack",  "posters/substack_poster.py")
+    run_script("note",     "posters/note_poster.py")
+    run_script("アメブロ", "posters/ameblo_poster.py")
+    run_script("LinkedIn", "posters/linkedin_poster.py")
+    run_script("Substack", "posters/substack_poster.py")
     log.info("=== AutoPoster 完了 ===")
 
 if __name__ == "__main__":
