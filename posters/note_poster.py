@@ -58,6 +58,9 @@ async def post_note(article):
             except Exception:
                 continue
         await page.wait_for_timeout(3000)
+        # ページ上のボタン一覧をログ出力
+        buttons = await page.evaluate("() => Array.from(document.querySelectorAll('button')).map(b => b.textContent.trim()).filter(t => t.length > 0)")
+        log.info(f"ページ上のボタン: {buttons}")
         await browser.close()
     log.info(f"note下書き保存完了: {title}")
 
