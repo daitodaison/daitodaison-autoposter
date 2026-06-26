@@ -55,7 +55,6 @@ async def post_note(article):
         log.info("noteエディタへアクセス中...")
         await page.goto("https://note.com/notes/new", wait_until="domcontentloaded", timeout=60000)
 
-        # タイトル入力欄が出るまで最大60秒待機
         log.info("エディタ起動を最大60秒待機...")
         for i in range(60):
             if "login" in page.url:
@@ -75,12 +74,10 @@ async def post_note(article):
             await browser.close()
             return False
 
-        # タイトル入力
         title_area = page.locator('textarea[placeholder*="タイトル"]').first
         await title_area.fill(title)
         log.info("タイトル入力OK")
 
-        # 本文入力
         body_html = md_to_html(body)
         await page.evaluate("""(html) => {
             const editor = document.querySelector('.ProseMirror');
@@ -94,31 +91,12 @@ async def post_note(article):
         await asyncio.sleep(5)
         log.info("本文入力OK")
 
-        # 公開に進む
-        try:
-            await page.locator('button:has-text("公開に進む")').first.click(timeout=10000)
-            await asyncio.sleep(8)
-            log.info("公開設定画面へ移動OK")
-        except Exception as e:
-            log.error(f"公開ボタンエラー: {e}")
-            await browser.close()
-            return False
-
-        # 公開する
-        published = await page.evaluate("""() => {
-            const btns = Array.from(document.querySelectorAll('button'));
-            const btn = btns.find(b => ['公開する','投稿する','保存して公開'].some(kw => b.textContent.includes(kw)));
-            if (btn) { btn.click(); return true; }
-            return false;
-        }""")
-
-        await asyncio.sleep(10)
-        if published:
-            log.info(f"note投稿完了: {title}")
-        else:
-            log.error("公開ボタンが見つかりませんでした")
+        # note エディタは自動で下書き保存される仕様のため、
+        # 公開系のボタンは一切押さずにここで終了する（公開に進む／公開する操作なし）
+        await asyncio.sleep(3)
+        log.info(f"note下書き保存完了（自動保存のみ・公開操作なし）: {title}")
         await browser.close()
-        return published
+        return True
 
 def run():
     files = sorted(glob.glob(f"{ARTICLES_DIR}/*.json"))
