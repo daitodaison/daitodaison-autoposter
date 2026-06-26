@@ -1,4 +1,4 @@
-import json, os, asyncio, logging, shutil, glob, re
+import json, os, asyncio, logging, shutil, glob
 from pathlib import Path
 from playwright.async_api import async_playwright
 
@@ -38,15 +38,18 @@ async def post_note(article):
         await context.add_cookies(pw_cookies)
         page = await context.new_page()
 
-        log.info("noteエディタへアクセス中...")
+        # STEP1: エディタへアクセス
+        log.info("【STEP1】noteエディタへアクセス中...")
         await page.goto("https://note.com/notes/new", wait_until="domcontentloaded", timeout=60000)
+        await page.screenshot(path="debug_01_after_goto.png")
+        log.info(f"【STEP1】URL: {page.url}")
 
-        log.info("エディタ起動を最大60秒待機...")
+        # STEP2: エディタ起動待機
+        log.info("【STEP2】エディタ起動を最大60秒待機...")
         for i in range(60):
             if "login" in page.url:
-                log.error("ログインが外れています")
-                await page.screenshot(path="note_debug.png", full_page=True)
-        log.info("スクリーンショット保存: note_debug.png")
+                await page.screenshot(path="debug_02_login_error.png")
+                log.error("【STEP2】ログインが外れています")
                 await browser.close()
                 return False
             found = await page.evaluate("""() => {
@@ -54,38 +57,87 @@ async def post_note(article):
                 return el && el.getBoundingClientRect().height > 0;
             }""")
             if found:
-                log.info(f"エディタ起動完了（{i+1}秒）")
+                log.info(f"【STEP2】エディタ起動完了（{i+1}秒）")
                 break
             await asyncio.sleep(1)
         else:
-            log.error("エディタが起動しませんでした")
+            await page.screenshot(path="debug_02_timeout.png")
+            log.error("【STEP2】エディタが起動しませんでした")
             await browser.close()
             return False
 
- # 画像アップロード
-        if image_path and os.path.exists(image_path):
-            try:
-                log.info(f"画像アップロード開始: {image_path}")
-                img_icon = page.locator('button[aria-label="画像を追加"]').first
-                await img_icon.click(timeout=10000)
-                await page.wait_for_timeout(2000)
-                async with page.expect_file_chooser(timeout=10000) as fc_info:
-                    await page.click('text=画像をアップロード')
-                file_chooser = await fc_info.value
-                await file_chooser.set_files(image_path)
-                await page.wait_for_timeout(5000)
-                await page.click('button:has-text("保存")', timeout=10000)
-                await page.wait_for_timeout(3000)
-                log.info("画像アップロード完了")
-            except Exception as e:
-                log.warning(f"画像アップロードスキップ: {e}")
+        await page.screenshot(path="debug_02_editor_ready.png")
+        log.info("【STEP2】エディタ起動後のスクリーンショット保存")
 
-        # タイトル入力
+        # STEP3: 画像アップロード
+        if image_path and os.path.exists(image_path):
+            log.info(f"【STEP3】画像アップロード開始: {image_path}")
+            try:
+                # 画像追加ボタンを探す
+                btns = await page.evaluate("""() => {
+                    return Array.from(document.querySelectorAll('button')).map(b => ({
+                        text: b.textContent.trim(),
+                        aria: b.getAttribute('aria-label'),
+                        class: b.className.substring(0, 50)
+                    }))
+                }""")
+                log.info(f"【STEP3】ページ上のボタン一覧: {btns[:10]}")
+
+                await page.screenshot(path="debug_03_before_img_btn.png")
+
+                # aria-labelで画像ボタンを探す
+                img_btn = page.locator('button[aria-label="画像を追加"]').first
+                is_visible = await img_btn.is_visible(timeout=5000)
+                log.info(f"【STEP3】画像ボタン表示状態: {is_visible}")
+
+                if is_visible:
+                    await img_btn.click()
+                    await page.wait_for_timeout(2000)
+                    await page.screenshot(path="debug_03_after_img_btn_click.png")
+                    log.info("【STEP3】画像ボタンクリック後のスクリーンショット保存")
+
+                    # メニューの「画像をアップロード」をクリック
+                    upload_text = page.locator('text=画像をアップロード').first
+                    is_upload_visible = await upload_text.is_visible(timeout=5000)
+                    log.info(f"【STEP3】「画像をアップロード」表示状態: {is_upload_visible}")
+
+                    if is_upload_visible:
+                        async with page.expect_file_chooser(timeout=10000) as fc_info:
+                            await upload_text.click()
+                        file_chooser = await fc_info.value
+                        await file_chooser.set_files(image_path)
+                        await page.wait_for_timeout(5000)
+                        await page.screenshot(path="debug_03_after_upload.png")
+                        log.info("【STEP3】ファイル選択後のスクリーンショット保存")
+
+                        # 保存ボタン
+                        save_btn = page.locator('button:has-text("保存")').first
+                        is_save_visible = await save_btn.is_visible(timeout=10000)
+                        log.info(f"【STEP3】保存ボタン表示状態: {is_save_visible}")
+                        if is_save_visible:
+                            await save_btn.click()
+                            await page.wait_for_timeout(3000)
+                            await page.screenshot(path="debug_03_after_save.png")
+                            log.info("【STEP3】画像保存後のスクリーンショット保存")
+                    else:
+                        log.warning("【STEP3】「画像をアップロード」メニューが見つかりません")
+                else:
+                    log.warning("【STEP3】画像追加ボタンが見つかりません")
+            except Exception as e:
+                await page.screenshot(path="debug_03_error.png")
+                log.warning(f"【STEP3】画像アップロードエラー: {e}")
+        else:
+            log.info(f"【STEP3】画像スキップ（パス:{image_path} 存在:{os.path.exists(image_path) if image_path else False}）")
+
+        # STEP4: タイトル入力
+        log.info("【STEP4】タイトル入力...")
         title_area = page.locator('textarea[placeholder*="タイトル"]').first
         await title_area.fill(title)
-        log.info("タイトル入力OK")
+        await page.screenshot(path="debug_04_title.png")
+        log.info("【STEP4】タイトル入力OK")
 
-        # 本文入力
+        # STEP5: 本文入力
+        log.info("【STEP5】本文入力...")
         body_html = body.replace('\n', '<br>')
         await page.evaluate("""(html) => {
             const editor = document.querySelector('.ProseMirror');
@@ -97,18 +149,26 @@ async def post_note(article):
             }
         }""", body_html)
         await asyncio.sleep(3)
-        log.info("本文入力OK")
+        await page.screenshot(path="debug_05_body.png")
+        log.info("【STEP5】本文入力OK")
 
-        # 下書き保存
+        # STEP6: 下書き保存
+        log.info("【STEP6】下書き保存...")
         try:
-            await page.click('button:has-text("下書き保存")', timeout=10000)
-            await page.wait_for_timeout(3000)
-            log.info("下書き保存OK")
+            draft_btn = page.locator('button:has-text("下書き保存")').first
+            is_draft_visible = await draft_btn.is_visible(timeout=5000)
+            log.info(f"【STEP6】下書き保存ボタン表示状態: {is_draft_visible}")
+            if is_draft_visible:
+                await draft_btn.click()
+                await page.wait_for_timeout(3000)
+                await page.screenshot(path="debug_06_draft_saved.png")
+                log.info("【STEP6】下書き保存OK")
         except Exception as e:
-            log.warning(f"下書き保存ボタンエラー: {e}")
+            await page.screenshot(path="debug_06_error.png")
+            log.warning(f"【STEP6】下書き保存エラー: {e}")
 
         await browser.close()
-        log.info(f"note処理完了: {title}")
+        log.info(f"【完了】note処理完了: {title}")
         return True
 
 def run():
