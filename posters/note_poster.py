@@ -115,8 +115,19 @@ async def post_note(article):
                         is_save_visible = await save_btn.is_visible(timeout=10000)
                         log.info(f"【STEP3】保存ボタン表示状態: {is_save_visible}")
                         if is_save_visible:
-                            await save_btn.click()
-                            await page.wait_for_timeout(3000)
+                            # モーダル内の保存ボタンをJSで直接クリック
+                            await page.wait_for_timeout(2000)
+                            clicked = await page.evaluate("""() => {
+                                const modal = document.querySelector('.ReactModal__Overlay');
+                                if (modal) {
+                                    const btns = Array.from(modal.querySelectorAll('button'));
+                                    const saveBtn = btns.find(b => b.textContent.trim() === '保存');
+                                    if (saveBtn) { saveBtn.click(); return true; }
+                                }
+                                return false;
+                            }""")
+                            log.info(f"【STEP3】JS保存クリック結果: {clicked}")
+                            await page.wait_for_timeout(5000)
                             await page.screenshot(path="debug_03_after_save.png")
                             log.info("【STEP3】画像保存後のスクリーンショット保存")
                     else:
