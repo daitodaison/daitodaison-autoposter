@@ -36,37 +36,13 @@ async def post_note(article):
         await page.wait_for_timeout(2000)
         log.info(f"アクセス後URL: {page.url}")
         await page.goto("https://note.com/notes/new")
-        await page.wait_for_timeout(5000)
+        await page.wait_for_timeout(8000)
         log.info(f"投稿ページURL: {page.url}")
-        for sel in ['textarea[placeholder*="タイトル"]', 'input[placeholder*="タイトル"]']:
-            try:
-                await page.fill(sel, title, timeout=5000)
-                log.info("タイトル入力OK")
-                break
-            except Exception:
-                continue
-        body_escaped = json.dumps(body)
-        js = "() => { const e = document.querySelector('.ProseMirror'); if(e){ e.focus(); document.execCommand('selectAll',false,null); document.execCommand('insertText',false," + body_escaped + "); } }"
-        await page.evaluate(js)
-        await page.wait_for_timeout(3000)
-        # 下書き保存
-        for sel in ['button:has-text("下書き保存")', 'button:has-text("保存")']:
-            try:
-                await page.click(sel, timeout=5000)
-                log.info("下書き保存OK")
-                break
-            except Exception:
-                continue
-        await page.wait_for_timeout(3000)
-        # ページ上のボタン一覧をログ出力
-       btn_count = await page.evaluate("() => document.querySelectorAll('button').length")
+        btn_count = await page.evaluate("() => document.querySelectorAll('button').length")
         log.info(f"ボタン数: {btn_count}")
         btn_classes = await page.evaluate("() => Array.from(document.querySelectorAll('button')).map(b => b.className).slice(0,5).join('||')")
-        log.info(f"ボタンクラス先頭5: {btn_classes}")
-        page_html = await page.evaluate("() => document.body.innerHTML.substring(0, 500)")
-        log.info(f"HTML先頭: {page_html}")
+        log.info(f"ボタンクラス: {btn_classes}")
         await browser.close()
-    log.info(f"note下書き保存完了: {title}")
 
 def run():
     files = sorted(glob.glob(f"{ARTICLES_DIR}/*.json"))
@@ -76,8 +52,6 @@ def run():
     with open(files[0], encoding="utf-8") as f:
         article = json.load(f)
     asyncio.run(post_note(article))
-    os.makedirs(POSTED_DIR, exist_ok=True)
-    shutil.move(files[0], f"{POSTED_DIR}/{Path(files[0]).name}")
 
 if __name__ == "__main__":
     run()
