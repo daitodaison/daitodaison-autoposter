@@ -1,0 +1,43 @@
+name: AutoPoster
+
+on:
+  schedule:
+    - cron: '0 22 * * *'
+    - cron: '0 3 * * *'
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        run: |
+          pip install playwright requests
+          playwright install chromium --with-deps
+      - name: Generate
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python generator/generate.py
+      - name: Post
+        env:
+          NOTE_USER: ${{ secrets.NOTE_USER }}
+          NOTE_PASS: ${{ secrets.NOTE_PASS }}
+          AMEBLO_USER: ${{ secrets.AMEBLO_USER }}
+          AMEBLO_PASS: ${{ secrets.AMEBLO_PASS }}
+          LINKEDIN_USER: ${{ secrets.LINKEDIN_USER }}
+          LINKEDIN_PASS: ${{ secrets.LINKEDIN_PASS }}
+          SUBSTACK_USER: ${{ secrets.SUBSTACK_USER }}
+          SUBSTACK_PASS: ${{ secrets.SUBSTACK_PASS }}
+        run: python posters/run_all.py
+      - name: Save
+        run: |
+          git config user.name "AutoPoster"
+          git config user.email "bot@github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "posted $(date '+%Y-%m-%d %H:%M')"
+          git push
