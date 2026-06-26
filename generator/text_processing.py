@@ -1,37 +1,34 @@
+# -*- coding: utf-8 -*-
 """
 text_processing.py
 記事品質チェック・後処理・文体統一
-- 簡体字/繁体字 → 日本語正字に自動修正
-- 架空数字・架空経歴を検出してスコアダウン
-- 抽象表現検出
-- 文体統一
+article_writer.py が期待する関数名:
+  - post_process_article(text) -> str
+  - detect_abstract_phrases(text) -> {"count": int, "list": list}
+  - is_article_acceptable(text) -> (bool, dict)
 """
 
 import re
 
 # ================================================================
-# 簡体字・繁体字 → 正字 変換辞書
+# 簡体字・繁体字 → 日本語正字 変換辞書
 # ================================================================
 SIMPLIFIED_TO_JAPANESE = {
-    # よく混入する簡体字
     "检討": "検討", "检讨": "検討", "檢討": "検討",
-    "收入": "収入",   # 簡体字の收 → 日本語の収
+    "收入": "収入",
     "资金": "資金", "资産": "資産",
-    "损失": "損失", "損失": "損失",
+    "损失": "損失",
     "规则": "ルール", "规律": "規律",
-    "实践": "実践", "実践": "実践",
-    "经験": "経験",   # 簡体字の经 → 日本語の経
+    "实践": "実践",
+    "经験": "経験",
     "时间": "時間",
-    "战略": "戦略", "戦略": "戦略",
+    "战略": "戦略",
     "问题": "問題",
     "关键": "重要",
     "设定": "設定",
     "达成": "達成",
-    "持続": "持続",
     "积累": "積み重ね",
     "选択": "選択",
-    "対応": "対応",
-    "実現": "実現",
     "继続": "継続",
     "发展": "発展",
     "进步": "進歩",
@@ -39,10 +36,8 @@ SIMPLIFIED_TO_JAPANESE = {
     "运用": "運用",
     "市场": "市場",
     "场合": "場合",
-    "档案": "記録",
     "结果": "結果",
     "影响": "影響",
-    "完整": "完全",
     "准备": "準備",
     "计划": "計画",
     "决定": "決定",
@@ -56,66 +51,45 @@ SIMPLIFIED_TO_JAPANESE = {
 }
 
 # ================================================================
-# 架空数字パターン（具体的な収支・成績の数字）
+# 架空数字パターン
 # ================================================================
 FAKE_NUMBERS_PATTERNS = [
     r'毎月[0-9０-９]+万',
     r'月収[0-9０-９]+万',
     r'副業収入[0-9０-９]+万',
     r'収益率[0-9０-９]+[%％]',
-    r'勝率[0-9０-９]+[%％]',       # ただし「40%」は daito の本物の実績なのでOK → 後で除外
     r'年収[0-9０-９]+万',
     r'月[0-9０-９]+万稼',
     r'[0-9０-９]+万円の利益',
     r'[0-9０-９]+万円を稼',
     r'損失[0-9０-９]+万',
     r'利益[0-9０-９]+万',
-    r'[0-9０-９]+ドルの',
     r'資産[0-9０-９]+万',
+    r'勝率[0-9０-９]+[%％]',  # 40%・2.3%は除外（下記ALLOWED_FACTSで管理）
 ]
 
-# 本物の実績として使ってよい表現（これはスコアダウン対象外）
-ALLOWED_FACTS = [
-    "40%",          # daito の本物の勝率
-    "2.3%",         # Fintokei 上位 2.3%
-    "2587人中61位", # Fintokei 順位
-    "61位",
-]
-
-# ================================================================
-# 抽象表現（多用すると品質スコアダウン）
-# ================================================================
-ABSTRACT_PHRASES = [
-    "〜することが重要です",
-    "〜することが大切です",
-    "しっかりと",
-    "きちんと",
-    "ちゃんと",
-    "うまく",
-    "適切に",
-    "効果的に",
-    "最適な",
-    "様々な",
-    "さまざまな",
-    "多くの",
-    "いろいろな",
-    "など様々",
-    "ポイントがあります",
-    "重要なポイント",
-    "大切なポイント",
-]
+ALLOWED_FACTS = ["40%", "2.3%", "2587人中61位", "61位"]
 
 # ================================================================
 # 架空経歴パターン
 # ================================================================
 FAKE_CAREER_PATTERNS = [
-    r'FX歴[0-9０-９]+年で',
+    r'FX歴[0-9０-９]+年',
     r'[0-9０-９]+年間のFX経験',
     r'[0-9０-９]+年以上のトレード',
     r'トレード歴[0-9０-９]+年',
     r'合格した',
     r'パスした',
     r'チャレンジを達成',
+]
+
+# ================================================================
+# 抽象表現リスト（GAS版 _抽象表現を検出 と同一）
+# ================================================================
+ABSTRACT_PHRASES = [
+    "重要です", "大切です", "必要です", "意識しましょう",
+    "心がけてください", "注意が必要", "しっかりと", "きちんと",
+    "十分に", "適切に", "効果的に", "積極的に", "不可欠です",
 ]
 
 
@@ -126,13 +100,28 @@ def fix_simplified_chinese(text: str) -> str:
     return text
 
 
+def detect_abstract_phrases(text: str) -> dict:
+    """
+    article_writer.py が呼ぶ関数。
+    GAS版 _抽象表現を検出 の移植。
+    戻り値: {"count": int, "list": list}
+    """
+    count = 0
+    found = []
+    for phrase in ABSTRACT_PHRASES:
+        n = text.count(phrase)
+        if n > 0:
+            count += n
+            found.append(f"{phrase}×{n}")
+    return {"count": count, "list": found}
+
+
 def detect_fake_numbers(text: str) -> list:
     """架空数字パターンを検出して該当箇所リストを返す"""
     hits = []
     for pattern in FAKE_NUMBERS_PATTERNS:
         matches = re.findall(pattern, text)
         for m in matches:
-            # 許可された実績表現は除外
             if not any(allowed in m for allowed in ALLOWED_FACTS):
                 hits.append(m)
     return hits
@@ -142,28 +131,16 @@ def detect_fake_career(text: str) -> list:
     """架空経歴パターンを検出"""
     hits = []
     for pattern in FAKE_CAREER_PATTERNS:
-        matches = re.findall(pattern, text)
-        hits.extend(matches)
+        hits.extend(re.findall(pattern, text))
     return hits
 
 
-def count_abstract_phrases(text: str) -> int:
-    """抽象表現の数を数える"""
-    count = 0
-    for phrase in ABSTRACT_PHRASES:
-        count += text.count(phrase)
-    return count
-
-
 def calculate_quality_score(text: str) -> dict:
-    """
-    品質スコアを計算して辞書で返す
-    score: 0〜100（60以上で合格）
-    """
+    """品質スコアを計算（0〜100、60以上で合格）"""
     score = 100
     issues = []
 
-    # 簡体字チェック（修正前に検出）
+    # 簡体字チェック
     simplified_hits = [k for k in SIMPLIFIED_TO_JAPANESE if k in text]
     if simplified_hits:
         deduct = min(len(simplified_hits) * 5, 30)
@@ -185,13 +162,13 @@ def calculate_quality_score(text: str) -> dict:
         issues.append(f"架空経歴: {fake_career[:3]}")
 
     # 抽象表現チェック
-    abstract_count = count_abstract_phrases(text)
-    if abstract_count >= 5:
-        deduct = min((abstract_count - 4) * 5, 20)
+    abstract = detect_abstract_phrases(text)
+    if abstract["count"] >= 5:
+        deduct = min((abstract["count"] - 4) * 5, 20)
         score -= deduct
-        issues.append(f"抽象表現多用: {abstract_count}件")
+        issues.append(f"抽象表現多用: {abstract['count']}件")
 
-    # 文字数チェック（短すぎる記事はマイナス）
+    # 文字数チェック
     char_count = len(text)
     if char_count < 500:
         score -= 20
@@ -199,6 +176,12 @@ def calculate_quality_score(text: str) -> dict:
     elif char_count < 800:
         score -= 10
         issues.append(f"文字数やや不足: {char_count}文字")
+
+    # 禁止ワードチェック（GAS版と同一）
+    for w in ["絶対に稼げる", "誰でも簡単に", "リスクゼロ", "申し訳ありません", "お応えできません"]:
+        if w in text:
+            score -= 30
+            issues.append(f"禁止語: {w}")
 
     return {
         "score": max(score, 0),
@@ -209,12 +192,15 @@ def calculate_quality_score(text: str) -> dict:
 
 
 def unify_style(text: str) -> str:
-    """文体を統一する（ですます調に統一など）"""
-    # 「〜だ。」「〜である。」を「〜です。」に変換（基本的なもののみ）
+    """文体を「です・ます」調に統一（GAS版 _文体を統一 に相当）"""
     replacements = [
         (r'([^でしまたっだ])だ。', r'\1です。'),
         (r'([^でしまたっだ])である。', r'\1です。'),
         (r'([^でしまたっだ])だった。', r'\1でした。'),
+        (r'できた。', 'できました。'),
+        (r'わかった。', 'わかりました。'),
+        (r'している。', 'しています。'),
+        (r'考えている。', '考えています。'),
     ]
     for pattern, repl in replacements:
         text = re.sub(pattern, repl, text)
@@ -223,21 +209,43 @@ def unify_style(text: str) -> str:
 
 def post_process_article(text: str) -> str:
     """
-    記事の後処理をまとめて実行する
-    1. 簡体字修正
-    2. 文体統一
-    3. 余分な空白・改行を整理
+    article_writer.py が呼ぶ後処理関数。
+    GAS版 _記事後処理 の後半処理を移植:
+      1. 簡体字修正
+      2. 信頼品質フィルタ（GAS版 _信頼品質フィルタ）
+      3. 文体統一
+      4. 余分な改行整理
     """
-    # Step 1: 簡体字修正
+    # Step1: 簡体字修正
     text = fix_simplified_chinese(text)
 
-    # Step 2: 文体統一
+    # Step2: 信頼品質フィルタ（GAS版と同一の置換）
+    replacements = [
+        ("Fintokei公式", "Fintokei（フィントケイ）"),
+        ("アフィリエイト", "紹介プログラム"),
+        ("稼げる", "利益を追求できる"),
+        ("絶対に稼げる", "利益を追求できる"),
+        ("絶対に勝てる", "再現性のある手法で勝てる"),
+        ("絶対安全", "リスクを抑えた"),
+        ("簡単", "シンプル"),
+        ("放置", "自動化"),
+        ("裏ワザ", "効率的な手法"),
+        ("ご興味がある方は", "よければ"),
+        ("ぜひご覧ください", "読んでみてください"),
+        ("ご購読ください", "読んでみてください"),
+        ("お客様", "あなた"),
+        ("読者の皆様におかれましては", "読んでくれているあなたへ"),
+        ("市场", "市場"),
+        ("了か", "たか"),
+    ]
+    for wrong, correct in replacements:
+        text = text.replace(wrong, correct)
+
+    # Step3: 文体統一
     text = unify_style(text)
 
-    # Step 3: 余分な空白・改行を整理
-    # 3行以上の連続する空行を2行に圧縮
+    # Step4: 余分な改行整理
     text = re.sub(r'\n{3,}', '\n\n', text)
-    # 行末の余分なスペース除去
     text = '\n'.join(line.rstrip() for line in text.split('\n'))
 
     return text.strip()
@@ -245,38 +253,9 @@ def post_process_article(text: str) -> str:
 
 def is_article_acceptable(text: str) -> tuple:
     """
-    記事が品質基準を満たすか判定
-    Returns: (合格bool, スコア辞書)
+    article_writer.py が呼ぶ品質判定関数。
+    戻り値: (合格bool, スコア辞書)
     """
-    # まず後処理（簡体字修正など）してからスコアを計算
     processed = post_process_article(text)
     result = calculate_quality_score(processed)
     return result["passed"], result
-
-
-# ================================================================
-# 動作確認用
-# ================================================================
-if __name__ == "__main__":
-    sample = """
-    资金管理 检討を始める前に、收入と支出を把握することが重要です。
-    毎月20万の収入のうち、副業収入5万を加えて運用しています。
-    私のFX歴5年の経験から、勝率70%を達成しました。
-    しっかりと計画を立てることが大切です。様々なリスクを適切に管理する。
-    Fintokeiで上位2.3%（2587人中61位）の実績があります。勝率40%でも勝てる。
-    → https://dysonblog.org/propfarm-strategy/
-    """
-
-    print("=== 後処理前の品質スコア ===")
-    ok, result = is_article_acceptable(sample)
-    print(f"スコア: {result['score']}/100  合格: {ok}")
-    print(f"問題点: {result['issues']}")
-
-    print("\n=== 後処理後のテキスト ===")
-    processed = post_process_article(sample)
-    print(processed)
-
-    print("\n=== 後処理後の品質スコア ===")
-    ok2, result2 = is_article_acceptable(processed)
-    print(f"スコア: {result2['score']}/100  合格: {ok2}")
-    print(f"問題点: {result2['issues']}")
