@@ -1,315 +1,282 @@
-# -*- coding: utf-8 -*-
 """
-記事の品質チェック・後処理ロジックの移植
-GAS版: _記事品質スコアを計算 / _抽象表現を検出 / _文体チェック / _記事後処理 / _信頼品質フィルタ 等
+text_processing.py
+記事品質チェック・後処理・文体統一
+- 簡体字/繁体字 → 日本語正字に自動修正
+- 架空数字・架空経歴を検出してスコアダウン
+- 抽象表現検出
+- 文体統一
 """
+
 import re
-import logging
-from templates import determine_goal
-from ai_client import call_ai_with_fallback, extract_text
 
-log = logging.getLogger(__name__)
+# ================================================================
+# 簡体字・繁体字 → 正字 変換辞書
+# ================================================================
+SIMPLIFIED_TO_JAPANESE = {
+    # よく混入する簡体字
+    "检討": "検討", "检讨": "検討", "檢討": "検討",
+    "收入": "収入",   # 簡体字の收 → 日本語の収
+    "资金": "資金", "资産": "資産",
+    "损失": "損失", "損失": "損失",
+    "规则": "ルール", "规律": "規律",
+    "实践": "実践", "実践": "実践",
+    "经験": "経験",   # 簡体字の经 → 日本語の経
+    "时间": "時間",
+    "战略": "戦略", "戦略": "戦略",
+    "问题": "問題",
+    "关键": "重要",
+    "设定": "設定",
+    "达成": "達成",
+    "持続": "持続",
+    "积累": "積み重ね",
+    "选択": "選択",
+    "対応": "対応",
+    "実現": "実現",
+    "继続": "継続",
+    "发展": "発展",
+    "进步": "進歩",
+    "过程": "過程",
+    "运用": "運用",
+    "市场": "市場",
+    "场合": "場合",
+    "档案": "記録",
+    "结果": "結果",
+    "影响": "影響",
+    "完整": "完全",
+    "准备": "準備",
+    "计划": "計画",
+    "决定": "決定",
+    "目标": "目標",
+    "财産": "財産",
+    "财务": "財務",
+    "长期": "長期",
+    "短期": "短期",
+    "风险": "リスク",
+    "机会": "機会",
+}
 
-抽象ワード = [
-    "重要です", "大切です", "必要です", "意識しましょう", "心がけてください", "注意が必要",
-    "しっかりと", "きちんと", "十分に", "適切に", "効果的に", "積極的に", "不可欠です",
+# ================================================================
+# 架空数字パターン（具体的な収支・成績の数字）
+# ================================================================
+FAKE_NUMBERS_PATTERNS = [
+    r'毎月[0-9０-９]+万',
+    r'月収[0-9０-９]+万',
+    r'副業収入[0-9０-９]+万',
+    r'収益率[0-9０-９]+[%％]',
+    r'勝率[0-9０-９]+[%％]',       # ただし「40%」は daito の本物の実績なのでOK → 後で除外
+    r'年収[0-9０-９]+万',
+    r'月[0-9０-９]+万稼',
+    r'[0-9０-９]+万円の利益',
+    r'[0-9０-９]+万円を稼',
+    r'損失[0-9０-９]+万',
+    r'利益[0-9０-９]+万',
+    r'[0-9０-９]+ドルの',
+    r'資産[0-9０-９]+万',
+]
+
+# 本物の実績として使ってよい表現（これはスコアダウン対象外）
+ALLOWED_FACTS = [
+    "40%",          # daito の本物の勝率
+    "2.3%",         # Fintokei 上位 2.3%
+    "2587人中61位", # Fintokei 順位
+    "61位",
+]
+
+# ================================================================
+# 抽象表現（多用すると品質スコアダウン）
+# ================================================================
+ABSTRACT_PHRASES = [
+    "〜することが重要です",
+    "〜することが大切です",
+    "しっかりと",
+    "きちんと",
+    "ちゃんと",
+    "うまく",
+    "適切に",
+    "効果的に",
+    "最適な",
+    "様々な",
+    "さまざまな",
+    "多くの",
+    "いろいろな",
+    "など様々",
+    "ポイントがあります",
+    "重要なポイント",
+    "大切なポイント",
+]
+
+# ================================================================
+# 架空経歴パターン
+# ================================================================
+FAKE_CAREER_PATTERNS = [
+    r'FX歴[0-9０-９]+年で',
+    r'[0-9０-９]+年間のFX経験',
+    r'[0-9０-９]+年以上のトレード',
+    r'トレード歴[0-9０-９]+年',
+    r'合格した',
+    r'パスした',
+    r'チャレンジを達成',
 ]
 
 
-def detect_abstract_expressions(text):
-    detected_count = 0
-    detected_items = []
-    for w in 抽象ワード:
-        count = text.count(w)
-        if count > 0:
-            detected_count += count
-            detected_items.append(f"{w}×{count}")
-    return detected_count, detected_items
-
-
-def concretize_abstract_text(text, kw):
-    """抽象表現をAIに具体化させる"""
-    count, items = detect_abstract_expressions(text)
-    if count < 3:
-        return text
-
-    log.info(f"    🔍 抽象表現を検出（{count}箇所）: 具体化リライトを実行")
-    prompt = f"""以下の文章に抽象的な表現があります。
-「重要です」「大切です」「しっかりと」などを全て具体的な数字・手順・実体験に置き換えてください。
-
-❌ 悪い例：「ロット管理が重要です」
-✅ 良い例：「私は証拠金の2%以上を1回のトレードに使いません」
-
-【ルール】
-・内容・構成・文字数は変えない
-・「ます。」「です。」調を維持
-・URLはそのまま残す
-
-【書き直す文章】
-{text[:3000]}"""
-    res = call_ai_with_fallback(prompt, 4096)
-    rewritten = extract_text(res)
-    if rewritten:
-        log.info("✅ 抽象表現の具体化完了")
-        return rewritten
+def fix_simplified_chinese(text: str) -> str:
+    """簡体字・繁体字を日本語正字に修正"""
+    for wrong, correct in SIMPLIFIED_TO_JAPANESE.items():
+        text = text.replace(wrong, correct)
     return text
 
 
-def check_style_consistency(text):
-    """です・ます調とだ・である調の混在チェック"""
-    lines = [l for l in text.split("。") if len(l) > 10]
-    desu_count = sum(1 for l in lines if "です" in l or "ます" in l)
-    da_count = sum(1 for l in lines if re.search(r"[^ます]だ$|である$", l.strip()))
-    if desu_count + da_count == 0:
-        return True
-    ratio = desu_count / (desu_count + da_count)
-    return ratio >= 0.85
+def detect_fake_numbers(text: str) -> list:
+    """架空数字パターンを検出して該当箇所リストを返す"""
+    hits = []
+    for pattern in FAKE_NUMBERS_PATTERNS:
+        matches = re.findall(pattern, text)
+        for m in matches:
+            # 許可された実績表現は除外
+            if not any(allowed in m for allowed in ALLOWED_FACTS):
+                hits.append(m)
+    return hits
 
 
-def unify_style(text):
-    """文体統一をAIに依頼"""
-    prompt = f"""以下の文章の文体が「ます・です調」と「だ・である調」で混在しています。
-全て「ます・です調」に統一してください。
-内容・構成・URLは変えないこと。
-
-{text[:3000]}"""
-    res = call_ai_with_fallback(prompt, 4096)
-    rewritten = extract_text(res)
-    if rewritten:
-        log.info("✅ 文体統一完了")
-        return rewritten
-    return text
+def detect_fake_career(text: str) -> list:
+    """架空経歴パターンを検出"""
+    hits = []
+    for pattern in FAKE_CAREER_PATTERNS:
+        matches = re.findall(pattern, text)
+        hits.extend(matches)
+    return hits
 
 
-def improve_mobile_readability(text):
-    """3文ごとに改行を入れてスマホ読みやすさを改善"""
-    paragraphs = text.split("\n\n")
-    improved = []
-    for p in paragraphs:
-        if p.startswith("#") or p.startswith(">") or p.startswith("→"):
-            improved.append(p)
-            continue
-        sentences = [s for s in p.split("。") if s.strip()]
-        if len(sentences) <= 3:
-            improved.append(p)
-            continue
-        chunks = []
-        for i in range(0, len(sentences), 3):
-            chunk = "。".join(sentences[i:i + 3])
-            if not chunk.endswith("。"):
-                chunk += "。"
-            chunks.append(chunk)
-        improved.append("\n\n".join(chunks))
-    return "\n\n".join(improved)
+def count_abstract_phrases(text: str) -> int:
+    """抽象表現の数を数える"""
+    count = 0
+    for phrase in ABSTRACT_PHRASES:
+        count += text.count(phrase)
+    return count
 
 
-def natural_cut(text, limit, minimum=0):
-    """上限文字数で自然な文末（句点）でカットする"""
-    if len(text) <= limit:
-        return text
-    search_range = text[:limit]
-    last_period = max(
-        search_range.rfind("。"), search_range.rfind("！"), search_range.rfind("？")
-    )
-    if last_period > max(minimum, limit * 0.7):
-        return text[: last_period + 1]
-    return text[:limit]
-
-
-def trust_quality_filter(text):
-    """GAS版 _信頼品質フィルタ の移植：誇大表現や問題のある言い回しを置換"""
-    replacements = [
-        (r"Fintokei公式", "Fintokei（フィントケイ）"),
-        (r"アフィリエイト", "紹介プログラム"),
-        (r"絶対に稼げる", "利益を追求できる可能性がある"),
-        (r"稼げる", "利益を追求できる"),
-        (r"絶対に勝てる", "再現性のある手法で勝てる"),
-        (r"絶対安全", "リスクを抑えた"),
-        (r"簡単", "シンプル"),
-        (r"放置", "自動化"),
-        (r"裏ワザ", "効率的な手法"),
-        (r"ご興味がある方は", "よければ"),
-        (r"ぜひご覧ください", "読んでみてください"),
-        (r"ご購読ください", "読んでみてください"),
-        (r"確実に自己破産リスクを回避", "ドローダウンを抑える傾向にある"),
-        (r"確実に.*?につなげ", "着実に取り組んでいきます"),
-        (r"約\d+%カバー", "一定期間分"),
-        (r"自己トレードアカウント", "自分のトレード記録"),
-        (r"読者の皆様におかれましては", "読んでくれているあなたへ"),
-        (r"読者の皆さまの役立てば幸いです", ""),
-        (r"皆様とFintokeiの.*?探求していきたい", "引き続き検証を続けていきます"),
-        (r"ぜひご購読ください", "よければ読んでみてください"),
-        (r"20[0-9]{2}年[0-9]+月から20[0-9]{2}年[0-9]+月", "過去の一定期間"),
-        (r"平均利益率.*?向上", "収支が改善傾向にある"),
-        (r"大幅な向上にもつながりました", "改善につながっています"),
-        (r"もしご興味がありましたら", "よければ"),
-    ]
-    result = text
-    for pattern, repl in replacements:
-        result = re.sub(pattern, repl, result)
-    return result
-
-
-def calculate_quality_score(body, kw, target_length):
-    """記事品質スコアを計算（0〜100点）"""
+def calculate_quality_score(text: str) -> dict:
+    """
+    品質スコアを計算して辞書で返す
+    score: 0〜100（60以上で合格）
+    """
     score = 100
-    problems = []
+    issues = []
 
-    length = len(body)
-    if length < target_length * 0.7:
-        score -= 30
-        problems.append(f"文字数不足: {length}字")
-    if length > target_length * 1.5:
-        score -= 20
-        problems.append(f"文字数超過: {length}字")
+    # 簡体字チェック（修正前に検出）
+    simplified_hits = [k for k in SIMPLIFIED_TO_JAPANESE if k in text]
+    if simplified_hits:
+        deduct = min(len(simplified_hits) * 5, 30)
+        score -= deduct
+        issues.append(f"簡体字・繁体字: {simplified_hits[:5]}")
 
-    for w in kw.split(" "):
-        count = body.count(w)
-        if count < 2:
-            score -= 10
-            problems.append(f"{w}の出現回数が少ない")
-        if count > 25:
-            score -= 10
-            problems.append(f"{w}の詰め込みすぎ")
+    # 架空数字チェック
+    fake_nums = detect_fake_numbers(text)
+    if fake_nums:
+        deduct = min(len(fake_nums) * 15, 45)
+        score -= deduct
+        issues.append(f"架空数字: {fake_nums[:3]}")
 
-    if "##" not in body:
-        score -= 15
-        problems.append("見出しなし")
-    if "https://" not in body:
-        score -= 10
-        problems.append("URLなし")
-
-    for w in ["絶対に稼げる", "誰でも簡単", "リスクゼロ", "申し訳ありません", "お応えできません"]:
-        if w in body:
-            score -= 30
-            problems.append(f"禁止要素検出: {w}")
-
-    架空経歴パターン = [
-        r"\d+年間の経験", r"ウィニングレシオ.*向上", r"成績は劇的", r"大幅に向上",
-        r"勝率.*%", r"平均.*\d+%.*改善", r"平均.*\d+%.*増加", r"平均.*\d+%.*達し",
-        r"収益.*\d+%以上", r"約\d+%カバー",
-    ]
-    for pattern in 架空経歴パターン:
-        if re.search(pattern, body):
-            score -= 25
-            problems.append(f"架空の成果・数字の可能性: {pattern}")
-
-    title_line = body.split("\n")[0] if body else ""
-    for phrase in ["引き止め", "10の職", "規律の聖域", "最低1年"]:
-        if phrase in title_line and phrase not in body:
-            score -= 20
-            problems.append(f"タイトルの「{phrase}」が本文に未登場")
-
-    if "お客様" in body:
-        score -= 15
-        problems.append("「お客様」という不自然な表現が含まれている")
-
-    わかりました数 = body.count("がわかりました")
-    if わかりました数 > 3:
-        score -= (わかりました数 - 3) * 5
-        problems.append(f"「がわかりました」が{わかりました数}回（上限3回）")
-
-    return score, problems
-
-
-def remove_duplicate_sentences(text):
-    """同一文の重複を削除"""
-    sentences = text.split("。")
-    seen = set()
-    result = []
-    for s in sentences:
-        key = s.strip().replace(" ", "").replace("\u3000", "")
-        if len(key) < 10:
-            result.append(s)
-            continue
-        prefix = key[:20]
-        is_dup = any(k[:20] == prefix for k in seen)
-        if is_dup:
-            continue
-        seen.add(key)
-        result.append(s)
-    return "。".join(result)
-
-
-def post_process_article(kw, body):
-    """GAS版 _記事後処理 の移植：クリーンアップ・誤字修正・CTA挿入"""
-    result = determine_goal(kw)
-    goal = result["goal"]
-
-    clean = body
-    simple_replacements = {
-        "公式サイトはこちら": "詳細な解説記事はこちら",
-        "公式ページへ": "ブログの攻略ロードマップへ",
-        "公式サイトで必ず確認してください": "私のブログ記事で詳しく解説しています",
-        "お客様": "あなた",
-        "読者の皆様におかれましては": "読んでくれているあなたへ",
-        "だ。": "です。",
-        "である。": "です。",
-        "であった。": "でした。",
-        "できた。": "できました。",
-        "わかった。": "わかりました。",
-        "している。": "しています。",
-        "考えている。": "考えています。",
-        "市场": "市場",
-        "了か": "たか",
-    }
-    for old, new in simple_replacements.items():
-        clean = clean.replace(old, new)
-
-    # 文字数表記などの除去
-    regex_cleanups = [
-        r"\d+文字に達しました[。]?",
-        r"\d+[,，]?\d*文字[。]?",
-        r"^\d+文字.*$",
-        r"\d+文字です[。]?",
-        r"\d+文字となりました[。]?",
-        r"執筆を終了します[。]?",
-        r"以上で.*?完了です[。]?",
-    ]
-    for pattern in regex_cleanups:
-        flags = re.MULTILINE if pattern.startswith("^") else 0
-        clean = re.sub(pattern, "", clean, flags=flags)
-
-    clean = re.sub(r"\n{3,}", "\n\n", clean)
-
-    # 重複段落の除去
-    paragraphs = clean.split("\n\n")
-    seen = set()
-    deduped = []
-    for p in paragraphs:
-        trimmed = p.strip()
-        if len(trimmed) < 10:
-            continue
-        key = trimmed[:50] + "|" + trimmed[-30:]
-        if key in seen:
-            continue
-        seen.add(key)
-        deduped.append(p)
-    clean = "\n\n".join(deduped)
-
-    # 重複文除去
-    clean = remove_duplicate_sentences(clean)
+    # 架空経歴チェック
+    fake_career = detect_fake_career(text)
+    if fake_career:
+        deduct = min(len(fake_career) * 20, 40)
+        score -= deduct
+        issues.append(f"架空経歴: {fake_career[:3]}")
 
     # 抽象表現チェック
-    count, items = detect_abstract_expressions(clean)
-    if count >= 3:
-        log.warning(f"⚠️ 抽象表現を{count}箇所検出: {', '.join(items)}")
-        clean = concretize_abstract_text(clean, kw)
+    abstract_count = count_abstract_phrases(text)
+    if abstract_count >= 5:
+        deduct = min((abstract_count - 4) * 5, 20)
+        score -= deduct
+        issues.append(f"抽象表現多用: {abstract_count}件")
 
-    # 文体チェック
-    if not check_style_consistency(clean):
-        log.warning("⚠️ 文体ブレを検出 → 統一処理を実行")
-        clean = unify_style(clean)
+    # 文字数チェック（短すぎる記事はマイナス）
+    char_count = len(text)
+    if char_count < 500:
+        score -= 20
+        issues.append(f"文字数不足: {char_count}文字")
+    elif char_count < 800:
+        score -= 10
+        issues.append(f"文字数やや不足: {char_count}文字")
 
-    # スマホ可読性
-    clean = improve_mobile_readability(clean)
+    return {
+        "score": max(score, 0),
+        "issues": issues,
+        "char_count": char_count,
+        "passed": score >= 60,
+    }
 
-    # 前半CTA挿入（5行目あたり）
-    lines = clean.split("\n")
-    if len(lines) > 5:
-        lines.insert(5, goal["cta"].get("前半", ""))
-        clean = "\n".join(lines)
 
-    clean = clean.strip() + "\n\n" + goal["cta"].get("末尾", "")
+def unify_style(text: str) -> str:
+    """文体を統一する（ですます調に統一など）"""
+    # 「〜だ。」「〜である。」を「〜です。」に変換（基本的なもののみ）
+    replacements = [
+        (r'([^でしまたっだ])だ。', r'\1です。'),
+        (r'([^でしまたっだ])である。', r'\1です。'),
+        (r'([^でしまたっだ])だった。', r'\1でした。'),
+    ]
+    for pattern, repl in replacements:
+        text = re.sub(pattern, repl, text)
+    return text
 
-    return trust_quality_filter(clean)
+
+def post_process_article(text: str) -> str:
+    """
+    記事の後処理をまとめて実行する
+    1. 簡体字修正
+    2. 文体統一
+    3. 余分な空白・改行を整理
+    """
+    # Step 1: 簡体字修正
+    text = fix_simplified_chinese(text)
+
+    # Step 2: 文体統一
+    text = unify_style(text)
+
+    # Step 3: 余分な空白・改行を整理
+    # 3行以上の連続する空行を2行に圧縮
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    # 行末の余分なスペース除去
+    text = '\n'.join(line.rstrip() for line in text.split('\n'))
+
+    return text.strip()
+
+
+def is_article_acceptable(text: str) -> tuple:
+    """
+    記事が品質基準を満たすか判定
+    Returns: (合格bool, スコア辞書)
+    """
+    # まず後処理（簡体字修正など）してからスコアを計算
+    processed = post_process_article(text)
+    result = calculate_quality_score(processed)
+    return result["passed"], result
+
+
+# ================================================================
+# 動作確認用
+# ================================================================
+if __name__ == "__main__":
+    sample = """
+    资金管理 检討を始める前に、收入と支出を把握することが重要です。
+    毎月20万の収入のうち、副業収入5万を加えて運用しています。
+    私のFX歴5年の経験から、勝率70%を達成しました。
+    しっかりと計画を立てることが大切です。様々なリスクを適切に管理する。
+    Fintokeiで上位2.3%（2587人中61位）の実績があります。勝率40%でも勝てる。
+    → https://dysonblog.org/propfarm-strategy/
+    """
+
+    print("=== 後処理前の品質スコア ===")
+    ok, result = is_article_acceptable(sample)
+    print(f"スコア: {result['score']}/100  合格: {ok}")
+    print(f"問題点: {result['issues']}")
+
+    print("\n=== 後処理後のテキスト ===")
+    processed = post_process_article(sample)
+    print(processed)
+
+    print("\n=== 後処理後の品質スコア ===")
+    ok2, result2 = is_article_acceptable(processed)
+    print(f"スコア: {result2['score']}/100  合格: {ok2}")
+    print(f"問題点: {result2['issues']}")
