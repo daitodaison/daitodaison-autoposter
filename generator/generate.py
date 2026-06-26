@@ -93,8 +93,27 @@ def step4_write_one_article():
     candidates = [c for c in candidates if c["kw"] not in used_topics]
 
     if not candidates:
-        log.warning("⚠️ 執筆対象のキーワードがありません（Yahoo判定・傾向分析が先に必要）")
-        return None
+        log.warning("⚠️ Yahoo判定合格KWなし → 待機中KWから直接生成します")
+        waiting = data_store.get_keywords_by_status("待機中")
+        waiting = [c for c in waiting if c["kw"] not in used_topics]
+        if not waiting:
+            log.warning("⚠️ 待機中KWもありません。固定トピックで生成します")
+            fallback_topics = [
+                "Fintokei プロップトレーダー 始め方",
+                "XAUUSD トレード戦略",
+                "プロップファーム 資金調達",
+                "FX リスク管理 方法",
+                "Fintokei 無料トライアル",
+            ]
+            used = data_store.get_used_topics()
+            for t in fallback_topics:
+                if t not in used:
+                    candidates = [{"kw": t}]
+                    break
+            if not candidates:
+                candidates = [{"kw": fallback_topics[0]}]
+        else:
+            candidates = waiting[:1]
 
     target_length = determine_target_length(
         [a["body"] for a in data_store.load_articles_db()] or None
