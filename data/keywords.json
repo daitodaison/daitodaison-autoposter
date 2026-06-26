@@ -301,83 +301,386 @@
   },
   {
     "kw": "資金管理 キャッシュフロー",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://getmoneytree.com/moneytree-business-blog/difference-between-cashflow-and-forecast",
+      "https://www.smbc-card.com/hojin/magazine/tips/cash-flow-management.jsp",
+      "https://www.smbc-card.com/hojin/magazine/tips/cash-flow-management.jsp#link_01",
+      "https://www.smbc-card.com/hojin/magazine/tips/cash-flow-management.jsp#link_03",
+      "https://www.smbc-card.com/hojin/magazine/tips/cash-flow-management.jsp#link_08"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-26T08:30:03.047635"
+    "updated_at": "2026-06-26T09:56:01.275715"
   },
   {
     "kw": "資金管理 月次収支",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://career.jusnet.co.jp/keiri_work/6/05.php",
+      "https://www.freee.co.jp/kb/kb-accounting/monthly-closing/#:~:text=%E6%9C%88%E6%AC%A1%E6%B1%BA%E7%AE%97%E3%81%A8%E3%81%AF%E3%80%81%E4%BA%8B%E6%A5%AD%E5%B9%B4%E5%BA%A6%E6%9C%AB%E3%81%AB%E8%A1%8C%E3%81%86,%E7%8A%B6%E6%B3%81%E3%82%92%E6%8A%8A%E6%8F%A1%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.keieiryoku.jp/column/detail/?id=65#:~:text=%E4%BE%8B%E3%81%88%E3%81%B0%E3%80%81%E6%9C%88%E6%AC%A1%E3%81%AE%E3%80%8C%E8%B3%87%E9%87%91%E7%B9%B0%E3%82%8A,%E3%81%AB%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%93%E3%81%A8%E3%81%A7%E3%81%99%E3%80%82",
+      "https://sp-21.co.jp/study/unten-shihon-getsusuu/#:~:text=%E9%81%8B%E8%BB%A2%E8%B3%87%E6%9C%AC%E4%BF%9D%E6%9C%89%E6%9C%88%E6%95%B0%E3%81%A8%E3%81%AF%E3%80%81%E4%BC%81%E6%A5%AD%E3%81%8C%E7%8F%BE%E5%9C%A8,%E3%81%99%E3%82%8B%E3%81%86%E3%81%88%E3%81%A7%E9%87%8D%E8%A6%81%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.extend-ma.co.jp/607/#:~:text=%E9%81%8B%E8%BB%A2%E8%B3%87%E9%87%91%E3%81%AE%E7%9B%AE%E5%AE%89%E3%81%AF,%E3%81%8C%E4%B8%8D%E8%B6%B3%E3%81%97%E3%81%8C%E3%81%A1%E3%81%A7%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-26T08:30:03.047636"
+    "updated_at": "2026-06-26T09:56:04.813945"
   },
   {
     "kw": "資金管理 貯蓄戦略",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://nextfunds.jp/semi/article22.html",
+      "https://moneiro.jp/media/article/savings-40s-30million#:~:text=%E3%81%8C%E3%82%8F%E3%81%8B%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82-,40%E4%BB%A3%E3%81%A73000%E4%B8%87%E5%86%86%E9%81%94%E6%88%90,20%E4%B8%96%E5%B8%AF%E3%81%AB1%E4%B8%96%E5%B8%AF&amp;text=%E3%81%93%E3%82%8C%E3%81%AF%E3%81%8A%E3%82%88%E3%81%9D10%E4%B8%96%E5%B8%AF,%E8%A1%A8%E3%82%8C%E3%81%A8%E3%81%84%E3%81%88%E3%82%8B%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82",
+      "https://money-career.com/article/2525#:~:text=60%E6%AD%B3%E3%81%A7%E8%B3%87%E7%94%A32%E5%84%84%E5%86%86%E3%81%82%E3%82%8C%E3%81%B0%E3%80%81%E4%BB%95%E4%BA%8B,%E7%9A%84%E3%81%8B%E3%81%8C%E7%95%B0%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://shuchi.php.co.jp/article/13413#:~:text=%E3%80%8C50%2F30%2F20%E3%83%AB%E3%83%BC%E3%83%AB%E3%80%8D%E3%81%AF%E3%80%81%E6%AC%A7%E7%B1%B3%E3%81%A7,%E8%B2%AF%E8%93%84%E3%80%81%E6%8A%95%E8%B3%87%E3%80%81%E8%BF%94%E6%B8%88%E3%81%AA%E3%81%A9%E3%80%82",
+      "https://www.navinavi-hoken.com/articles/cannot-save-money"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-26T08:30:03.047637"
+    "updated_at": "2026-06-26T09:56:08.070882"
   },
   {
     "kw": "資金管理 家計簿 作り",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
+    "status": "執筆完了",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.youtube.com/watch?v=fU-HEHoYLZc",
+      "https://www.youtube.com/watch?v=AovXZiCE3l4",
+      "https://www.youtube.com/watch?v=AovXZiCE3l4&amp;t=0",
+      "https://www.youtube.com/watch?v=AovXZiCE3l4&amp;t=32",
+      "https://www.youtube.com/watch?v=AovXZiCE3l4&amp;t=108"
+    ],
+    "trend": "上位サイトはYouTubeのコopyrightに関する情報ページである。家計簿作りのための資金管理に関する情報は見つからない。対策としては、別のサイトやキーワードで検索したり、専門家のアドバイスを求めることが必要だ。",
     "avg_length": 0,
-    "updated_at": "2026-06-26T08:30:03.047638"
+    "updated_at": "2026-06-26T09:58:11.640140"
   },
   {
     "kw": "資金管理 予算作成",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.ics-p.net/seisansei_kojyo_lab/tabid/4238/Default.aspx",
+      "https://www.clouderp.jp/blog/what-is-budgeting",
+      "https://biz.moneyforward.com/accounting/basic/80433/#:~:text=%E7%AE%97%E5%87%BA%E3%81%97%E3%81%BE%E3%81%99%E3%80%82-,%E8%B3%87%E9%87%91%E4%BA%88%E7%AE%97,%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E5%A4%A7%E5%88%87%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.khk.co.jp/upfiles/pdf/5866.pdf",
+      "https://www.clouderp.jp/blog/budget-planning-skill.htm#:~:text=%E4%BA%88%E7%AE%97%E7%AE%A1%E7%90%86%E3%81%AE%E6%A5%AD%E5%8B%99%E5%86%85%E5%AE%B9%E3%81%A8%E5%BF%85%E8%A6%81%E3%81%AA%E3%82%B9%E3%82%AD%E3%83%AB,-%E4%BA%88%E7%AE%97%E7%AE%A1%E7%90%86%E3%81%AE&amp;text=%E5%BF%85%E8%A6%81%E3%81%AA%E3%82%B9%E3%82%AD%E3%83%AB%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AF,%E5%BF%85%E8%A6%81%E4%B8%8D%E5%8F%AF%E6%AC%A0%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-26T08:30:03.047639"
+    "updated_at": "2026-06-26T09:56:15.199591"
   },
   {
     "kw": "資金管理 資産運用",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.j-flec.go.jp/links/jikan/lesson2/",
+      "https://www.bk.mufg.jp/column/shisan_unyo/b0081.html",
+      "https://www.bk.mufg.jp/column/shisan_unyo/b0081.html#02",
+      "https://www.bk.mufg.jp/column/shisan_unyo/b0081.html#03",
+      "https://www.bk.mufg.jp/column/shisan_unyo/b0081.html#04"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-26T08:30:03.047640"
+    "updated_at": "2026-06-26T09:56:18.465283"
   },
   {
     "kw": "資金管理 信用管理",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.netsuite.co.jp/resource/glossary/sikin.shtml",
+      "https://www.clouderp.jp/blog/what-is-fund-management.html#:~:text=%E8%B3%87%E9%87%91%E7%AE%A1%E7%90%86%E3%81%A8%E3%81%AF%E4%BC%81%E6%A5%AD,%E5%A4%96%E5%8F%8E%E5%85%A5%E3%81%AA%E3%81%A9%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://telecom.nikkei.co.jp/knowledge/credit/#:~:text=%E4%B8%8E%E4%BF%A1%E7%AE%A1%E7%90%86%E3%81%A8%E3%81%AF%E3%80%81%E4%BC%81%E6%A5%AD,%E3%81%93%E3%81%A8%E3%81%AA%E3%81%A9%E3%81%8C%E5%BD%93%E3%81%A6%E3%81%AF%E3%81%BE%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.oanda.jp/lab-education/beginners/aboutfx/moneymanagement2/#:~:text=%E6%8A%95%E8%B3%87%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%A7%E6%9C%89%E5%90%8D,%E3%82%92%E4%BF%9D%E3%81%A4%E3%82%88%E3%81%86%E3%81%AB%E3%81%97%E3%81%BE%E3%81%99%E3%80%82",
+      "https://yutoripay.ne.jp/knowledge/cash-flow-problems-signs-and-solutions/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-26T08:30:03.047642"
+    "updated_at": "2026-06-26T09:56:21.746928"
   },
   {
     "kw": "資金管理 金融知識",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
+    "status": "判定済み合格",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.youtube.com/watch?v=CYofFET6Si8",
+      "https://www.youtube.com/watch?v=CYofFET6Si8&amp;t=22",
+      "https://www.youtube.com/watch?v=CYofFET6Si8&amp;t=147",
+      "https://www.youtube.com/watch?v=CYofFET6Si8&amp;t=280",
+      "https://www.youtube.com/watch?v=CYofFET6Si8&amp;t=328"
+    ],
+    "trend": "この сайトの内容は、YouTube の情報や利用規約が中心です。記事作成の傾向として、プライバシーポリシー、著作権、セーフティなどの重要な情報をユーザーに提供していることがわかります。対策として、ユーザーはこれらの情報を活用して、インターネットや金融の利用においてセキュリティを確保し、自己責任を持ちながら、資金管理や金融知識を身につけることが大切です。",
     "avg_length": 0,
-    "updated_at": "2026-06-26T08:30:03.047643"
+    "updated_at": "2026-06-26T09:56:25.078961"
   },
   {
     "kw": "資金管理 投資戦略",
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.daiwahouse.co.jp/tryie/column/build/japan_and_investment/page02.html",
+      "https://www.rakuten-sec.co.jp/web/market/opinion/stock/adachi/0381.html",
+      "https://www.fullertonfund.com/japan/alternatives/",
+      "https://www.amazon.co.jp/%E8%B3%87%E9%87%91%E7%AE%A1%E7%90%86/s?k=%E8%B3%87%E9%87%91%E7%AE%A1%E7%90%86",
+      "https://www.daiwa.jp/glossary/YST0683.html#:~:text=%E9%80%9A%E5%B8%B8%E3%81%AE%E5%8F%96%E5%BC%95%E3%81%A7%E3%81%AF%E3%80%81%E4%B8%8A%E3%81%8C%E3%82%8B,%E3%81%AA%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E9%8A%98%E6%9F%84%E3%81%AE%E3%81%93%E3%81%A8%E3%80%82"
+    ],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:56:28.444545"
+  },
+  {
+    "kw": "Fintokei 初心者 入門",
+    "status": "判定済み圏外",
+    "reason": "❌ 除外サイト上位",
+    "urls": [
+      "https://www.fintokei.com/jp/starttrader/",
+      "https://support.fintokei.com/ja/articles/9579989-%E5%85%A5%E9%96%80%E3%83%97%E3%83%A9%E3%83%B3%E3%81%A8%E3%81%AF",
+      "https://www.easy-forex.com/kaigaifx/fintokei-start-trader/",
+      "https://www.shinkotoushin.co.jp/fintokei/",
+      "https://adplan7.co.jp/media/fintokei-starttrader-plan/"
+    ],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:56:31.617861"
+  },
+  {
+    "kw": "Fintokei 自動売買 システム",
     "status": "待機中",
     "reason": "-",
     "urls": [],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-26T08:30:03.047644"
+    "updated_at": "2026-06-26T09:55:59.553958"
+  },
+  {
+    "kw": "Fintokei スマホアプリ 対応",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553960"
+  },
+  {
+    "kw": "Fintokei 初心者 向け",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553961"
+  },
+  {
+    "kw": "Fintokei プロップファーム とは",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553962"
+  },
+  {
+    "kw": "Fintokei 1分足 トレード",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553963"
+  },
+  {
+    "kw": "Fintokei 週末持ち越し マネジメント",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553964"
+  },
+  {
+    "kw": "Fintokei 5分足 スキャルピング",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553966"
+  },
+  {
+    "kw": "Fintokei ゴールド 口座",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553967"
+  },
+  {
+    "kw": "Fintokei ローソク足 解析",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553969"
+  },
+  {
+    "kw": "Fintokei 初心者 目標",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553969"
+  },
+  {
+    "kw": "Fintokei スマホ トレード",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553970"
+  },
+  {
+    "kw": "Fintokei 自動売買 設定",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553971"
+  },
+  {
+    "kw": "Fintokei リスク マネジメント",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553973"
+  },
+  {
+    "kw": "Fintokei 30分足 トレンド",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553973"
+  },
+  {
+    "kw": "Fintokei プロップファーム 概要",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553974"
+  },
+  {
+    "kw": "Fintokei スキャルピング 戦略",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553975"
+  },
+  {
+    "kw": "Fintokei 日経225 取引",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553976"
+  },
+  {
+    "kw": "Fintokei FX 初心者",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553977"
+  },
+  {
+    "kw": "Fintokei ゴールド 取引",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553978"
+  },
+  {
+    "kw": "Fintokei 1時間足 分析",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553979"
+  },
+  {
+    "kw": "Fintokei トレード 初心者",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553980"
+  },
+  {
+    "kw": "Fintokei スマホ アプリ",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553983"
+  },
+  {
+    "kw": "Fintokei トレンド フォロー",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553983"
+  },
+  {
+    "kw": "Fintokei 初心者 学習",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553984"
+  },
+  {
+    "kw": "Fintokei ローソク足 テクニカル",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553985"
+  },
+  {
+    "kw": "Fintokei 自動売買 システム構築",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-26T09:55:59.553986"
   }
 ]
