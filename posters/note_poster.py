@@ -48,19 +48,18 @@ async def post_note(article):
         body_escaped = json.dumps(body)
         js = "() => { const e = document.querySelector('.ProseMirror'); if(e){ e.focus(); document.execCommand('selectAll',false,null); document.execCommand('insertText',false," + body_escaped + "); } }"
         await page.evaluate(js)
-        await page.wait_for_timeout(2000)
-        for sel in ['button:has-text("公開に進む")', 'button:has-text("投稿する")']:
+        await page.wait_for_timeout(3000)
+        # 下書き保存
+        for sel in ['button:has-text("下書き保存")', 'button:has-text("保存")']:
             try:
                 await page.click(sel, timeout=5000)
-                log.info("公開ボタンOK")
+                log.info("下書き保存OK")
                 break
             except Exception:
                 continue
-        await page.wait_for_timeout(5000)
-        await page.evaluate("() => { const btns = Array.from(document.querySelectorAll('button')); const btn = btns.find(b => ['公開する','投稿する'].some(k => b.textContent.includes(k))); if(btn) btn.click(); }")
-        await page.wait_for_timeout(5000)
+        await page.wait_for_timeout(3000)
         await browser.close()
-    log.info(f"note投稿完了: {title}")
+    log.info(f"note下書き保存完了: {title}")
 
 def run():
     files = sorted(glob.glob(f"{ARTICLES_DIR}/*.json"))
