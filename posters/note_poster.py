@@ -59,8 +59,12 @@ async def post_note(article):
                 continue
         await page.wait_for_timeout(3000)
         # ページ上のボタン一覧をログ出力
-        buttons = await page.evaluate("() => Array.from(document.querySelectorAll('button')).map(b => b.textContent.trim()).filter(t => t.length > 0)")
-        log.info(f"ページ上のボタン: {buttons}")
+       btn_count = await page.evaluate("() => document.querySelectorAll('button').length")
+        log.info(f"ボタン数: {btn_count}")
+        btn_classes = await page.evaluate("() => Array.from(document.querySelectorAll('button')).map(b => b.className).slice(0,5).join('||')")
+        log.info(f"ボタンクラス先頭5: {btn_classes}")
+        page_html = await page.evaluate("() => document.body.innerHTML.substring(0, 500)")
+        log.info(f"HTML先頭: {page_html}")
         await browser.close()
     log.info(f"note下書き保存完了: {title}")
 
