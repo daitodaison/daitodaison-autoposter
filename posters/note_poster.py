@@ -1,4 +1,4 @@
-import json, os, asyncio, logging, shutil, glob, re
+import json, os, asyncio, logging, shutil, glob
 from pathlib import Path
 from playwright.async_api import async_playwright
 
@@ -91,12 +91,25 @@ async def post_note(article):
         await asyncio.sleep(5)
         log.info("本文入力OK")
 
-        # note エディタは自動で下書き保存される仕様のため、
-        # 公開系のボタンは一切押さずにここで終了する（公開に進む／公開する操作なし）
+        # 下書き保存ボタンを探してクリック
+        draft_clicked = await page.evaluate("""() => {
+            const btns = Array.from(document.querySelectorAll('button'));
+            const btn = btns.find(b => ['下書き保存', '保存する', '下書きに保存'].some(kw => b.textContent.includes(kw)));
+            if (btn) { btn.click(); return btn.textContent.trim(); }
+            return null;
+        }""")
+
+        if draft_clicked:
+            log.info(f"下書き保存ボタンを押しました: {draft_clicked}")
+        else:
+            log.error("下書き保存ボタンが見つかりませんでした")
+            all_btn_texts = await page.evaluate("""() => Array.from(document.querySelectorAll('button')).map(b => b.textContent.trim()).filter(t => t.length > 0 && t.length < 20)""")
+            log.error(f"画面上のボタン文字一覧: {all_btn_texts}")
+
         await asyncio.sleep(3)
-        log.info(f"note下書き保存完了（自動保存のみ・公開操作なし）: {title}")
+        log.info(f"処理完了: {title}")
         await browser.close()
-        return True
+        return bool(draft_clicked)
 
 def run():
     files = sorted(glob.glob(f"{ARTICLES_DIR}/*.json"))
