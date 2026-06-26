@@ -45,6 +45,8 @@ async def post_note(article):
         for i in range(60):
             if "login" in page.url:
                 log.error("ログインが外れています")
+                await page.screenshot(path="note_debug.png", full_page=True)
+        log.info("スクリーンショット保存: note_debug.png")
                 await browser.close()
                 return False
             found = await page.evaluate("""() => {
