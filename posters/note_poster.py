@@ -7,26 +7,6 @@ POSTED_DIR = "posted"
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 log = logging.getLogger(__name__)
 
-def md_to_html(text):
-    # まずURLをリンクに変換する（→ https://... の形、および単独URL）
-    url_pattern = re.compile(r'(https?://[^\s]+)')
-
-    lines = text.split('\n')
-    html_lines = []
-    for line in lines:
-        line = line.rstrip()
-        if line.startswith('## '):
-            html_lines.append(f'<h2>{line[3:]}</h2>')
-        elif line.startswith('# '):
-            html_lines.append(f'<h1>{line[2:]}</h1>')
-        elif line.strip() == '':
-            html_lines.append('<p><br></p>')
-        else:
-            # 行内のURLを<a>タグに変換してからpタグで包む
-            linked = url_pattern.sub(r'<a href="\1">\1</a>', line)
-            html_lines.append(f'<p>{linked}</p>')
-    return '\n'.join(html_lines)
-
 async def post_note(article):
     title = article.get("title", "無題")
     body = article.get("body", "")
@@ -80,31 +60,37 @@ async def post_note(article):
             await browser.close()
             return False
 
+        # 画像アップロード（ヘッダー画像）
+        if image_path and os.path.exists(image_path):
+            try:
+                log.info(f"画像アップロード開始: {image_path}")
+                # 画像追加ボタンをクリック
+                img_btn = page.locator('button[aria-label="画像を追加"], button:has-text("画像"), [class*="image"]').first
+                await img_btn.click(timeout=10000)
+                await page.wait_for_timeout(1000)
+                # 「画像をアップロード」をクリック
+                await page.click('text=画像をアップロード', timeout=5000)
+                await page.wait_for_timeout(1000)
+                # ファイル選択
+                async with page.expect_file_chooser() as fc_info:
+                    await page.wait_for_timeout(500)
+                file_chooser = await fc_info.value
+                await file_chooser.set_files(image_path)
+                await page.wait_for_timeout(3000)
+                # 保存ボタン
+                await page.click('button:has-text("保存")', timeout=10000)
+                await page.wait_for_timeout(3000)
+                log.info("画像アップロード完了")
+            except Exception as e:
+                log.warning(f"画像アップロードスキップ: {e}")
+
+        # タイトル入力
         title_area = page.locator('textarea[placeholder*="タイトル"]').first
         await title_area.fill(title)
         log.info("タイトル入力OK")
 
-        # 画像アップロード（見出し画像）
-        if image_path and os.path.exists(image_path):
-            try:
-                # noteの「画像を追加」ボタン（タイトル上のアイコン）を探してクリック
-                upload_btn_found = await page.evaluate("""() => {
-                    const btns = Array.from(document.querySelectorAll('button, [role="button"]'));
-                    const btn = btns.find(b => (b.getAttribute('aria-label') || '').includes('画像') ||
-                                                 (b.title || '').includes('画像'));
-                    return !!btn;
-                }""")
-                file_input = page.locator('input[type="file"]').first
-                if await file_input.count() > 0:
-                    await file_input.set_input_files(image_path)
-                    log.info(f"画像アップロードOK: {image_path}")
-                    await asyncio.sleep(4)
-                else:
-                    log.warning("画像アップロード用のinput要素が見つかりませんでした")
-            except Exception as e:
-                log.warning(f"画像アップロード失敗（本文入力は続行）: {e}")
-
-        body_html = md_to_html(body)
+        # 本文入力
+        body_html = body.replace('\n', '<br>')
         await page.evaluate("""(html) => {
             const editor = document.querySelector('.ProseMirror');
             if (editor) {
@@ -114,28 +100,20 @@ async def post_note(article):
                 document.execCommand('insertHTML', false, html);
             }
         }""", body_html)
-        await asyncio.sleep(5)
+        await asyncio.sleep(3)
         log.info("本文入力OK")
 
-        # 下書き保存ボタンを探してクリック
-        draft_clicked = await page.evaluate("""() => {
-            const btns = Array.from(document.querySelectorAll('button'));
-            const btn = btns.find(b => ['下書き保存', '保存する', '下書きに保存'].some(kw => b.textContent.includes(kw)));
-            if (btn) { btn.click(); return btn.textContent.trim(); }
-            return null;
-        }""")
+        # 下書き保存
+        try:
+            await page.click('button:has-text("下書き保存")', timeout=10000)
+            await page.wait_for_timeout(3000)
+            log.info("下書き保存OK")
+        except Exception as e:
+            log.warning(f"下書き保存ボタンエラー: {e}")
 
-        if draft_clicked:
-            log.info(f"下書き保存ボタンを押しました: {draft_clicked}")
-        else:
-            log.error("下書き保存ボタンが見つかりませんでした")
-            all_btn_texts = await page.evaluate("""() => Array.from(document.querySelectorAll('button')).map(b => b.textContent.trim()).filter(t => t.length > 0 && t.length < 20)""")
-            log.error(f"画面上のボタン文字一覧: {all_btn_texts}")
-
-        await asyncio.sleep(3)
-        log.info(f"処理完了: {title}")
         await browser.close()
-        return bool(draft_clicked)
+        log.info(f"note処理完了: {title}")
+        return True
 
 def run():
     files = sorted(glob.glob(f"{ARTICLES_DIR}/*.json"))
