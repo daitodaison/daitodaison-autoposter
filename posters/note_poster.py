@@ -60,24 +60,18 @@ async def post_note(article):
             await browser.close()
             return False
 
-        # 画像アップロード（ヘッダー画像）
+ # 画像アップロード
         if image_path and os.path.exists(image_path):
             try:
                 log.info(f"画像アップロード開始: {image_path}")
-                # 画像追加ボタンをクリック
-                img_btn = page.locator('button[aria-label="画像を追加"], button:has-text("画像"), [class*="image"]').first
-                await img_btn.click(timeout=10000)
-                await page.wait_for_timeout(1000)
-                # 「画像をアップロード」をクリック
-                await page.click('text=画像をアップロード', timeout=5000)
-                await page.wait_for_timeout(1000)
-                # ファイル選択
-                async with page.expect_file_chooser() as fc_info:
-                    await page.wait_for_timeout(500)
+                img_icon = page.locator('button[aria-label="画像を追加"]').first
+                await img_icon.click(timeout=10000)
+                await page.wait_for_timeout(2000)
+                async with page.expect_file_chooser(timeout=10000) as fc_info:
+                    await page.click('text=画像をアップロード')
                 file_chooser = await fc_info.value
                 await file_chooser.set_files(image_path)
-                await page.wait_for_timeout(3000)
-                # 保存ボタン
+                await page.wait_for_timeout(5000)
                 await page.click('button:has-text("保存")', timeout=10000)
                 await page.wait_for_timeout(3000)
                 log.info("画像アップロード完了")
