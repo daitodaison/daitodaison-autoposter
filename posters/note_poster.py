@@ -147,9 +147,29 @@ async def post_note(article):
         await page.screenshot(path="debug_04_title.png")
         log.info("【STEP4】タイトル入力OK")
 
-        # STEP5: 本文入力
+ # STEP5: 本文入力
         log.info("【STEP5】本文入力...")
-        body_html = body.replace('\n', '<br>')
+        # Markdown→HTML変換
+        def md_to_html(text):
+            lines = text.split('\n')
+            html = []
+            for line in lines:
+                line = line.rstrip()
+                if line.startswith('### '):
+                    html.append(f'<h3>{line[4:]}</h3>')
+                elif line.startswith('## '):
+                    html.append(f'<h2>{line[3:]}</h2>')
+                elif line.startswith('# '):
+                    html.append(f'<h1>{line[2:]}</h1>')
+                elif line.startswith('---'):
+                    html.append('<hr>')
+                elif line.strip() == '':
+                    html.append('<p><br></p>')
+                else:
+                    html.append(f'<p>{line}</p>')
+            return '\n'.join(html)
+
+        body_html = md_to_html(body)
         await page.evaluate("""(html) => {
             const editor = document.querySelector('.ProseMirror');
             if (editor) {
