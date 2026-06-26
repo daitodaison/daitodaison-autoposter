@@ -184,3 +184,20 @@ def call_ai_with_fallback(prompt_text, max_tokens=2000):
 
     log.error("❌ 全API失敗")
     return None
+
+
+def extract_text(response) -> str:
+    """
+    旧バージョンとの互換性維持用
+    call_ai_with_fallback はすでに文字列を返すが、
+    keyword_finder.py が extract_text をimportしているため残す
+    """
+    if response is None:
+        return ""
+    if isinstance(response, str):
+        return response
+    # 万が一dictが渡された場合の互換処理
+    try:
+        return response["candidates"][0]["content"]["parts"][0]["text"]
+    except Exception:
+        return str(response)
