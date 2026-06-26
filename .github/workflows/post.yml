@@ -33,6 +33,7 @@ jobs:
         env:
           NOTE_USER: ${{ secrets.NOTE_USER }}
           NOTE_PASS: ${{ secrets.NOTE_PASS }}
+          NOTE_COOKIES: ${{ secrets.NOTE_COOKIES }}
         run: python posters/note_poster.py
 
       - name: Post ameblo
