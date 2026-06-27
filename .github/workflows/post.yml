@@ -7,13 +7,21 @@ on:
   workflow_dispatch:
     inputs:
       publish_mode:
-        description: '公開モード（draft=下書き, publish=即公開）'
+        description: '公開モード（draft=下書き, publish=即公開）※通常実行時のみ使用'
         required: false
         default: 'draft'
         type: choice
         options:
           - draft
           - publish
+      run_mode:
+        description: '実行モード（normal=通常の全件投稿, ameblo_image_test=Amebloの画像アップロードだけ単体テスト）'
+        required: false
+        default: 'normal'
+        type: choice
+        options:
+          - normal
+          - ameblo_image_test
 permissions:
   contents: write
 jobs:
@@ -29,38 +37,63 @@ jobs:
         run: |
           pip install playwright requests groq
           playwright install chromium --with-deps
+
+      # --- 通常モード時のみ実行されるステップ群 ---
       - name: Generate
+        if: github.event.inputs.run_mode != 'ameblo_image_test'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python generator/generate.py
+
       - name: Post note
+        if: github.event.inputs.run_mode != 'ameblo_image_test'
         env:
           NOTE_USER: ${{ secrets.NOTE_USER }}
           NOTE_PASS: ${{ secrets.NOTE_PASS }}
           NOTE_COOKIES: ${{ secrets.NOTE_COOKIES }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/note_poster.py
+
       - name: Post ameblo
+        if: github.event.inputs.run_mode != 'ameblo_image_test'
         env:
           AMEBLO_USER: ${{ secrets.AMEBLO_USER }}
           AMEBLO_PASS: ${{ secrets.AMEBLO_PASS }}
           AMEBLO_COOKIES: ${{ secrets.AMEBLO_COOKIES }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/ameblo_poster.py
+
       - name: Post linkedin
+        if: github.event.inputs.run_mode != 'ameblo_image_test'
         env:
           LINKEDIN_USER: ${{ secrets.LINKEDIN_USER }}
           LINKEDIN_PASS: ${{ secrets.LINKEDIN_PASS }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/linkedin_poster.py
+
       - name: Post substack
+        if: github.event.inputs.run_mode != 'ameblo_image_test'
         env:
           SUBSTACK_USER: ${{ secrets.SUBSTACK_USER }}
           SUBSTACK_PASS: ${{ secrets.SUBSTACK_PASS }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/substack_poster.py
+
+      # --- テストモード時のみ実行されるステップ ---
+      # Ameblo画像アップロード(STEP4)だけを単体テストする。
+      # 記事生成・note・linkedin・substackは一切実行しない。
+      # 必ず下書き保存のみ（公開はしない）で、タイトルに[画像アップロードテスト]と付く。
+      - name: Test ameblo image upload only
+        if: github.event.inputs.run_mode == 'ameblo_image_test'
+        env:
+          AMEBLO_USER: ${{ secrets.AMEBLO_USER }}
+          AMEBLO_PASS: ${{ secrets.AMEBLO_PASS }}
+          AMEBLO_COOKIES: ${{ secrets.AMEBLO_COOKIES }}
+          AMEBLO_TEST_IMAGE_ONLY: "true"
+        run: python posters/ameblo_poster.py
+
       - name: Upload debug screenshots
         uses: actions/upload-artifact@v4
         if: always()
@@ -70,7 +103,10 @@ jobs:
             note_*.png
             ameblo_*.png
           if-no-files-found: ignore
+
+      # --- Saveステップは通常モード時のみ（テスト時はqueue/postedに触れない） ---
       - name: Save
+        if: github.event.inputs.run_mode != 'ameblo_image_test'
         run: |
           git config user.name "AutoPoster"
           git config user.email "bot@github.com"
