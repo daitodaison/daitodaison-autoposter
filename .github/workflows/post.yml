@@ -1,5 +1,4 @@
 name: AutoPoster
-
 on:
   schedule:
     - cron: '0 22 * * *'
@@ -15,33 +14,27 @@ on:
         options:
           - draft
           - publish
-
 permissions:
   contents: write
-
 jobs:
   post:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Install
         run: |
           pip install playwright requests groq
           playwright install chromium --with-deps
-
       - name: Generate
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python generator/generate.py
-
       - name: Post note
         env:
           NOTE_USER: ${{ secrets.NOTE_USER }}
@@ -49,16 +42,6 @@ jobs:
           NOTE_COOKIES: ${{ secrets.NOTE_COOKIES }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/note_poster.py
-
-      - name: Upload debug screenshots
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: debug-screenshots
-          path: |
-            debug_*.png
-            ameblo_*.png
-
       - name: Post ameblo
         env:
           AMEBLO_USER: ${{ secrets.AMEBLO_USER }}
@@ -66,21 +49,27 @@ jobs:
           AMEBLO_COOKIES: ${{ secrets.AMEBLO_COOKIES }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/ameblo_poster.py
-
       - name: Post linkedin
         env:
           LINKEDIN_USER: ${{ secrets.LINKEDIN_USER }}
           LINKEDIN_PASS: ${{ secrets.LINKEDIN_PASS }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/linkedin_poster.py
-
       - name: Post substack
         env:
           SUBSTACK_USER: ${{ secrets.SUBSTACK_USER }}
           SUBSTACK_PASS: ${{ secrets.SUBSTACK_PASS }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/substack_poster.py
-
+      - name: Upload debug screenshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: debug-screenshots
+          path: |
+            note_*.png
+            ameblo_*.png
+          if-no-files-found: ignore
       - name: Save
         run: |
           git config user.name "AutoPoster"
