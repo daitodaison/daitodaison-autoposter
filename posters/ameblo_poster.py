@@ -225,10 +225,15 @@ async def post_ameblo(article, test_image_only=False):
                     raise RuntimeError("カバーの設定モーダルが出現しなかった")
 
                 # --- B) アップロード前の画像枚数を記録 ---
-                # 一覧アイテムは class="p-images-imageList__listItem ..." を持つが、
-                # アップロード専用タイル(id="js-file-upload-button")は除外してカウントする
+                # 一覧アイテムは <li class="p-images-imageList__listItem ...">。
+                # 以前は [class*="..."] (部分一致)で取得していたため、
+                # 同じ文字列を部分的に含むクラス名を持つ別要素
+                # (<button class="p-images-imageList__listItem__uploadButton">、
+                #  つまりアップロードボタン自体)も誤ってマッチしてしまっていた。
+                # タグ名をliに固定した完全一致セレクタに変更し、
+                # アップロード専用タイル(id="js-file-upload-button")だけを明示的に除外する。
                 before_count = await page.locator(
-                    '[class*="p-images-imageList__listItem"]:not(#js-file-upload-button)'
+                    'li.p-images-imageList__listItem:not(#js-file-upload-button)'
                 ).count()
                 log.info(f"【STEP4-B】アップロード前の画像枚数: {before_count}")
 
@@ -411,7 +416,7 @@ async def post_ameblo(article, test_image_only=False):
                 for i in range(20):
                     await page.wait_for_timeout(1000)
                     current_count = await page.locator(
-                        '[class*="p-images-imageList__listItem"]:not(#js-file-upload-button)'
+                        'li.p-images-imageList__listItem:not(#js-file-upload-button)'
                     ).count()
                     if current_count == last_seen_count:
                         stable_streak += 1
@@ -460,22 +465,40 @@ async def post_ameblo(article, test_image_only=False):
                 # 旧ロジック「:first」決め打ちをやめ、枚数が増えた事実を踏まえた上で、
                 # 一覧の先頭アイテムが新規アップロード分であることを前提に選択する
                 # （Amebloは新着順に先頭表示される仕様を想定。誤っていればここのログで判明する）
-                all_items = page.locator('[class*="p-images-imageList__listItem"]:not(#js-file-upload-button)')
+                all_items = page.locator('li.p-images-imageList__listItem:not(#js-file-upload-button)')
                 item_count_for_click = await all_items.count()
                 log.info(f"【STEP4-C】クリック対象候補の総数: {item_count_for_click}")
                 await page.screenshot(path="ameblo_04c_before_click.png")
 
                 clicked_ok = False
                 if item_count_for_click > 0:
-                    target_item = all_items.first
-                    # クリック対象のimg src（あれば）をログに残し、後でカバー画像と一致するか追跡できるようにする
-                    try:
-                        target_src = await target_item.locator('img').first.get_attribute('src', timeout=2000)
-                    except Exception:
-                        target_src = None
-                    log.info(f"【STEP4-C】クリック対象(先頭アイテム)のimg src: {target_src}")
+                    # 念のため、最大3件まで「imgタグを実際に持つ要素」かどうかを確認しながら
+                    # クリック対象を探す。万が一セレクタが想定外の要素を拾ってしまっていても、
+                    # img無し要素を無条件でクリックして失敗するのを防ぐための保険。
+                    target_item = None
+                    target_src = None
+                    max_check = min(3, item_count_for_click)
+                    for idx in range(max_check):
+                        candidate = all_items.nth(idx)
+                        try:
+                            src = await candidate.locator('img').first.get_attribute('src', timeout=2000)
+                        except Exception:
+                            src = None
+                        log.info(f"【STEP4-C】候補[{idx}]のimg src: {src}")
+                        if src is not None:
+                            target_item = candidate
+                            target_src = src
+                            break
 
-                    await target_item.click()
+                    if target_item is None:
+                        # img srcが取れなくても、候補[0]自体は要素として存在するので
+                        # 最終手段としてそれをそのまま使う（旧来の挙動と同じ）
+                        log.warning("【STEP4-C】imgを持つ候補が見つからず、候補[0]をそのまま使用")
+                        target_item = all_items.first
+
+                    log.info(f"【STEP4-C】クリック対象に決定したアイテムのimg src: {target_src}")
+
+                    await target_item.click(timeout=10000)
                     await page.wait_for_timeout(800)
                     clicked_ok = True
                     await page.screenshot(path="ameblo_04c_item_clicked.png")
