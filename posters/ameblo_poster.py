@@ -86,50 +86,60 @@ async def post_ameblo(article):
         await page.screenshot(path="ameblo_02_title.png")
 
         # STEP3: 本文入力
-        # アメブロのWYSIWYGエディタはHTMLモードで入力するのが確実
-        log.info("【STEP3】HTMLモードに切り替えて本文入力...")
-        body_text = md_to_text(body)[:5000]
+# AmebloはCKEditorを使用。#amebloeditor(textarea)はCKEditorの裏データであり、
+# 実際にユーザーに見えて送信時にバリデーションされるのは
+# iframe.cke_wysiwyg_frame 内の <body contenteditable="true"> 。
+# textarea.valueをJSで直接書き換えるだけではCKEditor本体に反映されないため、
+# CKEDITOR公式APIの setData() を使ってエディタ本体にHTMLを注入する。
+log.info("【STEP3】CKEditor APIで本文入力...")
+body_html = md_to_html(body)[:8000]
 
-        try:
-            # HTMLモードボタンをクリック
-            html_btn = page.locator('#js-editorModeButton--source').first
-            if await html_btn.is_visible(timeout=3000):
-                await html_btn.click()
-                await page.wait_for_timeout(1000)
-                log.info("【STEP3】HTMLモードに切り替え")
+try:
+    # CKEditorインスタンスがロードされるまで待機
+    await page.wait_for_function(
+        """() => window.CKEDITOR && window.CKEDITOR.instances && window.CKEDITOR.instances['amebloeditor']""",
+        timeout=15000
+    )
+    log.info("【STEP3】CKEDITOR.instances.amebloeditor 検出OK")
 
-            # HTMLモードのtextareaに直接入力（これが実際のsubmit対象）
-            textarea = page.locator('#amebloeditor').first
-            count = await textarea.count()
-            log.info(f"【STEP3】#amebloeditor count={count}")
+    set_result = await page.evaluate("""(html) => {
+        try {
+            const editor = CKEDITOR.instances['amebloeditor'];
+            if (!editor) return {ok: false, reason: 'no instance'};
+            editor.setData(html);
+            // textarea側(裏データ)にも同期させておく
+            editor.updateElement();
+            return {ok: true, len: editor.getData().length};
+        } catch (e) {
+            return {ok: false, reason: String(e)};
+        }
+    }""", body_html)
+    log.info(f"【STEP3】CKEDITOR.setData結果: {set_result}")
 
-            if count > 0:
-                # JavaScriptで値をセット（非表示要素なのでJS経由）
-                await page.evaluate("""(text) => {
-                    const ta = document.getElementById('amebloeditor');
-                    if (ta) {
-                        ta.value = text;
-                        ta.dispatchEvent(new Event('input', {bubbles: true}));
-                        ta.dispatchEvent(new Event('change', {bubbles: true}));
-                    }
-                }""", body_text)
-                val_len = await page.evaluate("() => { const ta = document.getElementById('amebloeditor'); return ta ? ta.value.length : 0; }")
-                log.info(f"【STEP3】#amebloeditor セット完了 文字数: {val_len}")
-            else:
-                log.warning("【STEP3】#amebloeditor が見つかりません")
+    await page.wait_for_timeout(1500)
 
-        except Exception as e:
-            log.warning(f"【STEP3】本文入力エラー: {e}")
+    verify_len = await page.evaluate("""() => {
+        try {
+            const editor = CKEDITOR.instances['amebloeditor'];
+            return editor ? editor.getData().length : -1;
+        } catch (e) { return -2; }
+    }""")
+    log.info(f"【STEP3】本文反映確認 文字数: {verify_len}")
 
-        # 通常表示モードに戻す
-        try:
-            wysiwyg_btn = page.locator('#js-editorModeButton--wysiwyg').first
-            if await wysiwyg_btn.is_visible(timeout=3000):
-                await wysiwyg_btn.click()
-                await page.wait_for_timeout(1000)
-                log.info("【STEP3】通常表示モードに戻す")
-        except Exception:
-            pass
+except Exception as e:
+    log.warning(f"【STEP3】CKEditor経由の入力に失敗: {e}")
+    log.info("【STEP3】フォールバック: textareaへの直接書き込みを試行")
+    try:
+        await page.evaluate("""(text) => {
+            const ta = document.getElementById('amebloeditor');
+            if (ta) {
+                ta.value = text;
+                ta.dispatchEvent(new Event('input', {bubbles: true}));
+                ta.dispatchEvent(new Event('change', {bubbles: true}));
+            }
+        }""", md_to_text(body)[:8000])
+    except Exception as e2:
+        log.warning(f"【STEP3】フォールバックも失敗: {e2}")
 
         await page.screenshot(path="ameblo_03_body.png")
 
