@@ -6,6 +6,15 @@ on:
     - cron: '0 3 * * *'
     - cron: '0 12 * * *'
   workflow_dispatch:
+    inputs:
+      publish_mode:
+        description: '公開モード（draft=下書き, publish=即公開）'
+        required: false
+        default: 'draft'
+        type: choice
+        options:
+          - draft
+          - publish
 
 permissions:
   contents: write
@@ -38,6 +47,7 @@ jobs:
           NOTE_USER: ${{ secrets.NOTE_USER }}
           NOTE_PASS: ${{ secrets.NOTE_PASS }}
           NOTE_COOKIES: ${{ secrets.NOTE_COOKIES }}
+          PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/note_poster.py
 
       - name: Upload debug screenshots
@@ -48,29 +58,32 @@ jobs:
           path: |
             debug_*.png
             ameblo_*.png
+
       - name: Post ameblo
         env:
           AMEBLO_USER: ${{ secrets.AMEBLO_USER }}
           AMEBLO_PASS: ${{ secrets.AMEBLO_PASS }}
+          PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/ameblo_poster.py
 
       - name: Post linkedin
         env:
           LINKEDIN_USER: ${{ secrets.LINKEDIN_USER }}
           LINKEDIN_PASS: ${{ secrets.LINKEDIN_PASS }}
+          PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/linkedin_poster.py
 
       - name: Post substack
         env:
           SUBSTACK_USER: ${{ secrets.SUBSTACK_USER }}
           SUBSTACK_PASS: ${{ secrets.SUBSTACK_PASS }}
+          PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/substack_poster.py
 
       - name: Save
         run: |
           git config user.name "AutoPoster"
           git config user.email "bot@github.com"
-          # queueのJSONをpostedに移動
           for f in queue/*.json; do
             [ -f "$f" ] && mv "$f" posted/
           done
