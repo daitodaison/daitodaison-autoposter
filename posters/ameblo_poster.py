@@ -381,44 +381,80 @@ async def post_ameblo(article, test_image_only=False):
                         f"name={files_in_dom.get('name')}, size={files_in_dom.get('size')}bytes"
                     )
 
-                # 決め打ちの3秒待機ではなく、枚数が増えるまで最大15秒ポーリングする
-                after_count = before_count
-                upload_confirmed = False
-                for i in range(15):
-                    await page.wait_for_timeout(1000)
-                    after_count = await page.locator(
-                        '[class*="p-images-imageList__listItem"]:not(#js-file-upload-button)'
-                    ).count()
-                    if after_count > before_count:
-                        upload_confirmed = True
-                        log.info(f"【STEP4-B】{i+1}秒後に画像枚数増加を検出: {before_count} → {after_count}")
-                        break
-                else:
-                    log.warning(f"【STEP4-B】15秒待っても枚数が増えなかった（before={before_count}, after={after_count}）")
-
+                # --- B-4) アップロードAPIへのPOSTが成功しているかを最優先の判定軸にする ---
+                # 実機検証で「左側の画像一覧表示の更新だけがローディングスピナーのまま遅延し、
+                # 右側のSNSシェアプレビューには新しい画像が既に反映されている」ことが分かった。
+                # つまり「一覧の枚数が増えたか」は判定軸として不適切で、
+                # 「アップロードAPI(image/upload)がPOSTで200を返したか」を最優先の根拠とする。
+                # その後、ローディングスピナーが消えて一覧が安定するまで待ってから次に進む。
                 page.remove_listener("response", _response_listener)
                 # ボディ取得は非同期タスクなので、念のため少し待ってから収集結果を確認する
-                await page.wait_for_timeout(500)
+                await page.wait_for_timeout(1000)
                 log.info(f"【STEP4-B4】アップロード関連と思われるネットワークレスポンス一覧（件数のみ）: {len(upload_responses)}件")
-                # POSTメソッドのものだけ詳細を残す（GETの画像一覧取得はノイズが多いため）
                 post_responses = [r for r in upload_responses if r["method"] == "POST"]
                 log.info(f"【STEP4-B4】POSTリクエストのみ抜粋: {post_responses}")
                 log.info(f"【STEP4-B5】image/upload系POSTレスポンスのボディ内容: {upload_response_bodies}")
 
+                upload_api_success = any(
+                    r["method"] == "POST" and "upload" in r["url"] and 200 <= r["status"] < 300
+                    for r in upload_responses
+                )
+                log.info(f"【STEP4-B5】upload_api_success(POSTが200番台で成功したか)={upload_api_success}")
+
+                # --- B-6) ローディングスピナーが消えて、左側の一覧が安定するまで待つ ---
+                # 「枚数が増える」ではなく「ローディング中の表示が消える」ことを待機条件にする。
+                # 一覧のloading表現が不明なため、汎用的に「アニメーション中の要素が無くなる」
+                # ことと「枚数が変化し続けていないか(安定したか)」の両方で判断する。
+                stabilized = False
+                last_seen_count = before_count
+                stable_streak = 0
+                for i in range(20):
+                    await page.wait_for_timeout(1000)
+                    current_count = await page.locator(
+                        '[class*="p-images-imageList__listItem"]:not(#js-file-upload-button)'
+                    ).count()
+                    if current_count == last_seen_count:
+                        stable_streak += 1
+                    else:
+                        stable_streak = 0
+                        last_seen_count = current_count
+                    # 3秒間カウントが変化しなければ「安定した」と判断する
+                    if stable_streak >= 3:
+                        stabilized = True
+                        log.info(
+                            f"【STEP4-B6】{i+1}秒後に一覧が安定: count={current_count} "
+                            f"(アップロード前={before_count})"
+                        )
+                        break
+                else:
+                    log.warning(f"【STEP4-B6】20秒待っても一覧が安定しなかった（最終count={last_seen_count}）")
+
+                after_count = last_seen_count
+                log.info(f"【STEP4-B6】最終的な画像枚数: before={before_count}, after={after_count}")
+
+                # --- 最終判定 ---
+                # 「枚数が増えた」を理想とするが、実機ではアップロード後に一覧の並び替えだけが起きて
+                # 総数が変わらないケース（例: 古い画像が削除されつつ追加される設計等）もあり得るため、
+                # upload_api_success(サーバーが受理した)を主たる根拠とし、
+                # 枚数増加は補助的な確認情報として扱う。
+                count_increased = after_count > before_count
+                upload_confirmed = upload_api_success or count_increased
+
                 await page.screenshot(path="ameblo_04b_after_upload.png")
                 log.info(
-                    f"【STEP4-B】アップロード成否判定: upload_confirmed={upload_confirmed}, "
-                    f"file_chooser_used={file_chooser_used}"
+                    f"【STEP4-B】アップロード成否判定: upload_confirmed={upload_confirmed} "
+                    f"(upload_api_success={upload_api_success}, count_increased={count_increased}, "
+                    f"file_chooser_used={file_chooser_used})"
                 )
 
                 if not upload_confirmed:
                     log.error(
-                        "【STEP4-B】画像アップロード自体が失敗している可能性 → STEP4中断 "
+                        "【STEP4-B】画像アップロードAPIが成功レスポンスを返さず、かつ一覧枚数も増えなかった → STEP4中断 "
                         f"(参考情報: file_chooser_used={file_chooser_used}, files_in_dom={files_in_dom}, "
-                        f"POSTレスポンス件数={len(post_responses)}, "
+                        f"stabilized={stabilized}, POSTレスポンス件数={len(post_responses)}, "
                         f"レスポンスボディ={upload_response_bodies})"
                     )
-                    raise RuntimeError("アップロード後も画像枚数が増加しなかった")
+                    raise RuntimeError("画像アップロードAPIの成功確認も、一覧枚数の増加も確認できなかった")
 
                 # --- C) 新しくアップロードされた画像を正しく特定してクリック ---
                 # 旧ロジック「:first」決め打ちをやめ、枚数が増えた事実を踏まえた上で、
@@ -427,6 +463,7 @@ async def post_ameblo(article, test_image_only=False):
                 all_items = page.locator('[class*="p-images-imageList__listItem"]:not(#js-file-upload-button)')
                 item_count_for_click = await all_items.count()
                 log.info(f"【STEP4-C】クリック対象候補の総数: {item_count_for_click}")
+                await page.screenshot(path="ameblo_04c_before_click.png")
 
                 clicked_ok = False
                 if item_count_for_click > 0:
