@@ -209,10 +209,11 @@ def run():
         return
     with open(files[0], encoding="utf-8") as f:
         article = json.load(f)
-    result = asyncio.run(post_note(article))
-    if result:
-        os.makedirs(POSTED_DIR, exist_ok=True)
-        shutil.move(files[0], f"{POSTED_DIR}/{Path(files[0]).name}")
+    asyncio.run(post_note(article))
+    # ファイル移動はしない（他の媒体も同じファイルを使うため）
+    log.info(f"note完了（ファイルはqueueに残します）: {files[0]}")
 
+if __name__ == "__main__":
+    run()
 if __name__ == "__main__":
     run()
