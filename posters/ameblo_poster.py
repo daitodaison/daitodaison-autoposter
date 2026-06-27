@@ -160,20 +160,71 @@ async def post_ameblo(article):
 
         await page.screenshot(path="ameblo_03_body.png")
 
-        # STEP4: 画像アップロード（サムネイル）
+        # STEP4: 画像アップロード（カバー画像/サムネイル）
+        # Amebloのカバー画像は直接inputを触るだけでは反映されない。
+        # 「画像を選択する」ボタン(#js-coverSelect)をクリックすると「カバーの設定」モーダルが開き、
+        # その中に新規アップロード用の隠しinput(#js-input-files, name="thumbnail")がある。
+        # ここにファイルをセットしてから、モーダル内の「カバーに設定する」ボタンで確定する必要がある。
         if image_path and os.path.exists(image_path):
-            log.info(f"【STEP4】画像アップロード: {image_path}")
+            log.info(f"【STEP4】カバー画像アップロード開始: {image_path}")
             try:
-                el = page.locator('input[name="thumbnail"]').first
-                count = await el.count()
-                log.info(f"【STEP4】input[name='thumbnail'] count={count}")
-                if count > 0:
-                    await el.set_input_files(image_path)
-                    await page.wait_for_timeout(4000)
-                    log.info("【STEP4】サムネイル画像セットOK")
-                    await page.screenshot(path="ameblo_04_image.png")
+                # 「画像を選択する」ボタンをクリックしてモーダルを開く
+                select_btn = page.locator('#js-coverSelect').first
+                is_select_visible = await select_btn.is_visible(timeout=5000)
+                log.info(f"【STEP4】'画像を選択する'ボタン visible={is_select_visible}")
+
+                if is_select_visible:
+                    await select_btn.click()
+                    await page.wait_for_timeout(1500)
+                    await page.screenshot(path="ameblo_04_modal_opened.png")
+                    log.info("【STEP4】カバーの設定モーダルを開いた")
+
+                    # モーダル内の新規アップロード用inputにファイルをセット
+                    file_input = page.locator('#js-input-files').first
+                    input_count = await file_input.count()
+                    log.info(f"【STEP4】#js-input-files count={input_count}")
+
+                    if input_count > 0:
+                        await file_input.set_input_files(image_path)
+                        await page.wait_for_timeout(3000)
+                        await page.screenshot(path="ameblo_04_after_upload.png")
+                        log.info("【STEP4】画像アップロード完了、サムネイル生成待機後スクリーンショット保存")
+
+                        # アップロードした画像が一覧の先頭に選択状態で出る想定。
+                        # 念のため一覧の最初の画像タイルを明示的にクリックして選択状態にする。
+                        try:
+                            first_thumb = page.locator('[class*="p-images-imageList__listItem"]:not(#js-file-upload-button)').first
+                            if await first_thumb.is_visible(timeout=3000):
+                                await first_thumb.click()
+                                await page.wait_for_timeout(500)
+                        except Exception:
+                            pass
+
+                        # 「カバーに設定する」ボタンをクリックして確定
+                        confirm_btn = page.locator('button:has-text("カバーに設定する")').first
+                        is_confirm_visible = await confirm_btn.is_visible(timeout=5000)
+                        log.info(f"【STEP4】'カバーに設定する'ボタン visible={is_confirm_visible}")
+
+                        if is_confirm_visible:
+                            await confirm_btn.click()
+                            await page.wait_for_timeout(2000)
+                            log.info("【STEP4】カバーに設定するクリックOK")
+                        else:
+                            log.warning("【STEP4】'カバーに設定する'ボタンが見つからない")
+                    else:
+                        log.warning("【STEP4】#js-input-files が見つかりません")
+                else:
+                    log.warning("【STEP4】'画像を選択する'ボタンが見つかりません")
+
+                await page.screenshot(path="ameblo_04_image.png")
+
+                # サムネイルが実際にセットされたか確認（「選択を取り消す」リンクの有無で判定）
+                thumb_set = await page.locator('button:has-text("選択を取り消す"), a:has-text("選択を取り消す")').first.is_visible(timeout=3000)
+                log.info(f"【STEP4】カバー画像セット確認（選択を取り消すボタンの有無）: {thumb_set}")
+
             except Exception as e:
-                log.warning(f"【STEP4】画像スキップ: {e}")
+                log.warning(f"【STEP4】カバー画像アップロードでエラー: {e}")
+                await page.screenshot(path="ameblo_04_error.png")
         else:
             log.info(f"【STEP4】画像スキップ（{image_path}）")
 
