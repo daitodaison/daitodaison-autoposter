@@ -233,8 +233,6 @@ async def post_ameblo(article, test_image_only=False):
                 log.info(f"【STEP4-B】アップロード前の画像枚数: {before_count}")
 
                 # --- B-0) ファイルがディスク上に本当に存在するか、Python側で直接検証 ---
-                # 「ファイル名の異言語混入」以外の可能性（パスのズレ、ファイル未生成など）
-                # を切り分けるための事前チェック。set_input_filesを呼ぶ前に必ず確認する。
                 abs_image_path = os.path.abspath(image_path)
                 file_exists = os.path.exists(image_path)
                 file_size = os.path.getsize(image_path) if file_exists else -1
@@ -246,7 +244,6 @@ async def post_ameblo(article, test_image_only=False):
                 )
                 if not file_exists:
                     log.error(f"【STEP4-B0】ファイルがディスク上に存在しない → STEP4中断: {abs_image_path}")
-                    # 同じディレクトリに似た名前のファイルがないか参考情報として一覧表示
                     try:
                         parent_dir = os.path.dirname(image_path) or "."
                         siblings = os.listdir(parent_dir)
@@ -258,24 +255,8 @@ async def post_ameblo(article, test_image_only=False):
                     log.error(f"【STEP4-B0】ファイルサイズが0バイト → STEP4中断: {abs_image_path}")
                     raise RuntimeError(f"画像ファイルが0バイト: {abs_image_path}")
 
-                file_input = page.locator('#js-input-files').first
-                input_count = await file_input.count()
-                log.info(f"【STEP4-B】#js-input-files count={input_count}")
-
-                if input_count == 0:
-                    log.error("【STEP4-B】#js-input-files が見つからない → STEP4中断")
-                    await page.screenshot(path="ameblo_04b_input_not_found.png")
-                    raise RuntimeError("アップロード用inputが見つからない")
-
-                # input要素自体の属性（multiple, accept等）を事前にログ出力しておく
-                input_attrs = await file_input.evaluate(
-                    """el => ({multiple: el.multiple, accept: el.accept, disabled: el.disabled, type: el.type})"""
-                )
-                log.info(f"【STEP4-B】#js-input-files の属性: {input_attrs}")
-
                 # --- B-1) ネットワークレスポンスの監視を開始 ---
                 # アップロードAPIへのリクエストが実際に送信され、どう応答されたかを直接観測する。
-                # これにより「ブラウザがファイルを認識したか」「サーバーがエラーを返したか」を区別できる。
                 upload_responses = []
 
                 def _on_response(response):
@@ -289,47 +270,80 @@ async def post_ameblo(article, test_image_only=False):
 
                 page.on("response", _on_response)
 
-                await file_input.set_input_files(image_path)
-                log.info("【STEP4-B】set_input_files実行完了")
+                # --- B-2) #js-input-files への直接set_input_filesは
+                #     ブラウザ側input.filesに反映されないことが実機検証で確認済み
+                #     （Reactのcontrolled input同期問題が疑われる）。
+                #     そのため「アップロード」ボタン(#js-file-trigger)をクリックして
+                #     ネイティブのファイル選択ダイアログを開かせ、
+                #     expect_file_chooser()でそれを捕まえる方式に変更する。
+                #     これはnote_poster.pyで既に成功している実装パターンと同じ。
+                trigger_btn = page.locator('#js-file-trigger').first
+                trigger_count = await trigger_btn.count()
+                log.info(f"【STEP4-B1】#js-file-trigger count={trigger_count}")
 
-                # --- B-2) set_input_files直後、ブラウザ側のinput.filesに実際に反映されたか確認 ---
-                # set_input_filesがPlaywright内部で成功扱いでも、対象input要素が
-                # 何らかの理由（disabled、JSによる差し替え等）で実際にファイルを
-                # 保持できていないケースを検出する。
-                await page.wait_for_timeout(500)
-                files_in_dom = await file_input.evaluate(
-                    """el => {
-                        const files = el.files;
-                        if (!files || files.length === 0) return {count: 0};
-                        return {
-                            count: files.length,
-                            name: files[0].name,
-                            size: files[0].size,
-                            type: files[0].type
-                        };
-                    }"""
-                )
-                log.info(f"【STEP4-B2】input.files の中身（ブラウザ側DOM）: {files_in_dom}")
+                file_chooser_used = False
+                files_in_dom = {"count": 0}
+
+                if trigger_count > 0:
+                    try:
+                        async with page.expect_file_chooser(timeout=8000) as fc_info:
+                            await trigger_btn.click()
+                        file_chooser = await fc_info.value
+                        await file_chooser.set_files(image_path)
+                        file_chooser_used = True
+                        log.info("【STEP4-B2】expect_file_chooser経由でファイルセット完了")
+                    except Exception as e:
+                        log.warning(f"【STEP4-B2】#js-file-trigger経由のfile_chooserに失敗: {e}")
+                else:
+                    log.warning("【STEP4-B1】#js-file-trigger が見つからない")
+
+                if not file_chooser_used:
+                    # フォールバック: 旧来の直接set_input_files方式を試す
+                    log.info("【STEP4-B2】フォールバック: #js-input-filesへの直接set_input_filesを試行")
+                    file_input = page.locator('#js-input-files').first
+                    input_count = await file_input.count()
+                    log.info(f"【STEP4-B2】#js-input-files count={input_count}")
+                    if input_count > 0:
+                        try:
+                            await file_input.set_input_files(image_path)
+                            log.info("【STEP4-B2】フォールバックのset_input_files実行完了")
+                        except Exception as e:
+                            log.warning(f"【STEP4-B2】フォールバックも失敗: {e}")
+
+                # --- B-3) ファイル選択がブラウザ側に実際に反映されたか確認 ---
+                # file_chooser経由でセットした場合、対象inputは#js-file-trigger押下で
+                # 内部的に開かれた#js-input-files（もしくは同等の動的input）である想定だが、
+                # 念のため#js-input-filesを直接確認する。
+                await page.wait_for_timeout(800)
+                try:
+                    files_in_dom = await page.locator('#js-input-files').first.evaluate(
+                        """el => {
+                            const files = el.files;
+                            if (!files || files.length === 0) return {count: 0};
+                            return {
+                                count: files.length,
+                                name: files[0].name,
+                                size: files[0].size,
+                                type: files[0].type
+                            };
+                        }"""
+                    )
+                except Exception as e:
+                    log.warning(f"【STEP4-B3】input.files確認に失敗: {e}")
+
+                log.info(f"【STEP4-B3】input.files の中身（ブラウザ側DOM）: {files_in_dom}")
 
                 if files_in_dom.get("count", 0) == 0:
-                    log.error(
-                        "【STEP4-B2】set_input_files後もinput.filesが空 → "
-                        "Playwrightからのファイルセット自体がブラウザに反映されていない"
+                    log.warning(
+                        "【STEP4-B3】input.filesは依然0件 → "
+                        "ただしfile_chooser経由のアップロードはinput.filesに反映されない実装もあるため、"
+                        "次の画像枚数増加チェックで最終判定する"
                     )
                 else:
                     log.info(
-                        f"【STEP4-B2】ブラウザはファイルを認識済み: "
+                        f"【STEP4-B3】ブラウザはファイルを認識済み: "
                         f"name={files_in_dom.get('name')}, size={files_in_dom.get('size')}bytes"
                     )
-                    # changeイベントが発火していないとアップロード処理が走らない実装の場合があるため、
-                    # 念のため明示的にchange/inputイベントを発火させる
-                    await file_input.evaluate(
-                        """el => {
-                            el.dispatchEvent(new Event('input', {bubbles: true}));
-                            el.dispatchEvent(new Event('change', {bubbles: true}));
-                        }"""
-                    )
-                    log.info("【STEP4-B2】input/changeイベントを明示的に再発火させた")
 
                 # 決め打ちの3秒待機ではなく、枚数が増えるまで最大15秒ポーリングする
                 after_count = before_count
@@ -347,16 +361,22 @@ async def post_ameblo(article, test_image_only=False):
                     log.warning(f"【STEP4-B】15秒待っても枚数が増えなかった（before={before_count}, after={after_count}）")
 
                 page.remove_listener("response", _on_response)
-                log.info(f"【STEP4-B3】アップロード関連と思われるネットワークレスポンス一覧: {upload_responses}")
+                log.info(f"【STEP4-B4】アップロード関連と思われるネットワークレスポンス一覧（件数のみ）: {len(upload_responses)}件")
+                # POSTメソッドのものだけ詳細を残す（GETの画像一覧取得はノイズが多いため）
+                post_responses = [r for r in upload_responses if r["method"] == "POST"]
+                log.info(f"【STEP4-B4】POSTリクエストのみ抜粋: {post_responses}")
 
                 await page.screenshot(path="ameblo_04b_after_upload.png")
-                log.info(f"【STEP4-B】アップロード成否判定: upload_confirmed={upload_confirmed}")
+                log.info(
+                    f"【STEP4-B】アップロード成否判定: upload_confirmed={upload_confirmed}, "
+                    f"file_chooser_used={file_chooser_used}"
+                )
 
                 if not upload_confirmed:
                     log.error(
                         "【STEP4-B】画像アップロード自体が失敗している可能性 → STEP4中断 "
-                        f"(参考情報: files_in_dom={files_in_dom}, "
-                        f"upload_responses件数={len(upload_responses)})"
+                        f"(参考情報: file_chooser_used={file_chooser_used}, files_in_dom={files_in_dom}, "
+                        f"POSTレスポンス件数={len(post_responses)})"
                     )
                     raise RuntimeError("アップロード後も画像枚数が増加しなかった")
 
