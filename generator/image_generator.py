@@ -19,8 +19,41 @@ IMAGES_DIR = "images"
 
 
 def safe_filename(kw):
-    """ファイル名に使えない文字を除去"""
-    return re.sub(r'[\\/:*?"<>|]', "_", kw)[:50]
+    """ファイル名として安全な文字だけを残す（ホワイトリスト方式）。
+
+    以前は「Windowsで禁止されている記号だけを除去する」ブラックリスト方式だったが、
+    AIが記事キーワードを生成する際に、ごく稀にヒンディー語の結合文字(例: ें)など
+    異言語の特殊文字を混入させることがあり、それがファイル名にそのまま使われると
+    ブラウザ操作(Playwrightのset_input_files)でファイルアップロードが
+    サイレントに失敗する原因になっていた。
+
+    そのため「許可する文字（日本語・英数字・基本的な区切り記号）だけを残す」
+    ホワイトリスト方式に変更し、未知の異言語文字が混入する余地を断つ。
+    """
+    if not kw:
+        return "image"
+
+    # 許可する文字種:
+    #   \u3040-\u309F : ひらがな
+    #   \u30A0-\u30FF : カタカナ
+    #   \u4E00-\u9FFF : 漢字（CJK統合漢字）
+    #   a-zA-Z0-9     : 半角英数字
+    #   \s            : 空白（後でスペース1個に圧縮）
+    #   \-_           : ハイフン、アンダースコア
+    allowed_pattern = re.compile(
+        r'[^\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF'
+        r'a-zA-Z0-9\s\-_]'
+    )
+    cleaned = allowed_pattern.sub('', kw)
+
+    # 連続する空白を1個のスペースに圧縮し、前後の空白を削除
+    cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+
+    # ホワイトリスト適用後に空文字列になった場合のフォールバック
+    if not cleaned:
+        return "image"
+
+    return cleaned[:50]
 
 
 def template_prompt(kw):
@@ -123,10 +156,29 @@ def generate_image_for_article(kw, output_dir=IMAGES_DIR):
         return None
 
     from datetime import datetime
-    filename = f"{safe_filename(kw)}_{datetime.now().strftime('%Y%m%d')}.{ext}"
+    safe_kw = safe_filename(kw)
+    filename = f"{safe_kw}_{datetime.now().strftime('%Y%m%d')}.{ext}"
     filepath = os.path.join(output_dir, filename)
+
+    # デバッグ用：元のkwとファイル名生成後の差分をログに残す
+    # （異言語文字が混入していた場合、ここでどう除去されたかが分かる）
+    if safe_kw != kw.strip():
+        log.warning(f"⚠️ ファイル名に使用できない文字を除去しました: 元='{kw}' → 変換後='{safe_kw}'")
+
     with open(filepath, "wb") as f:
         f.write(content)
 
-    log.info(f"✅ 画像生成完了（{service}）: {filepath}")
+    # 保存直後にファイルが実際にディスク上に存在し、サイズが0でないことを確認
+    # （アップロード失敗の原因がファイル生成側にあるか、後続の投稿スクリプト側にあるかを
+    #   切り分けやすくするためのセーフティチェック）
+    if not os.path.exists(filepath):
+        log.error(f"❌ 画像ファイルの保存に失敗（存在しない）: {filepath}")
+        return None
+
+    file_size = os.path.getsize(filepath)
+    if file_size == 0:
+        log.error(f"❌ 画像ファイルのサイズが0バイト: {filepath}")
+        return None
+
+    log.info(f"✅ 画像生成完了（{service}）: {filepath} ({file_size} bytes)")
     return filepath
