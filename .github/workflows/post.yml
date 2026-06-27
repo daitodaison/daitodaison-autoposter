@@ -63,6 +63,7 @@ jobs:
         env:
           AMEBLO_USER: ${{ secrets.AMEBLO_USER }}
           AMEBLO_PASS: ${{ secrets.AMEBLO_PASS }}
+          AMEBLO_COOKIES: ${{ secrets.AMEBLO_COOKIES }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/ameblo_poster.py
 
