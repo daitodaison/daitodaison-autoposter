@@ -257,18 +257,40 @@ async def post_ameblo(article, test_image_only=False):
 
                 # --- B-1) ネットワークレスポンスの監視を開始 ---
                 # アップロードAPIへのリクエストが実際に送信され、どう応答されたかを直接観測する。
+                # image/upload系のレスポンスはボディの内容まで取得し、
+                # サーバーが実際にどんなURL/IDを返しているかを確認する。
                 upload_responses = []
+                upload_response_bodies = []
 
-                def _on_response(response):
+                async def _on_response(response):
                     url = response.url
                     if any(kw in url for kw in ["upload", "image", "file", "asset"]):
-                        upload_responses.append({
+                        entry = {
                             "url": url,
                             "status": response.status,
                             "method": response.request.method,
-                        })
+                        }
+                        upload_responses.append(entry)
+                        # POSTかつ/upload系のものはボディも取得を試みる
+                        if response.request.method == "POST" and "upload" in url:
+                            try:
+                                body_text = await response.text()
+                                upload_response_bodies.append({
+                                    "url": url,
+                                    "status": response.status,
+                                    "body": body_text[:2000],  # 長すぎる場合に備えて先頭2000文字
+                                })
+                            except Exception as e:
+                                upload_response_bodies.append({
+                                    "url": url,
+                                    "status": response.status,
+                                    "body": f"(取得失敗: {e})",
+                                })
 
-                page.on("response", _on_response)
+                def _response_listener(response):
+                    asyncio.create_task(_on_response(response))
+
+                page.on("response", _response_listener)
 
                 # --- B-2) #js-input-files への直接set_input_filesは
                 #     ブラウザ側input.filesに反映されないことが実機検証で確認済み
@@ -285,15 +307,29 @@ async def post_ameblo(article, test_image_only=False):
                 files_in_dom = {"count": 0}
 
                 if trigger_count > 0:
+                    # 通常のクリックを試す（visible待ちでタイムアウトすることがある）
                     try:
                         async with page.expect_file_chooser(timeout=8000) as fc_info:
-                            await trigger_btn.click()
+                            await trigger_btn.click(timeout=8000)
                         file_chooser = await fc_info.value
                         await file_chooser.set_files(image_path)
                         file_chooser_used = True
-                        log.info("【STEP4-B2】expect_file_chooser経由でファイルセット完了")
+                        log.info("【STEP4-B2】expect_file_chooser経由でファイルセット完了（通常クリック）")
                     except Exception as e:
-                        log.warning(f"【STEP4-B2】#js-file-trigger経由のfile_chooserに失敗: {e}")
+                        log.warning(f"【STEP4-B2】通常クリックでのfile_chooserに失敗: {e}")
+                        # visible判定を無視した強制クリックを試す
+                        # (#js-file-triggerがホバー時のみ表示される、または透明な要素の下に
+                        #  隠れている設計のため、通常のvisibility待ちが永遠に成立しない可能性がある)
+                        try:
+                            log.info("【STEP4-B2】force=Trueでの強制クリックを試行")
+                            async with page.expect_file_chooser(timeout=8000) as fc_info:
+                                await trigger_btn.click(force=True, timeout=8000)
+                            file_chooser = await fc_info.value
+                            await file_chooser.set_files(image_path)
+                            file_chooser_used = True
+                            log.info("【STEP4-B2】expect_file_chooser経由でファイルセット完了（強制クリック）")
+                        except Exception as e2:
+                            log.warning(f"【STEP4-B2】強制クリックでもfile_chooserに失敗: {e2}")
                 else:
                     log.warning("【STEP4-B1】#js-file-trigger が見つからない")
 
@@ -360,11 +396,14 @@ async def post_ameblo(article, test_image_only=False):
                 else:
                     log.warning(f"【STEP4-B】15秒待っても枚数が増えなかった（before={before_count}, after={after_count}）")
 
-                page.remove_listener("response", _on_response)
+                page.remove_listener("response", _response_listener)
+                # ボディ取得は非同期タスクなので、念のため少し待ってから収集結果を確認する
+                await page.wait_for_timeout(500)
                 log.info(f"【STEP4-B4】アップロード関連と思われるネットワークレスポンス一覧（件数のみ）: {len(upload_responses)}件")
                 # POSTメソッドのものだけ詳細を残す（GETの画像一覧取得はノイズが多いため）
                 post_responses = [r for r in upload_responses if r["method"] == "POST"]
                 log.info(f"【STEP4-B4】POSTリクエストのみ抜粋: {post_responses}")
+                log.info(f"【STEP4-B5】image/upload系POSTレスポンスのボディ内容: {upload_response_bodies}")
 
                 await page.screenshot(path="ameblo_04b_after_upload.png")
                 log.info(
@@ -376,7 +415,8 @@ async def post_ameblo(article, test_image_only=False):
                     log.error(
                         "【STEP4-B】画像アップロード自体が失敗している可能性 → STEP4中断 "
                         f"(参考情報: file_chooser_used={file_chooser_used}, files_in_dom={files_in_dom}, "
-                        f"POSTレスポンス件数={len(post_responses)})"
+                        f"POSTレスポンス件数={len(post_responses)}, "
+                        f"レスポンスボディ={upload_response_bodies})"
                     )
                     raise RuntimeError("アップロード後も画像枚数が増加しなかった")
 
