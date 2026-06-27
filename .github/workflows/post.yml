@@ -45,8 +45,9 @@ jobs:
         if: always()
         with:
           name: note-debug-screenshots
-          path: debug_*.png
-
+          path: |
+            debug_*.png
+            ameblo_*.png
       - name: Post ameblo
         env:
           AMEBLO_USER: ${{ secrets.AMEBLO_USER }}
