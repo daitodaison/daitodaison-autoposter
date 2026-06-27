@@ -18,6 +18,21 @@ def md_to_text(text):
         result.append(line)
     return '\n'.join(result)
 
+def md_to_html(text):
+    # CKEditorに渡すための簡易HTML変換（改行を<p>で区切る）
+    lines = md_to_text(text).split('\n')
+    html = []
+    for line in lines:
+        if line.strip() == '':
+            html.append('<p>&nbsp;</p>')
+        else:
+            # HTMLエスケープ（最低限）
+            escaped = (line.replace('&', '&amp;')
+                           .replace('<', '&lt;')
+                           .replace('>', '&gt;'))
+            html.append(f'<p>{escaped}</p>')
+    return ''.join(html)
+
 def parse_cookies(cookies_json):
     cookies = json.loads(cookies_json)
     pw_cookies = []
@@ -86,60 +101,62 @@ async def post_ameblo(article):
         await page.screenshot(path="ameblo_02_title.png")
 
         # STEP3: 本文入力
-# AmebloはCKEditorを使用。#amebloeditor(textarea)はCKEditorの裏データであり、
-# 実際にユーザーに見えて送信時にバリデーションされるのは
-# iframe.cke_wysiwyg_frame 内の <body contenteditable="true"> 。
-# textarea.valueをJSで直接書き換えるだけではCKEditor本体に反映されないため、
-# CKEDITOR公式APIの setData() を使ってエディタ本体にHTMLを注入する。
-log.info("【STEP3】CKEditor APIで本文入力...")
-body_html = md_to_html(body)[:8000]
+        # AmebloはCKEditorを使用。#amebloeditor(textarea)はCKEditorの裏データであり、
+        # 実際にユーザーに見えて送信時にバリデーションされるのは
+        # iframe.cke_wysiwyg_frame 内の <body contenteditable="true"> 。
+        # textarea.valueをJSで直接書き換えるだけではCKEditor本体に反映されないため、
+        # CKEDITOR公式APIの setData() を使ってエディタ本体にHTMLを注入する。
+        log.info("【STEP3】CKEditor APIで本文入力...")
+        body_html = md_to_html(body)[:8000]
 
-try:
-    # CKEditorインスタンスがロードされるまで待機
-    await page.wait_for_function(
-        """() => window.CKEDITOR && window.CKEDITOR.instances && window.CKEDITOR.instances['amebloeditor']""",
-        timeout=15000
-    )
-    log.info("【STEP3】CKEDITOR.instances.amebloeditor 検出OK")
+        try:
+            # CKEditorインスタンスがロードされるまで待機
+            await page.wait_for_function(
+                """() => window.CKEDITOR && window.CKEDITOR.instances && window.CKEDITOR.instances['amebloeditor']""",
+                timeout=15000
+            )
+            log.info("【STEP3】CKEDITOR.instances.amebloeditor 検出OK")
 
-    set_result = await page.evaluate("""(html) => {
-        try {
-            const editor = CKEDITOR.instances['amebloeditor'];
-            if (!editor) return {ok: false, reason: 'no instance'};
-            editor.setData(html);
-            // textarea側(裏データ)にも同期させておく
-            editor.updateElement();
-            return {ok: true, len: editor.getData().length};
-        } catch (e) {
-            return {ok: false, reason: String(e)};
-        }
-    }""", body_html)
-    log.info(f"【STEP3】CKEDITOR.setData結果: {set_result}")
+            set_result = await page.evaluate("""(html) => {
+                try {
+                    const editor = CKEDITOR.instances['amebloeditor'];
+                    if (!editor) return {ok: false, reason: 'no instance'};
+                    editor.setData(html);
+                    // textarea側(裏データ)にも同期させておく
+                    editor.updateElement();
+                    return {ok: true, len: editor.getData().length};
+                } catch (e) {
+                    return {ok: false, reason: String(e)};
+                }
+            }""", body_html)
+            log.info(f"【STEP3】CKEDITOR.setData結果: {set_result}")
 
-    await page.wait_for_timeout(1500)
+            # setData後、エディタ内部のレンダリングが追いつくまで少し待つ
+            await page.wait_for_timeout(1500)
 
-    verify_len = await page.evaluate("""() => {
-        try {
-            const editor = CKEDITOR.instances['amebloeditor'];
-            return editor ? editor.getData().length : -1;
-        } catch (e) { return -2; }
-    }""")
-    log.info(f"【STEP3】本文反映確認 文字数: {verify_len}")
+            # 検証：iframe内のbody(contenteditable)に実際に文字が入っているか確認
+            verify_len = await page.evaluate("""() => {
+                try {
+                    const editor = CKEDITOR.instances['amebloeditor'];
+                    return editor ? editor.getData().length : -1;
+                } catch (e) { return -2; }
+            }""")
+            log.info(f"【STEP3】本文反映確認 文字数: {verify_len}")
 
-except Exception as e:
-    log.warning(f"【STEP3】CKEditor経由の入力に失敗: {e}")
-    log.info("【STEP3】フォールバック: textareaへの直接書き込みを試行")
-    try:
-        await page.evaluate("""(text) => {
-            const ta = document.getElementById('amebloeditor');
-            if (ta) {
-                ta.value = text;
-                ta.dispatchEvent(new Event('input', {bubbles: true}));
-                ta.dispatchEvent(new Event('change', {bubbles: true}));
-            }
-        }""", md_to_text(body)[:8000])
-    except Exception as e2:
-        log.warning(f"【STEP3】フォールバックも失敗: {e2}")
+        except Exception as e:
+            log.warning(f"【STEP3】CKEditor経由の入力に失敗: {e}")
+            log.info("【STEP3】フォールバック: textareaへの直接書き込みを試行")
+            try:
+                await page.evaluate("""(text) => {
+                    const ta = document.getElementById('amebloeditor');
+                    if (ta) {
+                        ta.value = text;
+                        ta.dispatchEvent(new Event('input', {bubbles: true}));
+                        ta.dispatchEvent(new Event('change', {bubbles: true}));
+                    }
+                }""", md_to_text(body)[:8000])
+            except Exception as e2:
+                log.warning(f"【STEP3】フォールバックも失敗: {e2}")
 
         await page.screenshot(path="ameblo_03_body.png")
 
@@ -147,7 +164,6 @@ except Exception as e:
         if image_path and os.path.exists(image_path):
             log.info(f"【STEP4】画像アップロード: {image_path}")
             try:
-                # name="thumbnail" id="js-input-files" のfile inputに直接セット
                 el = page.locator('input[name="thumbnail"]').first
                 count = await el.count()
                 log.info(f"【STEP4】input[name='thumbnail'] count={count}")
@@ -165,9 +181,16 @@ except Exception as e:
         log.info(f"【STEP5】モード: {publish_mode}")
         await page.screenshot(path="ameblo_05_before_action.png")
 
-        # 現在のtextarea値を最終確認
-        final_val_len = await page.evaluate("() => { const ta = document.getElementById('amebloeditor'); return ta ? ta.value.length : 0; }")
-        log.info(f"【STEP5】送信直前 #amebloeditor 文字数: {final_val_len}")
+        # 送信直前の本文文字数を最終確認（CKEditor優先、フォールバックでtextarea）
+        final_check = await page.evaluate("""() => {
+            try {
+                const editor = CKEDITOR.instances['amebloeditor'];
+                if (editor) return {source: 'ckeditor', len: editor.getData().length};
+            } catch (e) {}
+            const ta = document.getElementById('amebloeditor');
+            return {source: 'textarea', len: ta ? ta.value.length : 0};
+        }""")
+        log.info(f"【STEP5】送信直前 本文状態: {final_check}")
 
         if publish_mode == "publish":
             target_text = "投稿する"
@@ -198,21 +221,39 @@ except Exception as e:
 
         await page.wait_for_timeout(5000)
         await page.screenshot(path="ameblo_05_after_action.png")
+
+        # バリデーションエラーモーダルが出ていないかチェック
+        error_modal_text = await page.evaluate("""() => {
+            const body = document.body.innerText || '';
+            if (body.includes('本文を入力してください')) return '本文を入力してください エラーを検出';
+            return null;
+        }""")
+        if error_modal_text:
+            log.error(f"【STEP5】保存失敗: {error_modal_text}")
+            # エラーモーダルを閉じる（「戻る」ボタン）
+            try:
+                back_btn = page.locator('button:has-text("戻る")').first
+                if await back_btn.is_visible(timeout=3000):
+                    await back_btn.click()
+            except Exception:
+                pass
+            action_done = False
+
         final_url = page.url
         page_title = await page.title()
         log.info(f"【STEP5】処理後URL: {final_url}")
         log.info(f"【STEP5】ページタイトル: {page_title}")
 
-        # 成否判定：URLが変わったか、確認ページに遷移したか
         if "srventryinsertinput" in final_url:
-            # 同じページのまま → 下書き保存はURLが変わらないことがある
-            # ページタイトルで確認
             log.info("【STEP5】URLは変わらず（下書き保存は正常な場合あり）")
         else:
             log.info(f"【STEP5】URLが変わった → 投稿成功の可能性")
 
         await browser.close()
-        log.info(f"【完了】アメブロ処理完了: {title}")
+        if action_done:
+            log.info(f"【完了】アメブロ処理完了: {title}")
+        else:
+            log.error(f"【失敗】アメブロ処理失敗: {title}")
         return action_done
 
 def run():
