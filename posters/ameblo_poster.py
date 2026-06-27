@@ -631,8 +631,9 @@ async def post_ameblo(article, test_image_only=False):
 
         # STEP5: 下書き保存 or 投稿
         log.info(f"【STEP5】モード: {publish_mode}")
-        await page.screenshot(path="ameblo_05_before_action.png")
-
+await page.wait_for_timeout(1000)  # カバー画像エリアの描画待ち
+await page.screenshot(path="ameblo_05_before_action.png")
+log.info("【STEP5】★ ameblo_05_before_action.png 撮影（下書き前・カバー画像確認用）")
         # 送信直前の本文文字数を最終確認（CKEditor優先、フォールバックでtextarea）
         final_check = await page.evaluate("""() => {
             try {
