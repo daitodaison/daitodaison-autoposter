@@ -49,12 +49,26 @@ def parse_cookies(cookies_json):
         pw_cookies.append(cookie)
     return pw_cookies
 
-async def post_ameblo(article):
+async def post_ameblo(article, test_image_only=False):
+    """
+    Ameblo投稿のメイン処理。
+
+    test_image_only=True の場合:
+      - STEP2(タイトル入力)・STEP3(本文入力)は最小限の固定値で済ませる
+      - STEP4(画像アップロード)のロジックはそのまま全部実行する
+      - STEP5は必ず「下書き保存」を使う（公開はしない安全策）
+      - 画像アップロードのデバッグだけを高速に繰り返し試したい時に使う
+    """
     title = article.get("title", "無題")
     body = article.get("body", "")
     image_path = article.get("image_path", "")
     cookies_json = os.environ.get("AMEBLO_COOKIES", "")
-    publish_mode = os.environ.get("PUBLISH_MODE", "draft")
+    publish_mode = "draft" if test_image_only else os.environ.get("PUBLISH_MODE", "draft")
+
+    if test_image_only:
+        log.info("【テストモード】画像アップロード(STEP4)単体テストとして起動")
+        title = f"[画像アップロードテスト] {title}"
+        body = "これはAmeblo画像アップロード機能の単体テスト用ダミー本文です。"
 
     if not cookies_json:
         log.error("AMEBLO_COOKIES が設定されていません")
@@ -578,6 +592,39 @@ async def post_ameblo(article):
         return action_done
 
 def run():
+    test_image_only = os.environ.get("AMEBLO_TEST_IMAGE_ONLY", "").lower() in ("1", "true", "yes")
+
+    if test_image_only:
+        # テストモード: queue/の記事を使わず、専用のテスト画像で画像アップロードだけ試す。
+        # テスト用画像パスは環境変数 AMEBLO_TEST_IMAGE_PATH で指定可能（未指定時はデフォルトを探す）。
+        test_image_path = os.environ.get("AMEBLO_TEST_IMAGE_PATH", "").strip()
+
+        if not test_image_path:
+            # imagesフォルダの中から最初に見つかったjpg/pngを自動採用する
+            candidates = sorted(glob.glob("images/*.jpg") + glob.glob("images/*.png"))
+            if candidates:
+                test_image_path = candidates[0]
+                log.info(f"【テストモード】AMEBLO_TEST_IMAGE_PATH未指定 → images/内から自動選択: {test_image_path}")
+            else:
+                log.error("【テストモード】テスト用画像が見つかりません（images/にjpg/pngが1枚もない）")
+                log.error("【テストモード】環境変数 AMEBLO_TEST_IMAGE_PATH で明示的に画像パスを指定してください")
+                return
+
+        if not os.path.exists(test_image_path):
+            log.error(f"【テストモード】指定された画像が存在しません: {test_image_path}")
+            return
+
+        dummy_article = {
+            "title": "画像アップロード単体テスト",
+            "body": "これはAmeblo画像アップロード機能の単体テスト用ダミー本文です。",
+            "image_path": test_image_path,
+        }
+        log.info(f"【テストモード】開始: image_path={test_image_path}")
+        asyncio.run(post_ameblo(dummy_article, test_image_only=True))
+        log.info("【テストモード】完了（queue/には触れていません）")
+        return
+
+    # 通常モード（既存の本番フロー）
     files = sorted(glob.glob(f"{ARTICLES_DIR}/*.json"))
     if not files:
         log.info("投稿待ち記事なし")
