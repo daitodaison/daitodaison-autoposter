@@ -15,13 +15,32 @@ on:
           - draft
           - publish
       run_mode:
-        description: '実行モード（normal=通常の全件投稿, ameblo_image_test=Amebloの画像アップロードだけ単体テスト）'
+        description: '実行モード（normal=通常の全件投稿, ameblo_image_test=Ameblo画像のみテスト, note_body_test=note本文のみテスト）'
         required: false
         default: 'normal'
         type: choice
         options:
           - normal
           - ameblo_image_test
+          - note_body_test
+      note_body_strategy:
+        description: '【note_body_test時のみ有効】本文の変換ロジック（Markdown→HTML）を選択'
+        required: false
+        default: 'baseline'
+        type: choice
+        options:
+          - baseline
+          - baseline_escaped
+          - bold_italic
+      note_inject_strategy:
+        description: '【note_body_test時のみ有効】本文をエディタに入れる方法を選択'
+        required: false
+        default: 'baseline'
+        type: choice
+        options:
+          - baseline
+          - clipboard_paste
+          - line_by_line
 permissions:
   contents: write
 jobs:
@@ -40,7 +59,7 @@ jobs:
 
       # --- 通常モード時のみ実行されるステップ群 ---
       - name: Generate
-        if: github.event.inputs.run_mode != 'ameblo_image_test'
+        if: github.event.inputs.run_mode == 'normal' || github.event.inputs.run_mode == ''
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
@@ -48,7 +67,7 @@ jobs:
         run: python generator/generate.py
 
       - name: Post note
-        if: github.event.inputs.run_mode != 'ameblo_image_test'
+        if: github.event.inputs.run_mode == 'normal' || github.event.inputs.run_mode == ''
         env:
           NOTE_USER: ${{ secrets.NOTE_USER }}
           NOTE_PASS: ${{ secrets.NOTE_PASS }}
@@ -57,7 +76,7 @@ jobs:
         run: python posters/note_poster.py
 
       - name: Post ameblo
-        if: github.event.inputs.run_mode != 'ameblo_image_test'
+        if: github.event.inputs.run_mode == 'normal' || github.event.inputs.run_mode == ''
         env:
           AMEBLO_USER: ${{ secrets.AMEBLO_USER }}
           AMEBLO_PASS: ${{ secrets.AMEBLO_PASS }}
@@ -66,7 +85,7 @@ jobs:
         run: python posters/ameblo_poster.py
 
       - name: Post linkedin
-        if: github.event.inputs.run_mode != 'ameblo_image_test'
+        if: github.event.inputs.run_mode == 'normal' || github.event.inputs.run_mode == ''
         env:
           LINKEDIN_USER: ${{ secrets.LINKEDIN_USER }}
           LINKEDIN_PASS: ${{ secrets.LINKEDIN_PASS }}
@@ -74,15 +93,14 @@ jobs:
         run: python posters/linkedin_poster.py
 
       - name: Post substack
-        if: github.event.inputs.run_mode != 'ameblo_image_test'
+        if: github.event.inputs.run_mode == 'normal' || github.event.inputs.run_mode == ''
         env:
           SUBSTACK_USER: ${{ secrets.SUBSTACK_USER }}
           SUBSTACK_PASS: ${{ secrets.SUBSTACK_PASS }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/substack_poster.py
 
-      # --- テストモード時のみ実行されるステップ ---
-      # Ameblo画像アップロード(STEP4)だけを単体テストする。
+      # --- テストモード: Ameblo画像アップロード単体 ---
       # 記事生成・note・linkedin・substackは一切実行しない。
       # 必ず下書き保存のみ（公開はしない）で、タイトルに[画像アップロードテスト]と付く。
       - name: Test ameblo image upload only
@@ -93,6 +111,22 @@ jobs:
           AMEBLO_COOKIES: ${{ secrets.AMEBLO_COOKIES }}
           AMEBLO_TEST_IMAGE_ONLY: "true"
         run: python posters/ameblo_poster.py
+
+      # --- テストモード: note本文単体 ---
+      # 記事生成・ameblo・linkedin・substackは一切実行しない。画像も使わない。
+      # note_body_strategy / note_inject_strategy の入力欄で
+      # 変換ロジックと注入方法を自由に組み合わせて試せる。
+      # 必ず下書き保存のみで、タイトルに[本文テスト:戦略名/戦略名]と付く。
+      - name: Test note body only
+        if: github.event.inputs.run_mode == 'note_body_test'
+        env:
+          NOTE_USER: ${{ secrets.NOTE_USER }}
+          NOTE_PASS: ${{ secrets.NOTE_PASS }}
+          NOTE_COOKIES: ${{ secrets.NOTE_COOKIES }}
+          NOTE_BODY_ONLY_TEST: "true"
+          NOTE_BODY_STRATEGY: ${{ github.event.inputs.note_body_strategy || 'baseline' }}
+          NOTE_INJECT_STRATEGY: ${{ github.event.inputs.note_inject_strategy || 'baseline' }}
+        run: python posters/note_poster.py
 
       - name: Upload debug screenshots
         uses: actions/upload-artifact@v4
@@ -106,7 +140,7 @@ jobs:
 
       # --- Saveステップは通常モード時のみ（テスト時はqueue/postedに触れない） ---
       - name: Save
-        if: github.event.inputs.run_mode != 'ameblo_image_test'
+        if: github.event.inputs.run_mode == 'normal' || github.event.inputs.run_mode == ''
         run: |
           git config user.name "AutoPoster"
           git config user.email "bot@github.com"
