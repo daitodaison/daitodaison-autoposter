@@ -91,8 +91,9 @@ async def post_linkedin(article, test_mode=False):
         log.info("【STEP1】LinkedInフィードページへアクセス...")
         await page.goto(
             "https://www.linkedin.com/feed/",
-            wait_until="networkidle", timeout=60000
+            wait_until="domcontentloaded", timeout=60000
         )
+        await page.wait_for_timeout(3000)
         await page.screenshot(path="linkedin_01_initial.png")
         log.info(f"【STEP1】URL: {page.url}")
 
