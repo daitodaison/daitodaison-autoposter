@@ -24,6 +24,7 @@ on:
           - ameblo_image_test
           - note_body_test
           - linkedin_test
+          - substack_test
       note_body_strategy:
         description: '【note_body_test時のみ有効】本文の変換ロジック（Markdown→HTML）を選択'
         required: false
@@ -95,8 +96,7 @@ jobs:
       - name: Post substack
         if: github.event.inputs.run_mode == 'normal' || github.event.inputs.run_mode == ''
         env:
-          SUBSTACK_USER: ${{ secrets.SUBSTACK_USER }}
-          SUBSTACK_PASS: ${{ secrets.SUBSTACK_PASS }}
+          SUBSTACK_COOKIES: ${{ secrets.SUBSTACK_COOKIES }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/substack_poster.py
 
@@ -130,6 +130,14 @@ jobs:
           LINKEDIN_TEST_MODE: "true"
         run: python posters/linkedin_poster.py
 
+      # --- テストモード: Substack画像＋本文テスト（公開ボタンは押さない） ---
+      - name: Test substack
+        if: github.event.inputs.run_mode == 'substack_test'
+        env:
+          SUBSTACK_COOKIES: ${{ secrets.SUBSTACK_COOKIES }}
+          SUBSTACK_TEST_MODE: "true"
+        run: python posters/substack_poster.py
+
       - name: Upload debug screenshots
         uses: actions/upload-artifact@v4
         if: always()
@@ -139,6 +147,7 @@ jobs:
             note_*.png
             ameblo_*.png
             linkedin_*.png
+            substack_*.png
           if-no-files-found: ignore
 
       # --- Saveステップは通常モード時のみ ---
