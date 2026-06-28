@@ -1210,12 +1210,18 @@
   },
   {
     "kw": "Fintokei アナリティクス リポート",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://www.fintokei.com/jp/blog/tag/analytics-report/",
+      "https://my.fintokei.com/ja/tools",
+      "https://www.fintokei.com/jp/blog/category/analyrics-report/page/4/",
+      "https://comparisonpropfirm.com/broker/fintokei/",
+      "https://x.com/FintokeiJP/status/1975484398834491676"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-26T10:16:56.089892"
+    "updated_at": "2026-06-28T14:06:27.987634"
   },
   {
     "kw": "プロップファーム 通貨ペア",
@@ -1228,84 +1234,138 @@
   },
   {
     "kw": "プロップファーム デイトレード",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
-    "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085109"
+    "status": "執筆完了",
+    "reason": "✅ 合格（掲示板あり）",
+    "urls": [
+      "https://www.reddit.com/r/Trading/comments/1rgb8fy/what_strategy_works_best_for_prop_firms_scalping/?tl=ja",
+      "https://holaprime.com/ja/blogs/trading-education/what-are-day-trading-prop-firms/",
+      "https://wemastertrade.com/ja/prop-trading-guide/",
+      "https://www.interactivebrokers.co.jp/jp/accounts/prop-trader-onboarding.php",
+      "https://x.com/TradethepoolJP"
+    ],
+    "trend": "プロップファームについての記事が多く見られ、デイトレードの新しい形態であるプロップトレードの解説や、プロップファームの選び方などが掲載されている。プロップトレードは、自己資金のリスクを抑えながら大口の資本を運用する取引形態で、損失リスクを企業側が引き受け、優秀なトレーダーに運用資本を割り当てる金融エコシステムが確立されている。記事では、プロップトレードの仕組みやリスク、利益配分の構造などが解説され",
+    "avg_length": 8904,
+    "updated_at": "2026-06-28T14:09:14.239696"
   },
   {
     "kw": "プロップファーム スイングトレード",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
-    "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085113"
+    "status": "判定済み合格",
+    "reason": "✅ 合格（掲示板あり）",
+    "urls": [
+      "https://www.reddit.com/r/Trading/comments/1rgb8fy/what_strategy_works_best_for_prop_firms_scalping/?tl=ja",
+      "https://wemastertrade.com/ja/prop-trading-guide/",
+      "https://comparisonpropfirm.com/",
+      "https://comparisonpropfirm.com/#h-comparison",
+      "https://comparisonpropfirm.com/#h-fintokei"
+    ],
+    "trend": "プロップトレードに関する記事が多くублиけられていることがわかる。プロップトレードの仕組みやリスク、ファームの選び方などを解説した記事は、投資家へのガイドとなり得る。記事の内容は、自己資金のリスクを抑えながら大口の資本を運用するというプロップトレードのメリットを強調している。また、国内外の主要なプラットフォームの選び方や利益配分の構造も解説されている。",
+    "avg_length": 16492,
+    "updated_at": "2026-06-28T14:06:34.917347"
   },
   {
     "kw": "プロップファーム レバレッジ 設定",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://www.fintokei.com/jp/blog/leverage-caliculator/",
+      "https://www.smbcnikko.co.jp/products/fx/knowledge/003.html#:~:text=%E3%83%AC%E3%83%90%E3%83%AC%E3%83%83%E3%82%B8%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E3%80%81%E5%88%A9%E7%9B%8A%E3%81%8C%E5%87%BA,%E3%81%93%E3%81%A8%E3%82%92%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%81%97%E3%81%BE%E3%81%99%E3%80%82",
+      "https://search.sbisec.co.jp/v2/popwin/guide/tool/fx_trading/08_account/leverage_settings.html",
+      "https://myfxmarkets.com/media/kaigaifx-leverage-1000/#:~:text=%E3%81%8C%E3%82%82%E3%82%89%E3%81%88%E3%82%8B%EF%BC%81%20%EF%BC%8F%EF%BC%8F-,%E3%83%AC%E3%83%90%E3%83%AC%E3%83%83%E3%82%B81000%E5%80%8D%E3%81%A7%E3%81%AF%E3%83%AD%E3%82%B9%E3%82%AB%E3%83%83%E3%83%88%E3%81%95%E3%82%8C%E3%82%84%E3%81%99%E3%81%84,%E3%82%8B%E3%83%AA%E3%82%B9%E3%82%AF%E3%81%8C%E9%AB%98%E3%81%BE%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://faq.sbisec.co.jp/answer/5edf3fa750df500012206e8d/#:~:text=FX%E5%8F%96%E5%BC%95%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AE%E3%80%8C%E5%8F%A3%E5%BA%A7,%E7%8E%87%E3%80%8D%E3%82%82%E5%A4%89%E6%9B%B4%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085115"
+    "updated_at": "2026-06-28T14:06:38.356900"
   },
   {
     "kw": "プロップファーム ポジション サイズ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
-    "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085116"
+    "status": "判定済み合格",
+    "reason": "✅ 合格（掲示板あり）",
+    "urls": [
+      "https://www.reddit.com/r/Daytrading/comments/1s87wiv/prop_sizing_question/?tl=ja",
+      "https://www.interactivebrokers.co.jp/jp/accounts/prop-trader-onboarding.php",
+      "https://www.thinkcapital.com/jp/how-to-become-a-prop-trader-10-steps-to-getting-funded/",
+      "https://wemastertrade.com/ja/prop-firm-evaluation-guide/#:~:text=%E5%A4%9A%E3%81%8F%E3%81%AE%E5%80%8B%E4%BA%BA%E3%83%88%E3%83%AC%E3%83%BC%E3%83%80%E3%83%BC%E3%81%8C,%E5%85%A8%E5%AE%B9%E3%82%92%E8%A7%A3%E8%AA%AC%E3%81%97%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.fintokei.com/jp/blog/what-is-a-prop-firm/#:~:text=%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%AF%E3%80%81%E8%A9%95%E4%BE%A1%E8%A9%A6%E9%A8%93,%E3%81%AF%E6%B3%A8%E6%84%8F%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%80%82"
+    ],
+    "trend": "このサイトの内容は、プロップファームやポジションに関する情報を提供しており、投資やトレードに関する記事作成の傾向がある。サイズや手数料に関する詳細も含まれており、投資家向けの情報を提供している。記事では、プロップトレーダーになるためのステップや資金提供アカウントの獲得方法について解説している。サイトの対策として、投資やトレードに関する教育コンテンツの提供や、トレーディングツールの紹介が見受けられる",
+    "avg_length": 7830,
+    "updated_at": "2026-06-28T14:06:41.649169"
   },
   {
     "kw": "プロップファーム リスク マネジメント",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
-    "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085118"
+    "status": "判定済み合格",
+    "reason": "✅ 合格（掲示板あり）",
+    "urls": [
+      "https://www.thinkcapital.com/jp/what-is-prop-firm/",
+      "https://www.reddit.com/r/Daytrading/comments/1t2nwsd/whats_so_bad_about_prop_firms/?tl=ja",
+      "https://eaera.com/ja/prop-firm/",
+      "https://jp.investing.com/brokers/firms-prop-trading/",
+      "https://www.fintokei.com/jp/blog/what-is-a-prop-firm/#:~:text=%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%AF%E3%80%81%E8%A9%95%E4%BE%A1%E8%A9%A6%E9%A8%93,%E3%81%AF%E6%B3%A8%E6%84%8F%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%80%82"
+    ],
+    "trend": "プロップファームは金融機関で自己勘定取引を行うトレーダーが会社の資金を利用して利益を最大化するビジネスモデルであり、日本でも知名度が上がっている。メリットとしてはリスクマネジメントが徹底され、堅牢なテクノロジーで効率的な運営が可能である。対策としては、プロップファームを成功させるために必要なコンポーネントを提供することで、リスクマネジメントツールやトレーダー開発ツールを活用し、効率的な運営を実現で",
+    "avg_length": 3423,
+    "updated_at": "2026-06-28T14:06:44.920699"
   },
   {
     "kw": "プロップファーム トレーディング プラン",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://prtimes.jp/main/html/rd/p/000000003.000132800.html",
+      "https://www.fintokei.com/jp/",
+      "https://jinacoin.ne.jp/proprietary-trading-firm/",
+      "https://jinacoin.ne.jp/proprietary-trading-firm/#%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%A8%E3%81%AF",
+      "https://jinacoin.ne.jp/proprietary-trading-firm/#%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%AE%E3%83%A1%E3%83%AA%E3%83%83%E3%83%886%E3%81%A4"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085119"
+    "updated_at": "2026-06-28T14:06:48.392861"
   },
   {
     "kw": "プロップファーム マーケット アナライズ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://fxreplay.com/ja/learn/the-complete-guide-to-backtesting-for-prop-firm-challenges",
+      "https://www.fintokei.com/jp/blog/what-is-a-prop-firm/#:~:text=%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%AF%E3%80%81%E8%A9%95%E4%BE%A1%E8%A9%A6%E9%A8%93,%E3%81%AF%E6%B3%A8%E6%84%8F%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%80%82",
+      "https://jinacoin.ne.jp/proprietary-trading-firm/",
+      "https://www.shinkotoushin.co.jp/fintokei/#:~:text=Fintokei(%E3%83%95%E3%82%A3%E3%83%B3%E3%83%88%E3%82%B1%E3%82%A4)%E3%81%AF%E3%80%81%E6%97%A5%E6%9C%AC,%E5%A4%A7%E3%81%8D%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82",
+      "https://wemastertrade.com/ja/best-prop-trading-firms-japan/#:~:text=%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%A8%E3%81%AF%E3%80%81%E4%BC%81%E6%A5%AD,%E3%81%AB%E6%99%92%E3%81%99%E5%BF%85%E8%A6%81%E3%81%AF%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085122"
+    "updated_at": "2026-06-28T14:06:51.893577"
   },
   {
     "kw": "プロップファーム チャート パターン",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://open.spotify.com/episode/25VDuLgBqLcacnvsudwMOs",
+      "https://www.fintokei.com/jp/blog/tag/chart-patterns/",
+      "https://fxreplay.com/ja/learn/how-to-prepare-for-a-prop-firm-challenge",
+      "https://www.gaitame.com/beginner/market/technical/pattern.html",
+      "https://wemastertrade.com/ja/prop-firm-evaluation-guide/#:~:text=%E5%A4%9A%E3%81%8F%E3%81%AE%E5%80%8B%E4%BA%BA%E3%83%88%E3%83%AC%E3%83%BC%E3%83%80%E3%83%BC%E3%81%8C,%E5%85%A8%E5%AE%B9%E3%82%92%E8%A7%A3%E8%AA%AC%E3%81%97%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085124"
+    "updated_at": "2026-06-28T14:06:56.217055"
   },
   {
     "kw": "プロップファーム インディケーター",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.interactivebrokers.co.jp/jp/accounts/prop-trader-onboarding.php",
+      "https://www.fintokei.com/jp/",
+      "https://www.thinkcapital.com/jp/what-is-prop-firm/",
+      "https://prtimes.jp/main/html/rd/p/000000003.000132800.html",
+      "https://www.nri.com/jp/knowledge/publication/kinyu_itf_200901/files/itf_200901_7.pdf"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085125"
+    "updated_at": "2026-06-28T14:06:59.689905"
   },
   {
     "kw": "プロップファーム トレンド フォロー",
