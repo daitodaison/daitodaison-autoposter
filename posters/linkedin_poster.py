@@ -78,12 +78,24 @@ async def post_linkedin(article, test_mode=False):
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(
-            headless=True, args=["--no-sandbox", "--disable-gpu"]
+            headless=True,
+            args=[
+                "--no-sandbox",
+                "--disable-gpu",
+                "--disable-blink-features=AutomationControlled",
+            ]
         )
         context = await browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-            viewport={"width": 1280, "height": 900}
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            viewport={"width": 1280, "height": 900},
+            extra_http_headers={
+                "Accept-Language": "ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7",
+            }
         )
+        # ヘッドレス検知回避: webdriverフラグを隠す
+        await context.add_init_script("""
+            Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+        """)
         await context.add_cookies(pw_cookies)
         page = await context.new_page()
 
