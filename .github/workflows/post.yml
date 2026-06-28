@@ -15,7 +15,7 @@ on:
           - draft
           - publish
       run_mode:
-        description: '実行モード（normal=通常の全件投稿, ameblo_image_test=Ameblo画像のみテスト, note_body_test=note本文のみテスト）'
+        description: '実行モード'
         required: false
         default: 'normal'
         type: choice
@@ -23,6 +23,7 @@ on:
           - normal
           - ameblo_image_test
           - note_body_test
+          - linkedin_test
       note_body_strategy:
         description: '【note_body_test時のみ有効】本文の変換ロジック（Markdown→HTML）を選択'
         required: false
@@ -87,8 +88,7 @@ jobs:
       - name: Post linkedin
         if: github.event.inputs.run_mode == 'normal' || github.event.inputs.run_mode == ''
         env:
-          LINKEDIN_USER: ${{ secrets.LINKEDIN_USER }}
-          LINKEDIN_PASS: ${{ secrets.LINKEDIN_PASS }}
+          LINKEDIN_COOKIES: ${{ secrets.LINKEDIN_COOKIES }}
           PUBLISH_MODE: ${{ github.event.inputs.publish_mode || 'draft' }}
         run: python posters/linkedin_poster.py
 
@@ -101,8 +101,6 @@ jobs:
         run: python posters/substack_poster.py
 
       # --- テストモード: Ameblo画像アップロード単体 ---
-      # 記事生成・note・linkedin・substackは一切実行しない。
-      # 必ず下書き保存のみ（公開はしない）で、タイトルに[画像アップロードテスト]と付く。
       - name: Test ameblo image upload only
         if: github.event.inputs.run_mode == 'ameblo_image_test'
         env:
@@ -113,10 +111,6 @@ jobs:
         run: python posters/ameblo_poster.py
 
       # --- テストモード: note本文単体 ---
-      # 記事生成・ameblo・linkedin・substackは一切実行しない。画像も使わない。
-      # note_body_strategy / note_inject_strategy の入力欄で
-      # 変換ロジックと注入方法を自由に組み合わせて試せる。
-      # 必ず下書き保存のみで、タイトルに[本文テスト:戦略名/戦略名]と付く。
       - name: Test note body only
         if: github.event.inputs.run_mode == 'note_body_test'
         env:
@@ -128,6 +122,14 @@ jobs:
           NOTE_INJECT_STRATEGY: ${{ github.event.inputs.note_inject_strategy || 'baseline' }}
         run: python posters/note_poster.py
 
+      # --- テストモード: LinkedIn画像＋本文テスト（投稿ボタンは押さない） ---
+      - name: Test linkedin
+        if: github.event.inputs.run_mode == 'linkedin_test'
+        env:
+          LINKEDIN_COOKIES: ${{ secrets.LINKEDIN_COOKIES }}
+          LINKEDIN_TEST_MODE: "true"
+        run: python posters/linkedin_poster.py
+
       - name: Upload debug screenshots
         uses: actions/upload-artifact@v4
         if: always()
@@ -136,9 +138,10 @@ jobs:
           path: |
             note_*.png
             ameblo_*.png
+            linkedin_*.png
           if-no-files-found: ignore
 
-      # --- Saveステップは通常モード時のみ（テスト時はqueue/postedに触れない） ---
+      # --- Saveステップは通常モード時のみ ---
       - name: Save
         if: github.event.inputs.run_mode == 'normal' || github.event.inputs.run_mode == ''
         run: |
