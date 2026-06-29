@@ -1414,7 +1414,7 @@
   },
   {
     "kw": "プロップファーム スキャルピング",
-    "status": "判定済み合格",
+    "status": "執筆完了",
     "reason": "✅ 合格（掲示板あり）",
     "urls": [
       "https://www.reddit.com/r/Trading/comments/1rgb8fy/what_strategy_works_best_for_prop_firms_scalping/?tl=ja",
@@ -1425,7 +1425,7 @@
     ],
     "trend": "スキャルピングとプロップファームに関する記事では、損切り幅の設定方法やプロップファームの選び方について解説しています。スキャルピングでは損切りが重要で、3つの方法から損切りの仕方を選ぶことが大切です。プロップファームは大きな資金を運用できるサービスで、初心者にもおすすめの業者を選ぶことが重要です。記事では、シミュレーション型のプロップファームや選び方についても触れています。",
     "avg_length": 15934,
-    "updated_at": "2026-06-28T22:57:38.266852"
+    "updated_at": "2026-06-29T22:52:58.662041"
   },
   {
     "kw": "プロップファーム 日中 トレード",
@@ -1819,93 +1819,153 @@
   },
   {
     "kw": "FX 合格 バックアップ システム",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://fxreplay.com/ja/learn/how-to-pass-a-prop-firm-challenge-using-fx-replay",
+      "https://my-best.com/articles/683#:~:text=%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82-,1%E6%97%A5%E3%81%A75%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%9F%E3%82%81%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA,%E3%81%A6%E5%8F%96%E5%BC%95%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82",
+      "https://www.soico.jp/no1/news/fx/25568#:~:text=%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A7%E6%9C%8810%E4%B8%87%E5%86%86%E3%82%92%E7%A8%BC%E3%81%90%E5%A0%B4%E5%90%88,%E7%A8%8B%E5%BA%A6%20%E3%81%8C%E7%9B%AE%E5%AE%89%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.jibunbank.co.jp/products/foreign_deposit/glossary/YST3116.html#:~:text=%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%88%E3%83%AC%E3%83%BC%E3%83%89%EF%BC%88%E3%81%97%E3%81%99%E3%81%A6%E3%82%80%E3%81%A8%E3%82%8C%E3%83%BC%E3%81%A9%EF%BC%89&amp;text=%E6%8A%95%E8%B3%87%E5%AE%B6%E3%81%AE%E4%B8%BB%E8%A6%B3%E3%82%92,%E3%81%A7%E5%88%A9%E7%94%A8%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82",
+      "https://kabu.com/glossary/kabu2743.html#:~:text=%E6%84%8F%E5%91%B3,%E3%82%92%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%A7%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419764"
+    "updated_at": "2026-06-29T22:50:08.959228"
   },
   {
     "kw": "FX 合格 データ セキュリティ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://min-fx.jp/support/security/",
+      "https://hfm.com/int/jp/blog/successful-person/#:~:text=%E3%81%93%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E3%82%88%E3%82%8C%E3%81%B0,%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://min-fx.jp/support/security/#:~:text=%E3%81%BF%E3%82%93%E3%81%AA%E3%81%AEFX%E3%81%A7%E3%81%AF%E3%80%81%E3%81%8A%E5%AE%A2%E6%A7%98%E3%81%A8,%E3%81%A6%E9%80%81%E5%8F%97%E4%BF%A1%E3%81%95%E3%81%9B%E3%82%8B%E4%BB%95%E7%B5%84%E3%81%BF%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.hfm.com/int/jp/blog/fx-winning-rate/#:~:text=%E3%82%82%E3%81%A3%E3%81%A8%E8%A6%8B%E3%82%8B-,FX%E3%81%A7%E5%8B%9D%E3%81%A4%E3%83%BB%E5%84%B2%E3%81%8B%E3%82%8B%E7%A2%BA%E7%8E%87%E3%81%AF60%EF%BC%85%E5%89%8D%E5%BE%8C,%E3%81%A8%E7%AE%97%E5%87%BA%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82",
+      "https://gokuraku.io/library/minnano-fx-scal/#:~:text=%E5%99%82%E3%81%AF%E6%9C%AC%E5%BD%93%EF%BC%9F-,%E3%81%BE%E3%81%9A%E3%81%AF%E8%AA%A4%E8%A7%A3%E3%81%8C%E5%A4%9A%E3%81%84%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%82%92%E6%95%B4%E7%90%86,%E3%82%92%E6%AD%A2%E3%82%81%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AF%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419765"
+    "updated_at": "2026-06-29T22:50:12.761421"
   },
   {
     "kw": "FX 合格 マーケット データ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://min-fx.jp/market/",
+      "https://www.click365.jp/market.html",
+      "https://www.ffaj.or.jp/library/performance/fx_flash/",
+      "https://www.central-tanshifx.com/market/indicator/download.html",
+      "https://lightfx.jp/market/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419766"
+    "updated_at": "2026-06-29T22:50:16.214628"
   },
   {
     "kw": "FX 合格 チャート パターン",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
-    "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419767"
+    "status": "判定済み合格",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.gaitame.com/beginner/market/technical/pattern.html",
+      "https://www.youtube.com/watch?v=h6JdSBjJO8o",
+      "https://www.youtube.com/watch?v=h6JdSBjJO8o&amp;t=0",
+      "https://www.youtube.com/watch?v=h6JdSBjJO8o&amp;t=51",
+      "https://www.youtube.com/watch?v=h6JdSBjJO8o&amp;t=98"
+    ],
+    "trend": "FXのチャートパターンについて解説する記事が多いことが特徴で、トレンドの変転や続続を予測するための相場分析方法が紹介されている。サポートラインやレジスタンスラインなどのタイプを知り、チャート上の線を引くことで相場分析を行うことができる。",
+    "avg_length": 13703,
+    "updated_at": "2026-06-29T22:50:19.867713"
   },
   {
     "kw": "FX 合格 テクニカル アナライズ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
+    "status": "判定済み合格",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.youtube.com/watch?v=r0kHI_cyrZQ",
+      "https://www.youtube.com/watch?v=r0kHI_cyrZQ&amp;t=0",
+      "https://www.youtube.com/watch?v=r0kHI_cyrZQ&amp;t=23",
+      "https://www.youtube.com/watch?v=r0kHI_cyrZQ&amp;t=47",
+      "https://www.youtube.com/watch?v=r0kHI_cyrZQ&amp;t=125"
+    ],
+    "trend": " FX、合格、テクニカル、アナライズに関する記事は、FXの分析や取引のテクニックについて説明していることが多い。しかし、提供されているサイトの内容はYouTubeの利用規約に関する情報で、FXやテクニカルアナライズの具体的な情報は見つからない。記事作成の傾向としては、FXのテクニカルアナライズについての解説や、投資家向けの情報提供が中心であると推測されるが、対策としてはより具体的で実践的なアプロー",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419768"
+    "updated_at": "2026-06-29T22:50:23.381358"
   },
   {
     "kw": "FX 合格 ファンダメンタル アナライズ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
+    "status": "判定済み合格",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.youtube.com/watch?v=PLihqN3rlIs",
+      "https://www.youtube.com/watch?v=PLihqN3rlIs&amp;t=0",
+      "https://www.youtube.com/watch?v=PLihqN3rlIs&amp;t=25",
+      "https://www.youtube.com/watch?v=PLihqN3rlIs&amp;t=101",
+      "https://www.youtube.com/watch?v=PLihqN3rlIs&amp;t=205"
+    ],
+    "trend": "上位サイトの内容はYouTubeのサイト情報であり、FX関連の記事作成の傾向は見受けられません。FXのファンダメンタルアナライズに関連する記事が見つからないため、傾向や対策については特に言及できません。",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419769"
+    "updated_at": "2026-06-29T22:50:28.259134"
   },
   {
     "kw": "FX 合格 ニュース リスク",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://kabu.com/kabuyomu/money/1259.html",
+      "https://www.hfm.com/int/jp/blog/fx-earn/#:~:text=FX%E3%81%A71%E6%97%A55%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%AB%E3%81%AF%E3%80%81%E3%83%89%E3%83%AB,%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.hfm.com/int/jp/blog/fx-study-not-mean/#:~:text=FX%E3%81%AE%E5%8B%89%E5%BC%B7%E3%81%AF%E6%B1%BA%E3%81%97%E3%81%A6,%E3%81%AA%E6%99%82%E9%96%93%E3%81%8C%E3%81%8B%E3%81%8B%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://hfm.com/int/jp/blog/successful-person/#:~:text=%E3%81%93%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E3%82%88%E3%82%8C%E3%81%B0,%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://money-charger.com/information/overseas-fx-leverage/#:~:text=1%E5%9B%9E%E3%81%AE%E3%83%88%E3%83%AC%E3%83%BC%E3%83%89%E3%81%A7%E5%A4%A7%E3%81%8D%E3%81%8F%E8%B3%87%E9%87%91%E3%82%92%E5%A4%B1%E3%81%86%E5%8F%AF%E8%83%BD%E6%80%A7%E3%81%8C%E3%81%82%E3%82%8B,-%E6%B5%B7%E5%A4%96FX%E3%81%AE&amp;text=%E4%BE%8B%E3%81%88%E3%81%B0%E3%80%81%E3%83%AC%E3%83%90%E3%83%AC%E3%83%83%E3%82%B81000%E5%80%8D%E3%81%A7,%E5%8F%AF%E8%83%BD%E6%80%A7%E3%81%8C%E9%AB%98%E3%81%BE%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419769"
+    "updated_at": "2026-06-29T22:50:31.940553"
   },
   {
     "kw": "FX 合格 イベント リスク",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://fxreplay.com/ja/learn/how-to-pass-a-prop-firm-challenge-using-fx-replay",
+      "https://www.hfm.com/int/jp/blog/fx-earn/#:~:text=FX%E3%81%A71%E6%97%A55%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%AB%E3%81%AF%E3%80%81%E3%83%89%E3%83%AB,%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%99%E3%80%82",
+      "https://money-charger.com/information/overseas-fx-leverage/#:~:text=1%E5%9B%9E%E3%81%AE%E3%83%88%E3%83%AC%E3%83%BC%E3%83%89%E3%81%A7%E5%A4%A7%E3%81%8D%E3%81%8F%E8%B3%87%E9%87%91%E3%82%92%E5%A4%B1%E3%81%86%E5%8F%AF%E8%83%BD%E6%80%A7%E3%81%8C%E3%81%82%E3%82%8B,-%E6%B5%B7%E5%A4%96FX%E3%81%AE&amp;text=%E4%BE%8B%E3%81%88%E3%81%B0%E3%80%81%E3%83%AC%E3%83%90%E3%83%AC%E3%83%83%E3%82%B81000%E5%80%8D%E3%81%A7,%E5%8F%AF%E8%83%BD%E6%80%A7%E3%81%8C%E9%AB%98%E3%81%BE%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.smbcnikko.co.jp/products/fx/knowledge/001.html#:~:text=%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E5%A4%B1%E6%95%97%E3%81%9D%E3%81%AE2%E3%80%8C%E3%83%9D%E3%82%B8%E3%83%9D%E3%82%B8%E7%97%85%E3%80%8D&amp;text=%E3%80%8C%E3%83%9D%E3%82%B8%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E6%8C%81%E3%81%9F%E3%81%AA%E3%81%84%E3%81%A8,%E3%82%B3%E3%82%B9%E3%83%88%E5%A2%97%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.soico.jp/no1/news/fx/25568#:~:text=%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A7%E6%9C%8810%E4%B8%87%E5%86%86%E3%82%92%E7%A8%BC%E3%81%90%E5%A0%B4%E5%90%88,%E7%A8%8B%E5%BA%A6%20%E3%81%8C%E7%9B%AE%E5%AE%89%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419770"
+    "updated_at": "2026-06-29T22:50:35.429147"
   },
   {
     "kw": "FX 合格 ローリバンス トレード",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
+    "status": "判定済み合格",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.youtube.com/watch?v=pPUGnexOsQk",
+      "https://www.youtube.com/watch?v=pPUGnexOsQk&amp;t=44",
+      "https://www.youtube.com/watch?v=pPUGnexOsQk&amp;t=314",
+      "https://www.youtube.com/watch?v=pPUGnexOsQk&amp;t=478",
+      "https://www.youtube.com/watch?v=pPUGnexOsQk&amp;t=666"
+    ],
+    "trend": "FXに関する情報を扱ったサイトの記事作成の傾向として、ローリバンスやトレードの戦略が多く見られます。FXの合格への道を紹介する記事も存在します。対策としては、投資家が安心してトレードを行えるような信頼できる情報を提供することが必要です。また、初心者向けの解説記事や、最新のトレンドに関する記事を多く掲載することで、ユーザーのニーズに応えることができます。",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419771"
+    "updated_at": "2026-06-29T22:50:39.036288"
   },
   {
     "kw": "FX 合格 スキャルピング トレード",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.matsui.co.jp/money-satellite/column/beginner/fx/glossary/cl-scalping.html",
+      "https://zai.diamond.jp/articles/-/489372",
+      "https://www.sbifxt.co.jp/beginner/step01_4_003.html",
+      "https://www.matsui.co.jp/money-satellite/column/beginner/fx/glossary/cl-scalping.html#:~:text=%E3%82%B9%E3%82%AD%E3%83%A3%E3%83%AB%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AF%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AEFX,%E3%81%9F%E3%82%8A%E3%81%99%E3%82%8B%E3%83%AA%E3%82%B9%E3%82%AF%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://line-sec.co.jp/market-cat/fx/market-11712#:~:text=%E7%9B%A3%E4%BF%AE%E8%80%85%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB-,%E3%82%B9%E3%82%AD%E3%83%A3%E3%83%AB%E3%83%94%E3%83%B3%E3%82%B0%E3%81%A8%E3%81%AF,%E5%9B%9E%E6%95%B0%E3%81%8C%E5%A4%9A%E3%81%84%E6%89%8B%E6%B3%95%E3%81%A7%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419772"
+    "updated_at": "2026-06-29T22:50:42.750671"
   },
   {
     "kw": "FX 合格 ポジション サイズ",
