@@ -1279,7 +1279,7 @@
   },
   {
     "kw": "プロップファーム ポジション サイズ",
-    "status": "判定済み合格",
+    "status": "執筆完了",
     "reason": "✅ 合格（掲示板あり）",
     "urls": [
       "https://www.reddit.com/r/Daytrading/comments/1s87wiv/prop_sizing_question/?tl=ja",
@@ -1290,7 +1290,7 @@
     ],
     "trend": "このサイトの内容は、プロップファームやポジションに関する情報を提供しており、投資やトレードに関する記事作成の傾向がある。サイズや手数料に関する詳細も含まれており、投資家向けの情報を提供している。記事では、プロップトレーダーになるためのステップや資金提供アカウントの獲得方法について解説している。サイトの対策として、投資やトレードに関する教育コンテンツの提供や、トレーディングツールの紹介が見受けられる",
     "avg_length": 7830,
-    "updated_at": "2026-06-28T14:06:41.649169"
+    "updated_at": "2026-06-29T08:21:08.859064"
   },
   {
     "kw": "プロップファーム リスク マネジメント",
@@ -1519,56 +1519,395 @@
   },
   {
     "kw": "プロップファーム 分析ツール",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://play.google.com/store/apps/details?id=com.appnovasi.prop_firm_planner&amp;hl=ja",
+      "https://www.fintokei.com/jp/blog/what-is-a-prop-firm/#:~:text=%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%AF%E3%80%81%E8%A9%95%E4%BE%A1%E8%A9%A6%E9%A8%93,%E3%81%AF%E6%B3%A8%E6%84%8F%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%80%82",
+      "https://wemastertrade.com/ja/prop-firm-evaluation-guide/#:~:text=%E5%A4%9A%E3%81%8F%E3%81%AE%E5%80%8B%E4%BA%BA%E3%83%88%E3%83%AC%E3%83%BC%E3%83%80%E3%83%BC%E3%81%8C,%E5%85%A8%E5%AE%B9%E3%82%92%E8%A7%A3%E8%AA%AC%E3%81%97%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.shinkotoushin.co.jp/fintokei/#:~:text=Fintokei(%E3%83%95%E3%82%A3%E3%83%B3%E3%83%88%E3%82%B1%E3%82%A4)%E3%81%AF%E3%80%81%E6%97%A5%E6%9C%AC,%E5%A4%A7%E3%81%8D%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82",
+      "https://jinacoin.ne.jp/proprietary-trading-firm/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085140"
+    "updated_at": "2026-06-29T08:17:03.337993"
   },
   {
     "kw": "プロップファーム データ 分析",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://jinacoin.ne.jp/proprietary-trading-firm/",
+      "https://jinacoin.ne.jp/proprietary-trading-firm/#%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%A8%E3%81%AF",
+      "https://jinacoin.ne.jp/proprietary-trading-firm/#%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%AE%E3%83%A1%E3%83%AA%E3%83%83%E3%83%886%E3%81%A4",
+      "https://jinacoin.ne.jp/proprietary-trading-firm/#%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%AE%E3%83%87%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88",
+      "https://www.fintokei.com/jp/blog/survery-japan-first-prop-firm/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085141"
+    "updated_at": "2026-06-29T08:17:06.730686"
   },
   {
     "kw": "プロップファーム トレード ログ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
-    "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085144"
+    "status": "判定済み合格",
+    "reason": "✅ 合格（掲示板あり）",
+    "urls": [
+      "https://www.interactivebrokers.co.jp/jp/accounts/prop-trader-onboarding.php",
+      "https://fxsignup.com/knowledge/25050201.html",
+      "https://www.reddit.com/r/Daytrading/comments/1qxwguh/years_of_trading_many_prop_firm_accounts_several/?tl=ja",
+      "https://www.thinkcapital.com/jp/what-is-prop-firm/",
+      "https://prtimes.jp/main/html/rd/p/000000003.000132800.html"
+    ],
+    "trend": "上位サイトの内容を分析した結果、トレードに関する情報や記事が多く見られました。特にプロップファームの概念や選び方が徹底解説されており、トレーダーにとって有益な情報となっています。プロップファームは実力のあるトレーダーにとって大きなチャンスとなり得るサービスであり、多くのトレーダーから注目されていることがわかります。",
+    "avg_length": 16232,
+    "updated_at": "2026-06-29T08:17:09.907766"
   },
   {
     "kw": "プロップファーム リアルタイム",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://propaccount.com/ja/risk-management/",
+      "https://eaera.com/ja/prop-firm/",
+      "https://www.interactivebrokers.co.jp/jp/accounts/prop-trader-onboarding.php",
+      "https://wemastertrade.com/ja/prop-firm-scam-detection/",
+      "https://www.myfxbook.com/ja/prop-firms/demo-accounts"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085146"
+    "updated_at": "2026-06-29T08:17:13.245949"
   },
   {
     "kw": "プロップファーム マーケット データ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.interactivebrokers.co.jp/jp/accounts/prop-trader-onboarding.php",
+      "https://dl.ndl.go.jp/view/prepareDownload?itemId=info:ndljp/pid/8199967&amp;contentNo=1",
+      "https://prtimes.jp/main/html/rd/p/000000003.000132800.html",
+      "https://jp.investing.com/brokers/firms-prop-trading/",
+      "https://www.nri.com/jp/knowledge/publication/kinyu_itf_200901/files/itf_200901_7.pdf"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085147"
+    "updated_at": "2026-06-29T08:17:16.587355"
   },
   {
     "kw": "プロップファーム オーダー マネジメント",
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.interactivebrokers.co.jp/jp/accounts/prop-trader-onboarding.php",
+      "https://www.fintokei.com/jp/blog/what-is-a-prop-firm/#:~:text=%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%AF%E3%80%81%E8%A9%95%E4%BE%A1%E8%A9%A6%E9%A8%93,%E3%81%AF%E6%B3%A8%E6%84%8F%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%80%82",
+      "https://wemastertrade.com/ja/prop-firm-evaluation-guide/#:~:text=%E5%A4%9A%E3%81%8F%E3%81%AE%E5%80%8B%E4%BA%BA%E3%83%88%E3%83%AC%E3%83%BC%E3%83%80%E3%83%BC%E3%81%8C,%E5%85%A8%E5%AE%B9%E3%82%92%E8%A7%A3%E8%AA%AC%E3%81%97%E3%81%BE%E3%81%99%E3%80%82",
+      "https://jinacoin.ne.jp/proprietary-trading-firm/",
+      "https://www.nri.com/jp/knowledge/publication/kinyu_itf_200901/files/itf_200901_7.pdf"
+    ],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:19.836149"
+  },
+  {
+    "kw": "FX 合格 ルーティン 作り",
+    "status": "判定済み合格",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.youtube.com/watch?v=ZnfivgoYdQ8",
+      "https://www.youtube.com/watch?v=kZlo8cWle4c",
+      "https://www.youtube.com/watch?v=kZlo8cWle4c&amp;t=0",
+      "https://www.youtube.com/watch?v=kZlo8cWle4c&amp;t=39",
+      "https://www.youtube.com/watch?v=kZlo8cWle4c&amp;t=311"
+    ],
+    "trend": "FX 合格を目的とした記事作成の傾向として、ルーティンを作り勉強することが重要であることがわかります。上位サイトの内容を分析すると、FX の基礎知識と実践的なアプローチを重視し、効率的な学習方法を提供することが共通する傾向です。したがって、FX 合格に向けた対策として、まず基礎知識を固め、次に実践的な勉強を重ねるルーティンを作成し、持続的に学習することが効果的であると考えられます。",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:23.136231"
+  },
+  {
+    "kw": "FX 合格 時間 管理",
+    "status": "判定済み圏外",
+    "reason": "❌ 除外サイト上位",
+    "urls": [
+      "https://www.central-tanshifx.com/fx-knowhow/study.html",
+      "https://www.central-tanshifx.com/fx-knowhow/study.html#point01",
+      "https://www.central-tanshifx.com/fx-knowhow/study.html#point03",
+      "https://my-best.com/articles/683#:~:text=%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82-,1%E6%97%A5%E3%81%A75%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%9F%E3%82%81%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA,%E3%81%A6%E5%8F%96%E5%BC%95%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82",
+      "https://www.smbcnikko.co.jp/products/fx/knowledge/013.html#:~:text=%E6%97%A5%E6%9C%AC%E6%99%82%E9%96%93%E3%81%AE6%E6%99%82,%E6%80%A7%E3%81%8C%E3%81%82%E3%82%8B%E3%81%8B%E3%82%89%E3%81%A7%E3%81%99%E3%80%82"
+    ],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:26.444256"
+  },
+  {
+    "kw": "FX 合格 スマホ アプリ",
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://apps.apple.com/jp/app/fx%E3%81%AA%E3%81%B3-%E3%83%87%E3%83%A2%E3%83%88%E3%83%AC%E3%83%BC%E3%83%89%E3%81%A8%E6%9C%AC%E6%A0%BCfx%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E6%8A%95%E8%B3%87%E3%82%B2%E3%83%BC%E3%83%A0/id1320766512",
+      "https://www.hfm.com/int/jp/blog/fx-smartphone-only-win/#:~:text=FX%E3%81%AF%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%A0%E3%81%91%E3%81%A7%E3%82%82,%E7%92%B0%E5%A2%83%E3%81%AF%E6%95%B4%E3%81%A3%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82",
+      "https://my-best.com/articles/683#:~:text=%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82-,1%E6%97%A5%E3%81%A75%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%9F%E3%82%81%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA,%E3%81%A6%E5%8F%96%E5%BC%95%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82",
+      "https://www.soico.jp/no1/news/fx/25568#:~:text=%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A7%E6%9C%8810%E4%B8%87%E5%86%86%E3%82%92%E7%A8%BC%E3%81%90%E5%A0%B4%E5%90%88,%E7%A8%8B%E5%BA%A6%20%E3%81%8C%E7%9B%AE%E5%AE%89%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.soico.jp/no1/news/fx/24018"
+    ],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:29.755765"
+  },
+  {
+    "kw": "FX 合格 マーケット アナライズ",
+    "status": "判定済み合格",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.youtube.com/watch?v=YWO9_RKqZyo",
+      "https://www.youtube.com/watch?v=K3zG3SEI1E8",
+      "https://www.youtube.com/watch?v=LZLczNH3-_g",
+      "https://www.radionikkei.jp/market_analyze/",
+      "https://www.youtube.com/watch?v=hIEgevnTgHQ"
+    ],
+    "trend": "対象サイトの内容は、YouTube の利用規約や広告ポリシーに関する情報が中心である。FX 合格に関連するとまれば、FX のマーケット分析に関する動画の配信などが行われている可能性が考えられる。記事作成の傾向は、ユーザーに対するガイドや解説が多いが、FX に関する記事作成の対策としては、FX の市場分析に関する内容を掲載することが有効かもしれない。",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:33.142692"
+  },
+  {
+    "kw": "FX 合格 リスク マネジメント",
     "status": "待機中",
     "reason": "-",
     "urls": [],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-28T07:05:15.085148"
+    "updated_at": "2026-06-29T08:17:01.419749"
+  },
+  {
+    "kw": "FX 合格 1分足 トレード",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419750"
+  },
+  {
+    "kw": "FX 合格 週末 持ち越し",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419751"
+  },
+  {
+    "kw": "FX 合格 ログ 管理",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419755"
+  },
+  {
+    "kw": "FX 合格 トレード プラン",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419757"
+  },
+  {
+    "kw": "FX 合格 マインド セット",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419758"
+  },
+  {
+    "kw": "FX 合格 デスク 環境",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419759"
+  },
+  {
+    "kw": "FX 合格 コンピューター 設定",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419760"
+  },
+  {
+    "kw": "FX 合格 インターネット 速度",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419761"
+  },
+  {
+    "kw": "FX 合格 電源 準備",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419762"
+  },
+  {
+    "kw": "FX 合格 バックアップ システム",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419764"
+  },
+  {
+    "kw": "FX 合格 データ セキュリティ",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419765"
+  },
+  {
+    "kw": "FX 合格 マーケット データ",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419766"
+  },
+  {
+    "kw": "FX 合格 チャート パターン",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419767"
+  },
+  {
+    "kw": "FX 合格 テクニカル アナライズ",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419768"
+  },
+  {
+    "kw": "FX 合格 ファンダメンタル アナライズ",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419769"
+  },
+  {
+    "kw": "FX 合格 ニュース リスク",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419769"
+  },
+  {
+    "kw": "FX 合格 イベント リスク",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419770"
+  },
+  {
+    "kw": "FX 合格 ローリバンス トレード",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419771"
+  },
+  {
+    "kw": "FX 合格 スキャルピング トレード",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419772"
+  },
+  {
+    "kw": "FX 合格 ポジション サイズ",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419773"
+  },
+  {
+    "kw": "FX 合格 リスク リワード",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419774"
+  },
+  {
+    "kw": "FX 合格 トレード ジャーナル",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419776"
+  },
+  {
+    "kw": "FX 合格 パフォーマンス 評価",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419777"
+  },
+  {
+    "kw": "FX 合格 ストレス 管理",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419778"
+  },
+  {
+    "kw": "FX 合格 睡眠 管理",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419779"
+  },
+  {
+    "kw": "FX 合格 心理状態 管理",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-29T08:17:01.419780"
   }
 ]
