@@ -1504,7 +1504,7 @@
   },
   {
     "kw": "プロップファーム レポート",
-    "status": "判定済み合格",
+    "status": "執筆完了",
     "reason": "✅ 合格（掲示板あり）",
     "urls": [
       "https://www.interactivebrokers.co.jp/jp/accounts/prop-trader-onboarding.php",
@@ -1515,7 +1515,7 @@
     ],
     "trend": "プロップファームに関するレポートの記事作成の傾向として、インタラクティブ・ブローカーズ証券株式会社の口座開設やプロップファームのオンボーディングに関する情報が提供されている。また、関連するサービスや手数料、取引に関する情報も記載されている。これに対して、レポートの作成時に具体的かつ正確な情報を提示し、関連するサービスの解説や費用に関する説明を含めることが重要である。",
     "avg_length": 6997,
-    "updated_at": "2026-06-28T22:57:58.114815"
+    "updated_at": "2026-06-30T14:38:53.337785"
   },
   {
     "kw": "プロップファーム 分析ツール",
@@ -2119,93 +2119,153 @@
   },
   {
     "kw": "自立 時間 quản理 技術",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.pref.tochigi.lg.jp/m53/system/desaki/desaki/documents/haga259tokubetusienkyouiku3.pdf",
+      "https://www.pref.oita.jp/uploaded/attachment/2233864.pdf",
+      "https://www.mext.go.jp/a_menu/shotou/cs/1320932.htm",
+      "https://tokushi-tobira.jp/teacher/specialclass/002.html",
+      "https://www.shimane-ec.pref.shimane.lg.jp/2023/03/29/ziritukatudouttenandarou.pdf"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118489"
+    "updated_at": "2026-06-30T14:36:33.305817"
   },
   {
     "kw": "自立 心理学 リスク管理",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://wako.repo.nii.ac.jp/record/4551/files/g1811.pdf",
+      "https://secure-navi.jp/blog/000036",
+      "https://eleminist.com/article/3789#:~:text=%E3%82%AB%E3%83%AA%E3%82%AE%E3%83%A5%E3%83%A9%E5%8A%B9%E6%9E%9C%E3%81%A8%E3%81%AF%E3%80%81%E4%BD%95,%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB%E3%81%A7%E3%82%82%E8%A6%8B%E3%82%89%E3%82%8C%E3%82%8B%E3%80%82",
+      "https://manebi.co.jp/column/m-0103/#:~:text=%E3%83%AA%E3%82%B9%E3%82%AF%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AF%E3%80%81%E4%BC%81%E6%A5%AD%E6%B4%BB%E5%8B%95,%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%E3%81%8C%E6%AC%A0%E3%81%8B%E3%81%9B%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82",
+      "https://www.newton-consulting.co.jp/bcmnavi/guideline/iso31000.html#:~:text=ISO31000%3A2018%E3%81%AF%E3%80%81%E3%83%AA%E3%82%B9%E3%82%AF%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88,%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E3%82%82%E3%81%AE%E3%81%A7%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118491"
+    "updated_at": "2026-06-30T14:36:36.583416"
   },
   {
     "kw": "自立 生活 リズム 整理",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.edu-c.pref.miyagi.jp/midori/tokushi/koukou-tsukyu/img/3-3tenkai.pdf",
+      "https://nobelpark.jp/contents/kodomononemuri/points/",
+      "https://www.education.saga.jp/hp/mougakkou/wp-content/uploads/sites/288/2021/12/%E3%82%86%E3%81%86%E3%81%82%E3%81%84net-%EF%BC%96%E6%9C%88%E5%8F%B7.pdf",
+      "https://d-encourage.jp/training/#:~:text=%E8%87%AA%E7%AB%8B%E8%A8%93%E7%B7%B4%EF%BC%88%E7%94%9F%E6%B4%BB%E8%A8%93%E7%B7%B4%EF%BC%89%E3%81%AF,%E4%BA%8B%E6%A5%AD%E6%89%80%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.city.gamagori.lg.jp/site/hokencenter/hayanehayaoki.html#:~:text=%E8%A6%8F%E5%89%87%E6%AD%A3%E3%81%97%E3%81%84%E7%94%9F%E6%B4%BB%E3%81%A8%E3%81%AF%E3%80%81%E3%81%A9%E3%81%AE,%E3%81%82%E3%82%8B%E3%81%A8%E3%80%81%E3%82%88%E3%82%8A%E8%89%AF%E3%81%84%E3%81%A7%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118492"
+    "updated_at": "2026-06-30T14:36:39.756382"
   },
   {
     "kw": "自立 スマートフォン アプリ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://apps.apple.com/jp/app/upmind-%E8%87%AA%E5%BE%8B%E7%A5%9E%E7%B5%8C-%E7%9E%91%E6%83%B3-%E3%83%9E%E3%82%A4%E3%83%B3%E3%83%89%E3%83%95%E3%83%AB%E3%83%8D%E3%82%B9-%E7%9D%A1%E7%9C%A0/id1565658134",
+      "https://sanyokai-clinic.com/kokoro/5479/#:~:text=Upmind%E3%81%AF%E3%80%81%E8%87%AA%E5%BE%8B%E7%A5%9E%E7%B5%8C%E3%81%AE,%E5%8A%B9%E6%9E%9C%E3%81%8C%E6%9C%9F%E5%BE%85%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.jamf.com/ja/solutions/self-service/#:~:text=Self%20Service%20%E3%81%AF%E3%80%81%E2%80%8B%E5%BE%93%E6%A5%AD,%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E2%80%8B%E3%82%AB%E3%82%BF%E3%83%AD%E3%82%B0%E3%81%A7%E3%81%99%E3%80%82",
+      "https://apps.apple.com/jp/app/habitone-%E3%83%8F%E3%83%93%E3%83%88%E3%83%BC%E3%83%B3-%E3%82%B9%E3%83%88%E3%83%AC%E3%82%B9-%E8%87%AA%E5%BE%8B%E7%A5%9E%E7%B5%8C%E6%B8%AC%E5%AE%9A%E3%82%A2%E3%83%97%E3%83%AA/id6503929021#:~:text=%EF%BC%88%E4%B8%80%E9%83%A8Habitone%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E9%99%90%E5%AE%9A,%E3%81%AE%E5%88%B6%E9%99%90%E3%81%8C%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99%E3%80%82",
+      "https://karteco.jp/features/sensing#:~:text=%E3%81%AA%E3%81%9C%E3%82%B9%E3%83%9E%E3%83%9B%E3%82%AB%E3%83%A1%E3%83%A9%E3%81%A7%20%E3%82%B9%E3%83%88%E3%83%AC%E3%82%B9%E3%82%84,%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118493"
+    "updated_at": "2026-06-30T14:36:42.864211"
   },
   {
     "kw": "自立 FX 市場動向",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.ffaj.or.jp/wp-content/uploads/2024/03/20240307_fxshijyo-doukou.pdf",
+      "https://www.boj.or.jp/research/wps_rev/rev_2023/data/rev23j06.pdf",
+      "https://min-fx.jp/start/ordertime/",
+      "https://www.gaikaex.com/gaikaex/news/017153.html#:~:text=2025%E5%B9%B411%E6%9C%882,%E3%82%821%E6%99%82%E9%96%93%E6%97%A9%E3%81%BE%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.sbifxt.co.jp/beginner/step01_4_068.html#:~:text=2-8.%208%E6%9C%88%EF%BC%88,%E5%82%BE%E5%90%91%E3%81%AB%E3%81%82%E3%82%8B%E3%81%9F%E3%82%81%E3%81%A7%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118495"
+    "updated_at": "2026-06-30T14:36:46.202506"
   },
   {
     "kw": "自立 個人 資産管理",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://media.monex.co.jp/articles/-/13372",
+      "https://money-career.com/article/2525#:~:text=60%E6%AD%B3%E3%81%A7%E8%B3%87%E7%94%A32%E5%84%84%E5%86%86%E3%81%82%E3%82%8C%E3%81%B0%E3%80%81%E4%BB%95%E4%BA%8B,%E7%9A%84%E3%81%8B%E3%81%8C%E7%95%B0%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://goldtrust.co.jp/blog/p3259/#:~:text=%E9%87%91%E8%9E%8D%E8%B3%87%E7%94%A31%2C000%E4%B8%87%E5%86%86%E3%81%A7%E5%8A%B4%E5%83%8D%E5%8F%8E%E5%85%A5%E3%82%84%E5%85%AC,%E3%81%AF%E7%B4%842.7%E5%B9%B4%E3%81%A7%E3%81%99%E3%80%82&amp;text=%E3%81%AA%E3%81%8A%E3%80%81%E6%9C%88%E9%96%93%E6%94%AF%E5%87%BA%E3%81%AF%E7%B7%8F%E5%8B%99,%E3%81%AF%E7%8F%BE%E5%AE%9F%E7%9A%84%E3%81%A7%E3%81%AF%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82",
+      "https://corporate.ai-con.lawyer/articles/basic-knowledge/67#:~:text=%E8%B3%87%E7%94%A3%E7%AE%A1%E7%90%86%E4%BC%9A%E7%A4%BE%E3%82%92%E8%A8%AD%E7%AB%8B%E3%81%99%E3%82%8B%E3%81%AE%E3%81%AF%E8%B3%87%E7%94%A3%E3%81%8C%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E3%82%89,-%E3%81%9D%E3%82%8C%E3%81%A7%E3%81%AF%E8%B3%87%E7%94%A3%E7%AE%A1%E7%90%86&amp;text=%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AB%E3%81%AF%E3%80%81%E5%80%8B%E4%BA%BA,%E3%81%8C%E5%AE%89%E3%81%8F%E3%81%AA%E3%82%8B%E3%81%9F%E3%82%81%E3%81%A7%E3%81%99%E3%80%82",
+      "https://cocozas.jp/coco-the-style/3000mankara5000man-kikan/#:~:text=%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E8%B3%87%E7%94%A3%E5%BD%A2%E6%88%90,10%E3%80%9C18%E5%B9%B4%E3%80%8D%20%E3%81%A7%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118496"
+    "updated_at": "2026-06-30T14:36:49.332801"
   },
   {
     "kw": "自立 朝のルーティン 作り",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://sho.benesse.co.jp/column/nyugakujunbi/251020-2.html",
+      "https://minchalle.com/blog/morning-routine",
+      "https://somnus.jp/sleep-labo/article/bad-morning",
+      "https://www.manavis.com/mana_magazine/studytime-morning/#:~:text=%E6%9C%9D%E3%81%AB%E5%8B%89%E5%BC%B7%E3%81%99%E3%82%8B%E3%81%AA%E3%82%89,%E8%A1%8C%E3%81%86%E3%81%A8%E5%8A%B9%E6%9E%9C%E7%9A%84%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.kao.co.jp/health-care/condition-care/005/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118497"
+    "updated_at": "2026-06-30T14:36:52.586876"
   },
   {
     "kw": "自立 夕方のルーティン 作り",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
+    "status": "判定済み合格",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.youtube.com/watch?v=7i6smwx6nlU",
+      "https://www.youtube.com/watch?v=r6cCHzbLcBk",
+      "https://www.youtube.com/watch?v=-nOp-ZYqMEQ",
+      "https://www.youtube.com/watch?v=-nOp-ZYqMEQ&amp;t=0",
+      "https://www.youtube.com/watch?v=-nOp-ZYqMEQ&amp;t=64"
+    ],
+    "trend": "上位サイトの内容を分析すると、自立を促す夕方のルーティンの作り方に関する記事が多く見られます。個人が夕方の時間を有意義に使い、自己ケアや生産性向上を促進するためのアドバイスが提供されています。この傾向は、現代の忙しい生活の中で、個人がより自立し効率的な生活を送るためのテクニックを探していることに起因することが考えられます。対策として、効果的な夕方のルーティンの作り方に関する具体的なアドバイスや実践",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118499"
+    "updated_at": "2026-06-30T14:36:55.765098"
   },
   {
     "kw": "自立 毎日 勉強時間",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 除外サイト上位",
+    "urls": [
+      "https://surala.jp/column/childcare/24802/",
+      "https://note.com/nobukoakashi/n/na9ebfa38b53a#:~:text=%E5%8B%89%E5%BC%B7%E3%82%82%E5%AD%A6%E6%A0%A1%E3%82%82%E5%A5%BD%E3%81%8D,%E6%85%B6%E6%87%89SFC%E3%81%AB%E5%8F%97%E3%81%8B%E3%81%A3%E3%81%9F%E3%80%82",
+      "https://nhs.nito.co.jp/privatebox/column/office-environment/202212060832-0-0-0#:~:text=%E3%80%8C15%E3%83%BB45%E3%83%BB90%E3%81%AE%E6%B3%95%E5%89%87%E3%80%8D%E3%81%8C%E3%81%82%E3%82%8B%E3%81%93%E3%81%A8,%E6%99%82%E9%96%93%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.kyotoijuku.com/column/brain-fatigue-study/",
+      "https://jyuku-online.com/blog/bs-jikan/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118500"
+    "updated_at": "2026-06-30T14:36:58.900945"
   },
   {
     "kw": "自立 週末の計画 立て方",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 除外サイト上位",
+    "urls": [
+      "https://note.com/shiny_minnow23/n/na0f0ed70c92e",
+      "https://biz.moneyforward.com/work-efficiency/basic/11485/#:~:text=%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E7%AE%A1%E7%90%86%E3%81%8C%E4%B8%8A%E6%89%8B%E3%81%AA,%E7%8A%B6%E6%85%8B%E3%82%92%E4%BF%9D%E3%81%A6%E3%81%BE%E3%81%99%E3%80%82",
+      "https://biz.moneyforward.com/work-efficiency/basic/14083/",
+      "https://kurojica.com/schedule/blog/sschedule-management-tips-10/",
+      "https://kurojica.com/schedule/blog/cant-schedule-management-people-20230223/#:~:text=%E5%84%AA%E5%85%88%E9%A0%86%E4%BD%8D%E3%82%92%E3%81%A4%E3%81%91%E3%82%89%E3%82%8C%E3%81%AA%E3%81%84%E3%80%81%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%AE%E5%85%A8%E4%BD%93%E5%83%8F,%E4%B8%BB%E8%A6%81%E3%81%AA%E5%8E%9F%E5%9B%A0%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118501"
+    "updated_at": "2026-06-30T14:37:02.062981"
   },
   {
     "kw": "自立 毎月 の振り返り",
