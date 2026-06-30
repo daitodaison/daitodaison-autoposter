@@ -1429,7 +1429,7 @@
   },
   {
     "kw": "プロップファーム 日中 トレード",
-    "status": "判定済み合格",
+    "status": "執筆完了",
     "reason": "✅ 合格（掲示板あり）",
     "urls": [
       "https://www.reddit.com/r/Trading/comments/1rgb8fy/what_strategy_works_best_for_prop_firms_scalping/?tl=ja",
@@ -1440,7 +1440,7 @@
     ],
     "trend": "プロップファーム（自己資金取引）市場は拡大しており、日本でも普及し始めている。信頼性や出金実績、法規制適応性が選定の基準となっており、最適な選択肢を網羅するための徹底比較が必要である。本記事では、プロップファームの特徴やリスク管理ルールなどを検証し、トレーダーのための最適な選択肢を提供することを目指している。",
     "avg_length": 8325,
-    "updated_at": "2026-06-28T22:57:41.623810"
+    "updated_at": "2026-06-30T07:00:58.543797"
   },
   {
     "kw": "プロップファーム 週末 Strategy",
@@ -1969,65 +1969,359 @@
   },
   {
     "kw": "FX 合格 ポジション サイズ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://fundedfast.com/ja/tools/position-size-calculator",
+      "https://www.fujitomi.co.jp/click365/forex/valid-ratio/#:~:text=%E3%83%9D%E3%82%B8%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B5%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0%E3%81%A8%E3%81%AF%E3%80%81%E5%8F%96%E5%BC%95,%E6%B1%BA%E3%82%81%E3%82%8B%E3%81%93%E3%81%A8%E3%82%92%E8%A8%80%E3%81%84%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.soico.jp/no1/news/fx/25568#:~:text=%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A7%E6%9C%8810%E4%B8%87%E5%86%86%E3%82%92%E7%A8%BC%E3%81%90%E5%A0%B4%E5%90%88,%E7%A8%8B%E5%BA%A6%20%E3%81%8C%E7%9B%AE%E5%AE%89%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://my-best.com/articles/683#:~:text=%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82-,1%E6%97%A5%E3%81%A75%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%9F%E3%82%81%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA,%E3%81%A6%E5%8F%96%E5%BC%95%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82",
+      "https://ewarrant.co.jp/kaigaifx-maxlot/#:~:text=FXGT%E3%81%A7%E3%81%AF%E3%80%81%E6%9C%80%E5%A4%A7100%E3%83%AD%E3%83%83%E3%83%88,%E3%81%AF%E6%B3%A8%E6%84%8F%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419773"
+    "updated_at": "2026-06-30T06:58:34.368222"
   },
   {
     "kw": "FX 合格 リスク リワード",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.matsui.co.jp/fx/study/article/analysis/risk-reward/",
+      "https://www.oanda.jp/lab-education/beginners/aboutfx/moneymanagement1/#:~:text=%E3%81%8C%E9%87%8D%E8%A6%81%E3%81%A7%E3%81%99%E3%80%82-,%E7%90%86%E6%83%B3%E3%81%AE%E3%83%AA%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%AF%E3%83%BC%E3%83%89%E3%81%AE%E6%95%B0%E5%80%A4%E3%81%AF%E3%81%A9%E3%82%8C%E3%81%8F%E3%82%89%E3%81%84%E3%81%A7%E3%81%99%E3%81%8B,%E3%81%A6%E3%82%82%E8%89%AF%E3%81%84%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82",
+      "https://www.hfm.com/int/jp/blog/fx-earn/#:~:text=FX%E3%81%A71%E6%97%A55%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%AB%E3%81%AF%E3%80%81%E3%83%89%E3%83%AB,%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.soico.jp/no1/news/fx/25568#:~:text=%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A7%E6%9C%8810%E4%B8%87%E5%86%86%E3%82%92%E7%A8%BC%E3%81%90%E5%A0%B4%E5%90%88,%E7%A8%8B%E5%BA%A6%20%E3%81%8C%E7%9B%AE%E5%AE%89%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.ig.com/jp/trading-strategies/risk-reward-ratio-explained-210729#:~:text=%E3%83%AA%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%AF%E3%83%BC%E3%83%89%E3%83%AC%E3%82%B7%E3%82%AA%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81&amp;text=1%E5%AF%BE2%E3%81%AE%E3%83%AA%E3%82%B9%E3%82%AF,%E5%80%8D%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%81%97%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419774"
+    "updated_at": "2026-06-30T06:58:37.969307"
   },
   {
     "kw": "FX 合格 トレード ジャーナル",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://fxreplay.com/ja/learn/the-ultimate-guide-to-building-a-profitable-trading-journal",
+      "https://traderwaves.com/ja",
+      "https://apps.apple.com/jp/app/pipslog-fx%E3%83%88%E3%83%AC%E3%83%BC%E3%83%89%E6%97%A5%E8%A8%98%E3%82%A2%E3%83%97%E3%83%AA/id6768530566",
+      "https://play.google.com/store/apps/details?id=com.crn.journal&amp;hl=ja",
+      "https://hmarkets.com/jp/learn-to-trade/learning-hub/trading-journal/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419776"
+    "updated_at": "2026-06-30T06:58:41.610929"
   },
   {
     "kw": "FX 合格 パフォーマンス 評価",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://fxreplay.com/ja/learn/how-to-pass-a-prop-firm-challenge-using-fx-replay",
+      "https://www.hfm.com/int/jp/blog/fx-earn/#:~:text=FX%E3%81%A71%E6%97%A55%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%AB%E3%81%AF%E3%80%81%E3%83%89%E3%83%AB,%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.soico.jp/no1/news/fx/25568#:~:text=%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A7%E6%9C%8810%E4%B8%87%E5%86%86%E3%82%92%E7%A8%BC%E3%81%90%E5%A0%B4%E5%90%88,%E7%A8%8B%E5%BA%A6%20%E3%81%8C%E7%9B%AE%E5%AE%89%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://hfm.com/int/jp/blog/successful-person/#:~:text=%E3%81%93%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E3%82%88%E3%82%8C%E3%81%B0,%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.soico.jp/no1/news/fx/25575#:~:text=%E6%90%8D%E7%9B%8A%20%3D%20%E7%8D%B2%E5%BE%97pips%20%C3%97%200.01,%E5%86%86%E3%81%AE%E6%90%8D%E7%9B%8A%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419777"
+    "updated_at": "2026-06-30T06:58:45.778434"
   },
   {
     "kw": "FX 合格 ストレス 管理",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.ffaj.or.jp/learning/?p=138",
+      "https://my-best.com/articles/683#:~:text=%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82-,1%E6%97%A5%E3%81%A75%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%9F%E3%82%81%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA,%E3%81%A6%E5%8F%96%E5%BC%95%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82",
+      "https://www.soico.jp/no1/news/fx/25568#:~:text=%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A7%E6%9C%8810%E4%B8%87%E5%86%86%E3%82%92%E7%A8%BC%E3%81%90%E5%A0%B4%E5%90%88,%E7%A8%8B%E5%BA%A6%20%E3%81%8C%E7%9B%AE%E5%AE%89%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.hfm.com/int/jp/blog/fx-study-not-mean/#:~:text=FX%E3%81%AE%E5%8B%89%E5%BC%B7%E3%81%AF%E6%B1%BA%E3%81%97%E3%81%A6,%E3%81%AA%E6%99%82%E9%96%93%E3%81%8C%E3%81%8B%E3%81%8B%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.soico.jp/no1/news/fx/26077#:~:text=FX%E3%81%AE%E5%A4%A7%E8%A1%86%E5%BF%83%E7%90%86%E3%81%A8%E3%81%AF%E3%80%81%E5%B8%82%E5%A0%B4%E5%8F%82%E5%8A%A0%E8%80%85%E3%81%AE,%E5%A4%A7%E3%81%8D%E3%81%AA%E5%BD%B1%E9%9F%BF%E3%82%92%E4%B8%8E%E3%81%88%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419778"
+    "updated_at": "2026-06-30T06:58:49.212426"
   },
   {
     "kw": "FX 合格 睡眠 管理",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.garmin.co.jp/minisite/health/sleep-bp/",
+      "https://www.suimin.co.jp/",
+      "https://resm.info/%E2%91%A2%E3%82%B9%E3%83%9E%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E3%81%A7%E7%9D%A1%E7%9C%A0%E3%81%AF%E6%94%B9%E5%96%84%E3%81%A7%E3%81%8D%E3%82%8B%EF%BC%9F-%E6%B8%AC%E5%AE%9A%E7%B2%BE/",
+      "https://jses.me/",
+      "https://czemi.benesse.ne.jp/open/nyushi/article/study/0066.html#:~:text=%E5%89%8D%E6%97%A5%E3%81%AF6%EF%BD%9E7,%EF%BD%9E7%E6%99%82%E9%96%93%E3%81%8C%E7%9B%AE%E5%AE%89%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419779"
+    "updated_at": "2026-06-30T06:58:52.843486"
   },
   {
     "kw": "FX 合格 心理状態 管理",
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.ig.com/jp/trading-strategies/mental-management-and-emotions-which-affect-forex-trading-201012",
+      "https://www.sbifxt.co.jp/beginner/step01_4_070.html#:~:text=FX%E3%81%A7%E8%B2%A0%E3%81%91%E3%82%8B%E5%A4%A7%E3%81%8D%E3%81%AA%E7%90%86%E7%94%B1,%E3%81%97%E3%81%AA%E3%81%8F%E3%81%AA%E3%82%8B%E5%82%BE%E5%90%91%E3%81%AB%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.hfm.com/int/jp/blog/fx-earn/#:~:text=FX%E3%81%A71%E6%97%A55%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%AB%E3%81%AF%E3%80%81%E3%83%89%E3%83%AB,%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%99%E3%80%82",
+      "https://hfm.com/int/jp/blog/successful-person/#:~:text=%E3%81%93%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E3%82%88%E3%82%8C%E3%81%B0,%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.smbcnikko.co.jp/products/fx/knowledge/001.html#:~:text=%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E5%A4%B1%E6%95%97%E3%81%9D%E3%81%AE2%E3%80%8C%E3%83%9D%E3%82%B8%E3%83%9D%E3%82%B8%E7%97%85%E3%80%8D&amp;text=%E3%80%8C%E3%83%9D%E3%82%B8%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E6%8C%81%E3%81%9F%E3%81%AA%E3%81%84%E3%81%A8,%E3%82%B3%E3%82%B9%E3%83%88%E5%A2%97%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82"
+    ],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:56.872915"
+  },
+  {
+    "kw": "自立 ルーティン 作り方",
+    "status": "判定済み合格",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.youtube.com/watch?v=EpVqdU6prK8",
+      "https://www.youtube.com/watch?v=EpVqdU6prK8&amp;t=0",
+      "https://www.youtube.com/watch?v=EpVqdU6prK8&amp;t=66",
+      "https://www.youtube.com/watch?v=EpVqdU6prK8&amp;t=131",
+      "https://www.youtube.com/watch?v=EpVqdU6prK8&amp;t=197"
+    ],
+    "trend": "分析対象のサイトはYouTubeの公式ページであり、記事作成の傾向は不明です。ただし、自立とルーティンを作ることが重要であるというテーマについては、多くのユーザーが関心を持っているようです。対策としては、ユーザーの生活をサポートするコンテンツを作成することです。",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:59:00.669605"
+  },
+  {
+    "kw": "自立 トレード マネージメント",
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://mtmjp.com/",
+      "https://www.tradewaltz.com/news/4786/",
+      "https://k-t-m.net/",
+      "https://www.torayamk.com/jp/sustainability/autonomy03.asp",
+      "https://www.fairtrade.net/jp-jp/why-fairtrade/what-we-do/what-is-fairtrade.html"
+    ],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:59:04.266005"
+  },
+  {
+    "kw": "自立 通貨 市場分析",
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.dlri.co.jp/report/ld/193839.html",
+      "https://www.soico.jp/no1/news/cryptocurrency/21739#:~:text=%E3%82%A4%E3%83%BC%E3%83%AD%E3%83%B3%E3%83%9E%E3%82%B9%E3%82%AF%E6%B0%8F%E3%81%AF2021,%E3%82%92%E9%9B%86%E3%82%81%E7%B6%9A%E3%81%91%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.rakuten-wallet.co.jp/market/market-list/2026/012902/#:~:text=2026%E5%B9%B4%E3%81%AEBTC%E7%9B%B8%E5%A0%B4,%E3%81%8F%E3%82%8B%E3%81%A8%E8%80%83%E3%81%88%E3%81%A6%E3%81%84%E3%82%8B%E3%80%82",
+      "https://diamond.jp/crypto/market/market-ranking/#:~:text=%E4%BB%AE%E6%83%B3%E9%80%9A%E8%B2%A8%E3%81%AE%E6%99%82%E4%BE%A1%E7%B7%8F%E9%A1%8D,%E3%81%AB%E3%81%AF%E5%A4%89%E3%82%8F%E3%81%A3%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%80%82",
+      "https://straitsresearch.com/jp/report/cryptocurrency-market#:~:text=%E4%B8%96%E7%95%8C%E3%81%AE%E4%BB%AE%E6%83%B3%E9%80%9A%E8%B2%A8%E5%B8%82%E5%A0%B4,CAGR%EF%BC%89%E3%81%AF26.96%25%E3%81%A7%E3%81%99%E3%80%82"
+    ],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:59:08.520866"
+  },
+  {
+    "kw": "自立 時間 quản理 技術",
     "status": "待機中",
     "reason": "-",
     "urls": [],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:01.419780"
+    "updated_at": "2026-06-30T06:58:32.118489"
+  },
+  {
+    "kw": "自立 心理学 リスク管理",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118491"
+  },
+  {
+    "kw": "自立 生活 リズム 整理",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118492"
+  },
+  {
+    "kw": "自立 スマートフォン アプリ",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118493"
+  },
+  {
+    "kw": "自立 FX 市場動向",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118495"
+  },
+  {
+    "kw": "自立 個人 資産管理",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118496"
+  },
+  {
+    "kw": "自立 朝のルーティン 作り",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118497"
+  },
+  {
+    "kw": "自立 夕方のルーティン 作り",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118499"
+  },
+  {
+    "kw": "自立 毎日 勉強時間",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118500"
+  },
+  {
+    "kw": "自立 週末の計画 立て方",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118501"
+  },
+  {
+    "kw": "自立 毎月 の振り返り",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118502"
+  },
+  {
+    "kw": "自立 年間の目標 設定",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118502"
+  },
+  {
+    "kw": "自立 金融 知識 スキル",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118503"
+  },
+  {
+    "kw": "自立 トレーディング ログ",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118504"
+  },
+  {
+    "kw": "自立 自分の強み 研究",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118505"
+  },
+  {
+    "kw": "自立 時間管理 技術",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118506"
+  },
+  {
+    "kw": "自立 金融 自立への道",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118507"
+  },
+  {
+    "kw": "自立 トレード スキルアップ",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118507"
+  },
+  {
+    "kw": "自立 投資 信頼関係",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118508"
+  },
+  {
+    "kw": "自立 個人情報管理",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118509"
+  },
+  {
+    "kw": "自立 マーケット分析 スキル",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118511"
+  },
+  {
+    "kw": "自立 自立型 投資家",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118514"
+  },
+  {
+    "kw": "自立 自分のライフスタイル",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-06-30T06:58:32.118516"
   }
 ]
