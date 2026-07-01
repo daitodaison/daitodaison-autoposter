@@ -1609,7 +1609,7 @@
   },
   {
     "kw": "FX 合格 ルーティン 作り",
-    "status": "判定済み合格",
+    "status": "執筆完了",
     "reason": "✅ 合格（SNSあり）",
     "urls": [
       "https://www.youtube.com/watch?v=ZnfivgoYdQ8",
@@ -1620,7 +1620,7 @@
     ],
     "trend": "FX 合格を目的とした記事作成の傾向として、ルーティンを作り勉強することが重要であることがわかります。上位サイトの内容を分析すると、FX の基礎知識と実践的なアプローチを重視し、効率的な学習方法を提供することが共通する傾向です。したがって、FX 合格に向けた対策として、まず基礎知識を固め、次に実践的な勉強を重ねるルーティンを作成し、持続的に学習することが効果的であると考えられます。",
     "avg_length": 0,
-    "updated_at": "2026-06-29T08:17:23.136231"
+    "updated_at": "2026-07-01T07:17:33.792776"
   },
   {
     "kw": "FX 合格 時間 管理",
@@ -2419,93 +2419,153 @@
   },
   {
     "kw": "自立 マーケット分析 スキル",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://grtx.jp/useful/column/20240801",
+      "https://freelance.levtech.jp/guide/detail/1857/",
+      "https://www.insource.co.jp/ihl/251020_logical.html",
+      "https://seisansei.smrj.go.jp/problem_solving/comics/marketing-4p.html#:~:text=%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE4P%E3%81%AF%E3%80%81Product,%E8%A6%81%E7%B4%A0%E3%81%8C%E6%AC%A0%E3%81%8B%E3%81%9B%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82",
+      "https://www.macromill.com/service/column/entry-089/#:~:text=%E3%81%82%E3%82%8B%E8%81%B7%E6%A5%AD%E3%81%A7%E3%81%99%E3%80%82-,%E3%81%BE%E3%81%A8%E3%82%81,%E6%80%A7%E3%81%AE%E9%AB%98%E3%81%84%E8%81%B7%E7%A8%AE%E3%81%A7%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118511"
+    "updated_at": "2026-07-01T07:15:06.967544"
   },
   {
     "kw": "自立 自立型 投資家",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 除外サイト上位",
+    "urls": [
+      "https://note.com/202403haime/n/n3fd560f04c92",
+      "https://diamond.jp/articles/-/347545#:~:text=%E5%85%83%E6%B6%88%E9%98%B2%E5%A3%AB%E3%81%8C%E6%A0%AA%E5%BC%8F,%E9%87%91%E3%81%A7%E3%81%BE%E3%81%8B%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%80%82",
+      "https://kabusyo.com/yakudati/hyo4.html#:~:text=%E5%A3%B2%E3%82%8A%E3%81%AF%E9%81%8B-,%E4%BA%8C%E7%95%AA%E5%BA%95%E3%81%AF%E9%BB%99%E3%81%A3%E3%81%A6%E8%B2%B7%E3%81%88,%E5%BA%95%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%80%82",
+      "https://www.tohshin.co.jp/magazine/article0142.html#:~:text=%E6%9C%8810%E4%B8%87%E5%86%86%E3%81%AE,%E5%85%83%E6%9C%AC%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%80%82",
+      "https://president.jp/growth/archives/202#:~:text=%E6%97%A5%E6%9C%AC%E6%A0%AA%E6%8A%95%E8%B3%87%E3%81%A71500,%E3%81%AF%E7%B1%B3%E5%9B%BD%E6%A0%AA%E3%81%A0%E3%81%A8%E3%81%84%E3%81%86%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118514"
+    "updated_at": "2026-07-01T07:15:10.273088"
   },
   {
     "kw": "自立 自分のライフスタイル",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.asahi.com/relife/article/13774308",
+      "https://www.shitennoji.ac.jp/assets/images/research/library/repo/kiyo46/kiyo46-06.pdf",
+      "https://i-vision.jp/carrier/blog/%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%81%AE%E7%B5%90%E5%A9%9A%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/%E8%87%AA%E7%AB%8B%E3%81%97%E3%81%9F%E5%A5%B3%E6%80%A7%E3%81%AE%E7%89%B9%E5%BE%B4%E3%81%A8%E3%81%AF%EF%BC%9F%E9%AD%85%E5%8A%9B%E7%9A%84%E3%81%AA%E7%94%9F%E3%81%8D%E6%96%B9%E3%82%92%E3%81%94%E7%B4%B9",
+      "https://potect-a.com/product/character-list-and-explanation/jiritsuryoku/#:~:text=%E3%80%8C%E8%87%AA%E7%AB%8B%E5%8A%9B%E3%80%8D%E3%81%A8%E3%81%AF%E3%80%81,%E3%81%8B%E3%80%8D%E3%82%92%E8%80%83%E3%81%88%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%97%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.polaris.care/about/tab01.html#:~:text=%E2%80%9C%E8%87%AA%E7%AB%8B%E2%80%9D%E3%81%A8%E3%81%AF%E3%80%8C%E8%BA%AB%E4%BD%93,%E8%A6%81%E7%B4%A0%E3%81%8B%E3%82%89%E6%88%90%E3%82%8A%E7%AB%8B%E3%81%A3%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T06:58:32.118516"
+    "updated_at": "2026-07-01T07:15:14.039023"
   },
   {
     "kw": "FX 合格 スマホアプリ 設定",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
-    "avg_length": 0,
-    "updated_at": "2026-06-30T23:04:59.477624"
+    "status": "判定済み合格",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.youtube.com/watch?v=x8vnqqWzvkA",
+      "https://www.youtube.com/watch?v=65fOoR0ho14",
+      "https://search.sbisec.co.jp/v2/popwin/guide/tool/fx/",
+      "https://my-best.com/articles/683#:~:text=%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82-,1%E6%97%A5%E3%81%A75%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%9F%E3%82%81%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA,%E3%81%A6%E5%8F%96%E5%BC%95%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82",
+      "https://www.hfm.com/int/jp/blog/fx-smartphone-only-win/#:~:text=FX%E3%81%AF%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%A0%E3%81%91%E3%81%A7%E3%82%82,%E7%92%B0%E5%A2%83%E3%81%AF%E6%95%B4%E3%81%A3%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82"
+    ],
+    "trend": "FXの合格とスマホアプリの設定に関する記事作成の傾向として、SBI証券のFXアプリの操作方法や機能の紹介が多くみられます。対策として、ユーザーにとって分かりやすく、操作方法の説明を詳細に行うことが重要です。",
+    "avg_length": 1893,
+    "updated_at": "2026-07-01T07:15:17.590792"
   },
   {
     "kw": "FX 合格 週末持ち越し リスク",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://min-fx.jp/press/20250221-3/",
+      "https://www.soico.jp/no1/news/fx/24316#:~:text=%E5%B7%A6%E5%8F%B3%E3%81%97%E3%81%BE%E3%81%99%E3%80%82-,%E5%9C%9F%E6%97%A5%E3%81%AB%E5%8F%96%E5%BC%95%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84%E7%90%86%E7%94%B1%E3%81%AF%E3%80%81%E4%B8%96%E7%95%8C%E3%81%AE%E4%B8%BB%E8%A6%81%E5%B8%82%E5%A0%B4,%E3%81%AE%E3%83%AA%E3%82%B9%E3%82%AF%E3%81%8C%E4%BC%B4%E3%81%84%E3%81%BE%E3%81%99%E3%80%82",
+      "https://help.line-sec.co.jp/answer/64d1ea8b79d2a8b8beae411f/#:~:text=FX%E5%8F%96%E5%BC%95%E3%81%A7%E3%81%AF%E5%8F%96%E5%BC%95%E6%97%A5,%E6%9C%A8%E6%9B%9C%E6%97%A5%E3%81%AB%E7%99%BA%E7%94%9F%E3%81%97%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.oanda.jp/lab-education/beginners/aboutfx/fx_trading_hours_weekend/#:~:text=FX%E5%8F%96%E5%BC%95%E3%81%AF%E5%9C%9F%E6%97%A5%E3%81%AB,%E3%81%8C%E7%94%9F%E3%81%98%E3%82%8B%E3%83%AA%E3%82%B9%E3%82%AF%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.smbcnikko.co.jp/products/fx/knowledge/001.html#:~:text=%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E5%A4%B1%E6%95%97%E3%81%9D%E3%81%AE2%E3%80%8C%E3%83%9D%E3%82%B8%E3%83%9D%E3%82%B8%E7%97%85%E3%80%8D&amp;text=%E3%80%8C%E3%83%9D%E3%82%B8%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E6%8C%81%E3%81%9F%E3%81%AA%E3%81%84%E3%81%A8,%E3%82%B3%E3%82%B9%E3%83%88%E5%A2%97%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T23:04:59.477633"
+    "updated_at": "2026-07-01T07:15:21.411055"
   },
   {
     "kw": "FX 合格 5分足 スキャルピング",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.amazon.co.jp/FX-5%E5%88%86%E8%B6%B3%E3%82%B9%E3%82%AD%E3%83%A3%E3%83%AB%E3%83%94%E3%83%B3%E3%82%B0%E2%80%95%E2%80%95%E3%83%97%E3%83%A9%E3%82%A4%E3%82%B9%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%9F%BA%E6%9C%AC%E3%81%A8%E5%8E%9F%E5%89%87-%E3%82%A6%E3%82%A4%E3%82%B6%E3%83%BC%E3%83%89%E3%83%96%E3%83%83%E3%82%AF%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BAVol-228-%E3%83%9C%E3%83%96%E3%83%BB%E3%83%9C%E3%83%AB%E3%83%9E%E3%83%B3/dp/4775971956",
+      "https://www.oanda.jp/lab-education/dictionary/scalping/",
+      "https://www.fintokei.com/jp/blog/one-minute-five-minutes/#:~:text=1%E5%88%86%E8%B6%B3%E3%81%A85%E5%88%86%E8%B6%B3%E3%81%AF%E3%81%A9%E3%81%A1%E3%82%89%E3%82%82,%E8%B6%B3%E3%81%8C%E9%81%A9%E3%81%97%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.soico.jp/no1/news/fx/24085#:~:text=%E7%B4%B9%E4%BB%8B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82-,%E3%82%B9%E3%82%AD%E3%83%A3%E3%83%AB%E3%83%94%E3%83%B3%E3%82%B0%EF%BD%9C22%E6%99%82%EF%BD%9E%E7%BF%8C2,%E9%AB%98%E6%B5%81%E5%8B%95%E6%80%A7%E6%99%82%E9%96%93%E5%B8%AF&amp;text=%E3%81%9D%E3%81%AE%E3%81%9F%E3%82%81%E3%80%81%E5%B8%82%E5%A0%B4%E5%8F%82%E5%8A%A0%E8%80%85%E3%81%8C,%E6%99%82%E9%A0%83%20%E3%81%8C%E6%9C%80%E9%81%A9%E3%81%A7%E3%81%99%E3%80%82&amp;text=%E3%81%93%E3%81%AE%E6%99%82%E9%96%93%E5%B8%AF%E3%81%AF%E6%B5%81%E5%8B%95,%E7%9A%84%E3%81%AB%E5%8F%96%E5%BC%95%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.matsui.co.jp/money-satellite/column/beginner/fx/glossary/cl-scalping.html#:~:text=%E3%82%B9%E3%82%AD%E3%83%A3%E3%83%AB%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AF%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AEFX,%E3%81%9F%E3%82%8A%E3%81%99%E3%82%8B%E3%83%AA%E3%82%B9%E3%82%AF%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T23:04:59.477635"
+    "updated_at": "2026-07-01T07:15:24.597503"
   },
   {
     "kw": "FX 合格 マーケット分析 ルーチン",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
-    "trend": "-",
+    "status": "判定済み合格",
+    "reason": "✅ 合格（SNSあり）",
+    "urls": [
+      "https://www.youtube.com/watch?v=r0kHI_cyrZQ",
+      "https://www.youtube.com/watch?v=r0kHI_cyrZQ&amp;t=0",
+      "https://www.youtube.com/watch?v=r0kHI_cyrZQ&amp;t=23",
+      "https://www.youtube.com/watch?v=r0kHI_cyrZQ&amp;t=47",
+      "https://www.youtube.com/watch?v=r0kHI_cyrZQ&amp;t=125"
+    ],
+    "trend": "上位サイトの内容は、FXの合格とマーケット分析、ルーチンに関する情報が中心です。記事作成の傾向としては、FXの基礎知識や戦略、市場動向の分析、トレーディングのルーチン化に関するコンテンツが多く見られます。対策としては、FXの基本を固め、市場分析のスキルを高め、毎日のトレーディングのルーチン化が重要であると言えるでしょう。",
     "avg_length": 0,
-    "updated_at": "2026-06-30T23:04:59.477637"
+    "updated_at": "2026-07-01T07:15:28.038526"
   },
   {
     "kw": "FX 合格 時系列データ 変動",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://bellcurve.jp/statistics/course/23739.html",
+      "https://recruit.group.gmo/engineer/jisedai/blog/fx_with_time_series/",
+      "https://gmo-research.ai/research-column/time-series-analysis",
+      "https://www.mi.u-tokyo.ac.jp/consortium2/pdf/4-4_literacy_level_note.pdf",
+      "https://bellcurve.jp/statistics/course/23739.html#:~:text=%E6%99%82%E7%B3%BB%E5%88%97%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E4%B8%AD,%E3%81%A8%E8%80%83%E3%81%88%E3%82%89%E3%82%8C%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T23:04:59.477638"
+    "updated_at": "2026-07-01T07:15:31.349456"
   },
   {
     "kw": "FX 合格 日経225予想 トレード",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.oanda.jp/lab-education/beginners/aboutcfd/cfd_chart/",
+      "https://www.hfm.com/int/jp/blog/fx-earn/#:~:text=FX%E3%81%A71%E6%97%A55%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%AB%E3%81%AF%E3%80%81%E3%83%89%E3%83%AB,%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.oanda.jp/lab-education/beginners/aboutfx/fx_trading_hours_weekend/#:~:text=%E5%9C%9F%E6%97%A5%E4%BB%A5%E5%A4%96%E3%81%ABFX%E5%8F%96%E5%BC%95%E3%81%8C%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84%E6%9C%9F%E9%96%93%E3%81%AF%E3%80%81%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9,%E3%81%AE%E5%8F%AF%E8%83%BD%E6%80%A7%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.simplexasset.com/etf/manga/vol6.html#:~:text=%E3%81%A7%E3%82%8F%E3%81%8B%E3%82%8BETF-,%E6%A0%AA%E3%81%8C%E4%B8%8B%E3%81%8C%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%20%E3%81%A0%E3%81%8C%E3%81%9D%E3%82%8C,%EF%BD%9E%E3%83%99%E3%82%A2%EF%BC%88%E3%82%A4%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B9%EF%BC%89ETF%EF%BD%9E&amp;text=%E3%83%99%E3%82%A2%E5%9E%8B%E3%81%BE%E3%81%9F%E3%81%AF%E3%82%A4%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B9%E5%9E%8B,ETF%E3%81%AF%E4%B8%8A%E6%98%87%E3%81%97%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.hfm.com/int/jp/blog/fx-leave-alone/#:~:text=FX%E3%81%AF%E6%94%BE%E7%BD%AE%E3%81%97%E3%81%A6%E3%81%84,%E6%B1%BA%E3%81%97%E3%81%A6%E9%9B%A3%E3%81%97%E3%81%8F%E3%81%AA%E3%81%84%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T23:04:59.477639"
+    "updated_at": "2026-07-01T07:15:34.974023"
   },
   {
     "kw": "FX 合格 ロスカット戦略 使い方",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ SNS/掲示板なし",
+    "urls": [
+      "https://www.gaitame.com/beginner/fx/loss.html",
+      "https://www.gaitame.com/service/fx/rules/losscut/#:~:text=%E3%83%AD%E3%82%B9%E3%82%AB%E3%83%83%E3%83%88%E3%83%AC%E3%83%99%E3%83%AB%E3%81%8C%E3%80%8C100%EF%BC%85,%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.hfm.com/int/jp/blog/fx-earn/#:~:text=FX%E3%81%A71%E6%97%A55%2C000%E5%86%86%E7%A8%BC%E3%81%90%E3%81%AB%E3%81%AF%E3%80%81%E3%83%89%E3%83%AB,%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.gaitame.com/beginner/fx/1000currency.html",
+      "https://www.soico.jp/no1/news/fx/25568#:~:text=%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A7%E6%9C%8810%E4%B8%87%E5%86%86%E3%82%92%E7%A8%BC%E3%81%90%E5%A0%B4%E5%90%88,%E7%A8%8B%E5%BA%A6%20%E3%81%8C%E7%9B%AE%E5%AE%89%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-06-30T23:04:59.477640"
+    "updated_at": "2026-07-01T07:15:38.625572"
   },
   {
     "kw": "FX 合格 チャート分析 テクニック",
