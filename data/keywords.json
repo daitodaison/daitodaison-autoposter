@@ -1744,7 +1744,7 @@
   },
   {
     "kw": "FX 合格 マインド セット",
-    "status": "判定済み合格",
+    "status": "執筆完了",
     "reason": "✅ 合格（SNSあり）",
     "urls": [
       "https://www.youtube.com/watch?v=AZ1WWqNSxGM",
@@ -1755,7 +1755,7 @@
     ],
     "trend": "このサイトの記事は、FX取引で収入を得る方法について解説しており、1日5000円や月10万円を稼ぐために必要な資金などを掲載している。記事では、初心者が気をつけるべき点や、正しいステップを踏むことが大切であることを強調している。また、通貨ペアの選択や資金管理の重要性も説明されている。",
     "avg_length": 10975,
-    "updated_at": "2026-06-29T16:02:55.739747"
+    "updated_at": "2026-07-02T06:47:36.301722"
   },
   {
     "kw": "FX 合格 デスク 環境",
@@ -2869,93 +2869,153 @@
   },
   {
     "kw": "Fintokei トレード戦略",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 除外サイト上位",
+    "urls": [
+      "https://www.fintokei.com/jp/blog/protrader-interview-ritan/",
+      "https://www.easy-forex.com/kaigaifx/fintokei-rule/",
+      "https://www.fintokei.com/jp/",
+      "https://www.instagram.com/p/DaA8zpwnxfJ/",
+      "https://woz.co.jp/jpmedia/fintokei-challenge-strategy/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751430"
+    "updated_at": "2026-07-02T06:43:45.167957"
   },
   {
     "kw": "Fintokei 損切り 方策",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://www.fintokei.com/jp/blog/losscut-guidelines/",
+      "https://www.fintokei.com/jp/blog/people-cut-losses/",
+      "https://www.fintokei.com/jp/blog/scalping-stoploss/",
+      "https://www.instagram.com/p/DaA8zpwnxfJ/",
+      "https://www.easy-forex.com/kaigaifx/fintokei-rule/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751431"
+    "updated_at": "2026-07-02T06:43:49.220825"
   },
   {
     "kw": "Fintokei ポジション サイズ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://support.fintokei.com/ja/articles/9286450-%E5%90%8C%E6%99%82%E3%81%AB%E4%BF%9D%E6%9C%89%E3%81%A7%E3%81%8D%E3%82%8B%E3%83%9D%E3%82%B8%E3%82%B7%E3%83%A7%E3%83%B3%E6%95%B0-1%E5%BA%A6%E3%81%AB%E6%B3%A8%E6%96%87%E3%81%A7%E3%81%8D%E3%82%8B%E6%9C%80%E5%A4%A7-%E6%9C%80%E5%B0%8F%E3%83%AD%E3%83%83%E3%83%88%E6%95%B0%E3%81%AF",
+      "https://my.fintokei.com/ja/payouts",
+      "https://comparisonpropfirm.com/fintokei-rules/",
+      "https://www.instagram.com/reel/DUIGPUMkfQg/",
+      "https://www.shinkotoushin.co.jp/fintokei/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751433"
+    "updated_at": "2026-07-02T06:43:52.669221"
   },
   {
     "kw": "Fintokei ロット サイズ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://www.fintokei.com/jp/blog/pips-calculator/",
+      "https://www.shinkotoushin.co.jp/fintokei/#:~:text=%E3%82%B9%E3%83%86%E3%83%83%E3%83%971%E3%81%AE%E5%88%A9%E7%9B%8A%E7%9B%AE%E6%A8%99,%E5%8F%97%E3%81%91%E5%8F%96%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E5%8F%AF%E8%83%BD%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.smbcnikko.co.jp/products/fx/knowledge/003.html#:~:text=FX%E6%8F%90%E4%BE%9B%E4%BC%9A%E7%A4%BE%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E7%95%B0%E3%81%AA%E3%82%8A,%E3%82%82%E4%B8%AD%E3%81%AB%E3%81%AF%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.central-tanshifx.com/fx-knowhow/lot.html",
+      "https://www.gaitame.com/beginner/fx/lot.html#:~:text=%E3%81%AE%E7%9B%AE%E5%AE%89%E3%81%AF%EF%BC%9F-,FX%E3%81%AE%E3%83%AD%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%EF%BC%9F,%E3%81%AE%E3%81%8C%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%A7%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751435"
+    "updated_at": "2026-07-02T06:43:56.382889"
   },
   {
     "kw": "Fintokei ストップロス 設定",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://support.fintokei.com/ja/articles/11315971-%E5%88%B6%E9%99%90%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AB%E5%90%AB%E3%81%BE%E3%82%8C%E3%82%8B%E5%8F%AF%E8%83%BD%E6%80%A7%E3%81%AE%E3%81%82%E3%82%8B%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E5%88%B6%E9%99%90%E6%8E%AA%E7%BD%AE",
+      "https://support.fintokei.com/ja/articles/6538826-%E6%90%8D%E5%A4%B1%E7%8E%87%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E8%A8%88%E7%AE%97%E3%81%95%E3%82%8C%E3%81%BE%E3%81%99%E3%81%8B#:~:text=1%E6%97%A5%E3%81%AE%E6%90%8D%E5%A4%B1%E7%8E%87,%E3%81%9F%E5%A0%B4%E5%90%88%E5%A4%B1%E6%A0%BC%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://kabu.com/item/fop/knowledge/stop_loss.html#:~:text=%E9%80%86%E6%8C%87%E5%80%A4%EF%BC%88%E3%82%B9%E3%83%88%E3%83%83%E3%83%97%E3%83%AD%E3%82%B9%EF%BC%89%E3%81%AE%E6%B3%A8%E6%96%87%E6%96%B9%E6%B3%95&amp;text=%E2%91%A0%E5%9F%B7%E8%A1%8C%E6%9D%A1%E4%BB%B6%E3%81%AB%E3%81%A6,%E3%81%84%E3%81%9A%E3%82%8C%E3%81%8B%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B%E3%80%82",
+      "https://support.fintokei.com/ja/articles/9579997-%E5%85%A5%E9%96%80%E3%83%97%E3%83%A9%E3%83%B3%E3%81%AE%E5%90%84%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%81%8B#:~:text=%E8%A9%95%E4%BE%A1%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%8F%A3%E5%BA%A7%E3%81%AB%E3%81%8A%E3%81%84%E3%81%A6,%E3%81%AE1%EF%BC%85%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.binance.com/ja/academy/articles/what-are-stop-loss-and-take-profit-levels-and-how-to-calculate-them#:~:text=%E3%82%B9%E3%83%88%E3%83%83%E3%83%97%E3%83%AD%E3%82%B9%EF%BC%88SL%EF%BC%89%E3%81%A8%E3%83%86%E3%82%A4%E3%82%AF,%E5%88%A9%E7%9B%8A%E3%82%92%E7%A2%BA%E5%AE%9A%E3%81%97%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751437"
+    "updated_at": "2026-07-02T06:44:00.116133"
   },
   {
     "kw": "Fintokei レンジ トレード",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://www.fintokei.com/jp/",
+      "https://www.sbifxt.co.jp/beginner/step01_4_074.html#:~:text=1.%20%E3%83%AC%E3%83%B3%E3%82%B8%E7%9B%B8%E5%A0%B4%E3%81%A8%E3%81%AF,-%E7%82%BA%E6%9B%BF%E5%B8%82%E5%A0%B4%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B&amp;text=%E7%9B%B8%E5%A0%B4%E3%81%AE%E8%A1%8C%E6%96%B9%E3%82%92%E5%B7%A6%E5%8F%B3,%E3%81%AF%E9%9D%9E%E5%B8%B8%E3%81%AB%E9%87%8D%E8%A6%81%E3%81%A7%E3%81%99%E3%80%82",
+      "https://support.fintokei.com/ja/articles/9579997-%E5%85%A5%E9%96%80%E3%83%97%E3%83%A9%E3%83%B3%E3%81%AE%E5%90%84%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%81%8B#:~:text=%E8%A9%95%E4%BE%A1%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%8F%A3%E5%BA%A7%E3%81%AB%E3%81%8A%E3%81%84%E3%81%A6,%E3%81%AE1%EF%BC%85%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.fintokei.com/jp/blog/proptrading-first-league/#:~:text=Fintokei%E5%85%AC%E8%AA%8D%E3%81%AE%E3%83%97%E3%83%AD%E3%83%88%E3%83%AC%E3%83%BC%E3%83%80%E3%83%BC%E3%81%AB%E3%81%AA%E3%82%8C%E3%82%8C%E3%81%B0%E3%80%81%E3%83%87%E3%83%A2%E5%8F%A3%E5%BA%A7,%E3%82%92%E5%A7%8B%E3%82%81%E3%82%89%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%A7%E3%81%99%E3%80%82",
+      "https://www.fintokei.com/jp/blog/spreads-are-wide/#:~:text=%E3%82%92%E5%BE%B9%E5%BA%95%E6%AF%94%E8%BC%83-,Fintokei%E3%81%A7%E3%81%AF%E5%8F%96%E5%BC%95%E6%89%8B%E6%95%B0%E6%96%99%E3%82%82%E3%81%8B%E3%81%8B%E3%82%8B,%E3%81%A6%E3%81%84%E3%81%9F%E3%81%A0%E3%81%8F%E3%82%8F%E3%81%91%E3%81%A7%E3%81%AF%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751439"
+    "updated_at": "2026-07-02T06:44:03.923606"
   },
   {
     "kw": "Fintokei 逆張り トレード",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 除外サイト上位",
+    "urls": [
+      "https://www.fintokei.com/jp/blog/protrader-interview-bu/",
+      "https://www.instagram.com/reel/DYng8Vas-4O/",
+      "https://www.instagram.com/reel/DYy3E61MmAN/",
+      "https://www.fintokei.com/jp/blog/trend-following-counter-trend/",
+      "https://support.fintokei.com/ja/articles/6538826-%E6%90%8D%E5%A4%B1%E7%8E%87%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E8%A8%88%E7%AE%97%E3%81%95%E3%82%8C%E3%81%BE%E3%81%99%E3%81%8B#:~:text=1%E6%97%A5%E3%81%AE%E6%90%8D%E5%A4%B1%E7%8E%87,%E3%81%9F%E5%A0%B4%E5%90%88%E5%A4%B1%E6%A0%BC%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751440"
+    "updated_at": "2026-07-02T06:44:07.515257"
   },
   {
     "kw": "Fintokei 日経225 トレード",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://www.fintokei.com/jp/symbols/",
+      "https://www.fintokei.com/jp/blog/differences-between-cfd-and-futures/",
+      "https://www.trade-trade.jp/blog/originators/20260421-18916/",
+      "https://apps.apple.com/jp/app/fintokei/id6466821038",
+      "https://www.shinkotoushin.co.jp/fintokei/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751441"
+    "updated_at": "2026-07-02T06:44:11.140278"
   },
   {
     "kw": "Fintokei 為替 市場",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://my.fintokei.com/ja/tools",
+      "https://apps.apple.com/jp/app/fintokei/id6466821038",
+      "https://www.shinkotoushin.co.jp/fintokei/",
+      "https://www.jspcmb.jp/fintokei/",
+      "https://www.trade-trade.jp/blog/originators/20260421-18916/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751442"
+    "updated_at": "2026-07-02T06:44:14.777842"
   },
   {
     "kw": "Fintokei 金利 変動",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 除外サイト上位",
+    "urls": [
+      "https://my.fintokei.com/ja/tools",
+      "https://www.shinkotoushin.co.jp/fintokei/",
+      "https://www.instagram.com/p/DaA8zpwnxfJ/",
+      "https://www.jspcmb.jp/fintokei/",
+      "https://apps.apple.com/jp/app/fintokei/id6466821038"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751444"
+    "updated_at": "2026-07-02T06:44:18.318867"
   },
   {
     "kw": "Fintokei 株式 市場",
