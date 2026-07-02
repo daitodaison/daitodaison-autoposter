@@ -1774,7 +1774,7 @@
   },
   {
     "kw": "FX 合格 コンピューター 設定",
-    "status": "判定済み合格",
+    "status": "執筆完了",
     "reason": "✅ 合格（SNSあり）",
     "urls": [
       "https://www.youtube.com/watch?v=inCU1DoER3A",
@@ -1785,7 +1785,7 @@
     ],
     "trend": "FXに関する記事の傾向は、投資の必要資金と現実的な達成ロードマップに関する記事が多い。設定やコンピューターの使用法とFXの達成方法に関する説明も含まれていることがわかる。記事作成の対策としては、投資に関する実践的なアドバイスや達成ロードマップの提供が重要である。",
     "avg_length": 0,
-    "updated_at": "2026-06-29T16:03:02.927467"
+    "updated_at": "2026-07-02T14:24:37.474289"
   },
   {
     "kw": "FX 合格 インターネット 速度",
@@ -3019,83 +3019,404 @@
   },
   {
     "kw": "Fintokei 株式 市場",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://www.fintokei.com/jp/symbols/",
+      "https://www.fintokei.com/jp/",
+      "https://newscast.jp/news/6496775",
+      "https://apps.apple.com/jp/app/fintokei/id6466821038",
+      "https://www.atpress.ne.jp/news/406232"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751445"
+    "updated_at": "2026-07-02T14:22:29.770208"
   },
   {
     "kw": "Fintokei 先物 取引",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://www.fintokei.com/jp/blog/differences-between-cfd-and-futures/",
+      "https://support.fintokei.com/ja/articles/6538848-%E5%8F%96%E5%BC%95%E3%81%A7%E3%81%8D%E3%82%8B%E5%95%86%E5%93%81%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B",
+      "https://www.shinkotoushin.co.jp/fintokei/",
+      "https://www.instagram.com/reel/DUIGPUMkfQg/",
+      "https://www.trade-trade.jp/blog/originators/20260421-18916/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751446"
+    "updated_at": "2026-07-02T14:22:33.373807"
   },
   {
     "kw": "Fintokei オプション取引",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://my.fintokei.com/ja/tools",
+      "https://www.fintokei.com/jp/",
+      "https://www.shinkotoushin.co.jp/fintokei/",
+      "https://www.instagram.com/reel/DUIGPUMkfQg/",
+      "https://newscast.jp/news/5378597"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751447"
+    "updated_at": "2026-07-02T14:22:37.955132"
   },
   {
     "kw": "Fintokei ボラティリティ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://www.fintokei.com/jp/",
+      "https://www.fintokei.com/jp/blog/what-is-volatility/",
+      "https://www.shinkotoushin.co.jp/fintokei/",
+      "https://www.jspcmb.jp/fintokei/",
+      "https://taritali.com/ja/fintokei"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751448"
+    "updated_at": "2026-07-02T14:22:41.900751"
   },
   {
     "kw": "Fintokei テクニカル分析",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://www.fintokei.com/jp/blog/what-is-technical-analysis/",
+      "https://www.fintokei.com/jp/blog/tag/technical-analysis/",
+      "https://www.trade-trade.jp/blog/originators/20260421-18916/",
+      "https://www.fintokei.com/jp/blog/tag/analytics-report/",
+      "https://www.matsui.co.jp/fx/study/article/analysis/technical/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751452"
+    "updated_at": "2026-07-02T14:22:46.430502"
   },
   {
     "kw": "Fintokei ファンダメンタルズ",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://www.fintokei.com/jp/blog/how-to-fundamental-analysis/",
+      "https://my.fintokei.com/ja",
+      "https://www.shinkotoushin.co.jp/fintokei/",
+      "https://www.fintokei.com/jp/blog/tag/update/page/5",
+      "https://taritali.com/ja/fintokei"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751453"
+    "updated_at": "2026-07-02T14:22:50.050292"
   },
   {
     "kw": "Fintokei マーケット セントリメント",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 除外サイト上位",
+    "urls": [
+      "https://www.fintokei.com/jp/",
+      "https://www.shinkotoushin.co.jp/fintokei/",
+      "https://www.easy-forex.com/kaigaifx/fintokei-recommended-plan/",
+      "https://www.atpress.ne.jp/news/393764",
+      "https://www.fintokei.com/jp/education/"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751456"
+    "updated_at": "2026-07-02T14:22:53.531749"
   },
   {
     "kw": "Fintokei イベントリスク",
-    "status": "待機中",
-    "reason": "-",
-    "urls": [],
+    "status": "判定済み圏外",
+    "reason": "❌ 除外サイト上位",
+    "urls": [
+      "https://www.fintokei.com/jp/",
+      "https://www.tv-tokyo.co.jp/plus/external-pr/entry/24325.html",
+      "https://www.instagram.com/fintokeijp/?hl=ja",
+      "https://www.fintokei.com/jp/blog/risk-management-update-202604/",
+      "https://prtimes.jp/main/html/searchrlp/company_id/132800"
+    ],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751457"
+    "updated_at": "2026-07-02T14:22:57.097279"
   },
   {
     "kw": "Fintokei リターン率",
+    "status": "判定済み圏外",
+    "reason": "❌ 1位が強豪",
+    "urls": [
+      "https://my.fintokei.com/ja/payouts",
+      "https://support.fintokei.com/ja/articles/6538826-%E6%90%8D%E5%A4%B1%E7%8E%87%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E8%A8%88%E7%AE%97%E3%81%95%E3%82%8C%E3%81%BE%E3%81%99%E3%81%8B#:~:text=1%E6%97%A5%E3%81%AE%E6%90%8D%E5%A4%B1%E7%8E%87,%E3%81%9F%E5%A0%B4%E5%90%88%E5%A4%B1%E6%A0%BC%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://support.fintokei.com/ja/articles/9579997-%E5%85%A5%E9%96%80%E3%83%97%E3%83%A9%E3%83%B3%E3%81%AE%E5%90%84%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%81%8B#:~:text=%E8%A9%95%E4%BE%A1%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%8F%A3%E5%BA%A7%E3%81%AB%E3%81%8A%E3%81%84%E3%81%A6,%E3%81%AE1%EF%BC%85%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.fintokei.com/jp/starttrader/#:~:text=%E6%9C%80%E5%A4%A7100%EF%BC%85%E3%81%AE%E5%A0%B1%E9%85%AC,%E3%82%A2%E3%83%83%E3%83%97%E3%82%92%E7%9B%AE%E6%8C%87%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82",
+      "https://www.shinkotoushin.co.jp/fintokei/#:~:text=Fintokei%E3%81%A8%E3%81%AF%EF%BC%9F,-%E5%8F%82%E8%80%83%EF%BC%9AFintokei&amp;text=Fintokei(%E3%83%95%E3%82%A3%E3%83%B3%E3%83%88%E3%82%B1%E3%82%A4)%E3%81%AF%E3%80%81%E6%97%A5%E6%9C%AC,%E5%A4%A7%E3%81%8D%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82"
+    ],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:23:00.677154"
+  },
+  {
+    "kw": "プロップファーム ベースセットアップ",
+    "status": "判定済み合格",
+    "reason": "✅ 合格（掲示板あり）",
+    "urls": [
+      "https://www.interactivebrokers.co.jp/jp/accounts/prop-trader-onboarding.php",
+      "https://www.reddit.com/r/Trading/comments/1qzsv4v/guys_im_looking_to_get_some_good_futures_prop/?tl=ja",
+      "https://jinacoin.ne.jp/proprietary-trading-firm/",
+      "https://wemastertrade.com/ja/prop-firm-evaluation-guide/#:~:text=%E5%A4%9A%E3%81%8F%E3%81%AE%E5%80%8B%E4%BA%BA%E3%83%88%E3%83%AC%E3%83%BC%E3%83%80%E3%83%BC%E3%81%8C,%E5%85%A8%E5%AE%B9%E3%82%92%E8%A7%A3%E8%AA%AC%E3%81%97%E3%81%BE%E3%81%99%E3%80%82",
+      "https://www.fintokei.com/jp/blog/what-is-a-prop-firm/#:~:text=%E3%83%97%E3%83%AD%E3%83%83%E3%83%97%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%81%AF%E3%80%81%E8%A9%95%E4%BE%A1%E8%A9%A6%E9%A8%93,%E3%81%AF%E6%B3%A8%E6%84%8F%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%80%82"
+    ],
+    "trend": "このサイトの記事は、「プロップファーム」という投資会社の解説に焦点を当てている。プロップファームは、優れたトレーダーに自社資金を提供し、取引利益の一部を報酬として支払う会社である。記事では、プロップファームの基本概念、成立背景、仕組み、メリット、デメリット、選び方などについて詳しく解説している。ベースセットアップの設定や、プロップファームの選び方についても言及されている。記事の目的は、プロップファ",
+    "avg_length": 9748,
+    "updated_at": "2026-07-02T14:23:04.200761"
+  },
+  {
+    "kw": "プロップファーム 初心者 ガイド",
     "status": "待機中",
     "reason": "-",
     "urls": [],
     "trend": "-",
     "avg_length": 0,
-    "updated_at": "2026-07-01T23:06:16.751458"
+    "updated_at": "2026-07-02T14:22:27.831799"
+  },
+  {
+    "kw": "プロップファーム スマホ アプリ",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831801"
+  },
+  {
+    "kw": "プロップファーム 自動売り買い",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831802"
+  },
+  {
+    "kw": "プロップファーム 利用開始",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831803"
+  },
+  {
+    "kw": "プロップファーム 最新情報",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831804"
+  },
+  {
+    "kw": "プロップファーム 入門書",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831806"
+  },
+  {
+    "kw": "プロップファーム 基本設定",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831809"
+  },
+  {
+    "kw": "プロップファームADX戦略",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831811"
+  },
+  {
+    "kw": "プロップファーム Ichimoku",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831812"
+  },
+  {
+    "kw": "プロップファーム レジストリ設定",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831813"
+  },
+  {
+    "kw": "プロップファーム MT4 連携",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831815"
+  },
+  {
+    "kw": "プロップファーム EA作成",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831816"
+  },
+  {
+    "kw": "プロップファーム トレードマネージャー",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831819"
+  },
+  {
+    "kw": "プロップファーム オンラインセミナー",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831821"
+  },
+  {
+    "kw": "プロップファーム 初心者向け",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831822"
+  },
+  {
+    "kw": "プロップファーム 週末持ち越し",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831823"
+  },
+  {
+    "kw": "プロップファーム 5分足 スキャルピング",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831824"
+  },
+  {
+    "kw": "プロップファーム トレード戦略",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831825"
+  },
+  {
+    "kw": "プロップファーム デモアカウント",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831826"
+  },
+  {
+    "kw": "プロップファーム 実践講座",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831827"
+  },
+  {
+    "kw": "プロップファーム FXトレード",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831828"
+  },
+  {
+    "kw": "プロップファーム ゴール設定",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831830"
+  },
+  {
+    "kw": "プロップファーム トレーディングツール",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831831"
+  },
+  {
+    "kw": "プロップファーム リスクマネジメント",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831832"
+  },
+  {
+    "kw": "プロップファーム トレード心理学",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831833"
+  },
+  {
+    "kw": "プロップファーム 初めてのトレード",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831834"
+  },
+  {
+    "kw": "プロップファーム アカウント開設",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831836"
+  },
+  {
+    "kw": "プロップファーム トレーニングプログラム",
+    "status": "待機中",
+    "reason": "-",
+    "urls": [],
+    "trend": "-",
+    "avg_length": 0,
+    "updated_at": "2026-07-02T14:22:27.831837"
   }
 ]
